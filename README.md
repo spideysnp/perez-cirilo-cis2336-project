@@ -44,7 +44,7 @@ Some of the front-end scaffolding for this project was originally generated with
 
 - **HTML5** — semantic page structure
 - **CSS3** — external stylesheets (`frontend/css/`), CSS variables, Flexbox/Grid, transitions & animations, media-query-ready layout
-- **JavaScript (ES6+)** — a lightweight component/template runtime (`frontend/js/support.js`) driving filtering, sorting, modals, form validation, and the FAQ accordion
+- **JavaScript (vanilla, no frameworks)** — one small script per page (`frontend/js/`) driving filtering, sorting, modals, form validation, and the FAQ accordion
 - **Node.js / Express** — planned for the backend phase (artwork submission storage + API)
 
 ## Project Structure
@@ -64,8 +64,12 @@ perez-cirilo-cis2336-project/
 │   │   ├── FAQ.css
 │   │   └── References.css
 │   ├── js/
-│   │   ├── support.js        # Page component/template runtime
-│   │   └── image-slot.js
+│   │   ├── index.js          # Homepage: modals + gallery filter/sort
+│   │   ├── gallery.js        # Gallery: filter, sort, artwork modal
+│   │   ├── events.js         # Events: filter, sort, event modal
+│   │   ├── submit.js         # Submit: client-side form validation
+│   │   ├── faq.js            # FAQ: accordion
+│   │   └── references.js     # References: expandable cards
 │   ├── images/                # Artwork and event photography
 │   └── pages/
 │       ├── Gallery.html
