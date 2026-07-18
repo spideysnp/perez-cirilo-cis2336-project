@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27><rect width=%2716%27 height=%2716%27 fill=%27%230d0e10%27/><text x=%278%27 y=%2712.5%27 font-size=%2712%27 text-anchor=%27middle%27 fill=%27%236BB1B5%27 font-family=%27serif%27>A</text></svg>">
+<title>FAQ — ArtConnect</title>
+<meta name="description" content="Frequently asked questions about visiting ArtConnect, buying work, and submitting your art.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/FAQ.css">
-<script src="../js/support.js"></script>
+<script src="../js/faq.js" defer></script>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-</helmet>
 
-<div ref="{{ rootRef }}" class="site">
+<div class="site">
 
-<section data-screen-label="FAQ" class="screen screen--bg">
+<main data-screen-label="FAQ" class="screen screen--bg">
 
   <!-- nav -->
   <nav class="nav">
@@ -38,15 +39,55 @@
 
   <!-- accordion -->
   <div class="faq-list">
-    <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
-      <div class="faq-item">
-        <div class="faq-row" onClick="{{ q.toggle }}">
-          <span class="faq-q" style="color:{{ q.titleColor }}">{{ q.question }}</span>
-          <span class="faq-symbol" style="{{ q.symbolTransform }}">+</span>
-        </div>
-        <div style="{{ q.answerStyle }}">{{ q.answer }}</div>
+
+    <div class="faq-item">
+      <div class="faq-row">
+        <span class="faq-q">How do I submit my artwork?</span>
+        <span class="faq-symbol">+</span>
       </div>
-    </sc-for>
+      <div class="faq-answer">Fill out the Submit form with your details, category, and images. Our curators review every piece within two weeks.</div>
+    </div>
+
+    <div class="faq-item faq-item--open">
+      <div class="faq-row">
+        <span class="faq-q">Is there a submission fee?</span>
+        <span class="faq-symbol">+</span>
+      </div>
+      <div class="faq-answer">No. Submission and first-sale listing are free. We only ask that you keep your profile and pricing up to date.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-row">
+        <span class="faq-q">Can I sell my work through ArtConnect?</span>
+        <span class="faq-symbol">+</span>
+      </div>
+      <div class="faq-answer">Yes. Mark a piece for sale with a price, or list it as "Not for sale" if it's for display only.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-row">
+        <span class="faq-q">Do you take a commission?</span>
+        <span class="faq-symbol">+</span>
+      </div>
+      <div class="faq-answer">We take a modest 10% commission on sales made through the gallery, waived entirely on an artist's first sale.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-row">
+        <span class="faq-q">How do I attend an event?</span>
+        <span class="faq-symbol">+</span>
+      </div>
+      <div class="faq-answer">RSVP from the Events page — most evenings are free, some ticketed events note a price at checkout.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-row">
+        <span class="faq-q">Can I visit without an appointment?</span>
+        <span class="faq-symbol">+</span>
+      </div>
+      <div class="faq-answer">Yes, we're open to walk-ins Tuesday–Sunday, 11:00–18:00. Group visits of six or more should book ahead.</div>
+    </div>
+
   </div>
 
   <!-- FOOTER -->
@@ -81,60 +122,9 @@
       <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
     </div>
   </footer>
-</section>
+</main>
 
 </div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;$preview&quot;: {},
-  &quot;accent&quot;: {
-    &quot;editor&quot;: &quot;color&quot;,
-    &quot;default&quot;: [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
-    &quot;options&quot;: [
-      [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
-      [&quot;#6e4a2c&quot;, &quot;#c79a63&quot;],
-      [&quot;#4e3a5c&quot;, &quot;#a98bc2&quot;],
-      [&quot;#3a5240&quot;, &quot;#8fb79a&quot;]
-    ],
-    &quot;tsType&quot;: &quot;string[]&quot;,
-    &quot;section&quot;: &quot;Theme&quot;,
-    &quot;label&quot;: &quot;Accent palette&quot;
-  }
-}">
-class Component extends DCLogic {
-  state = { open: 1 };
-  renderVals() {
-    const acc = this.props.accent || ["#27545c", "#6BB1B5"];
-    const ac = Array.isArray(acc) ? acc[0] : acc;
-    const ac2 = Array.isArray(acc) ? (acc[1] || acc[0]) : acc;
-    const vars = { "--ac": ac, "--ac2": ac2 };
-    const rootRef = (el) => { if (!el) return; for (const k in vars) el.style.setProperty(k, vars[k]); };
-    const items = [
-      { question: "How do I submit my artwork?", answer: "Fill out the Submit form with your details, category, and images. Our curators review every piece within two weeks." },
-      { question: "Is there a submission fee?", answer: "No. Submission and first-sale listing are free. We only ask that you keep your profile and pricing up to date." },
-      { question: "Can I sell my work through ArtConnect?", answer: "Yes. Mark a piece for sale with a price, or list it as \"Not for sale\" if it's for display only." },
-      { question: "Do you take a commission?", answer: "We take a modest 10% commission on sales made through the gallery, waived entirely on an artist's first sale." },
-      { question: "How do I attend an event?", answer: "RSVP from the Events page — most evenings are free, some ticketed events note a price at checkout." },
-      { question: "Can I visit without an appointment?", answer: "Yes, we're open to walk-ins Tuesday–Sunday, 11:00–18:00. Group visits of six or more should book ahead." },
-    ];
-    const faqs = items.map((it, i) => {
-      const open = this.state.open === i;
-      return {
-        question: it.question,
-        answer: it.answer,
-        titleColor: open ? "#F3F1EB" : "#ECE9E2",
-        symbolTransform: open ? "transform:rotate(45deg)" : "transform:rotate(0deg)",
-        answerStyle: open
-          ? "max-height:240px;opacity:1;padding:0 6px 26px;font:400 14px/1.75 'Archivo',sans-serif;color:#a8a59c;max-width:640px;overflow:hidden;transition:max-height .4s ease, opacity .35s ease"
-          : "max-height:0px;opacity:0;padding:0 6px 0;font:400 14px/1.75 'Archivo',sans-serif;color:#a8a59c;max-width:640px;overflow:hidden;transition:max-height .4s ease, opacity .3s ease",
-        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
-      };
-    });
-    return { rootRef, faqs };
-  }
-}
-
-</script>
 </body>
 </html>

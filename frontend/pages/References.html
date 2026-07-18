@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27><rect width=%2716%27 height=%2716%27 fill=%27%230d0e10%27/><text x=%278%27 y=%2712.5%27 font-size=%2712%27 text-anchor=%27middle%27 fill=%27%236BB1B5%27 font-family=%27serif%27>A</text></svg>">
+<title>References — ArtConnect</title>
+<meta name="description" content="Image and content references for the ArtConnect site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/References.css">
-<script src="../js/support.js"></script>
+<script src="../js/references.js" defer></script>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-</helmet>
 
-<div ref="{{ rootRef }}" class="site">
+<div class="site">
 
-<section data-screen-label="Reference Page" class="screen screen--bg">
+<main data-screen-label="Reference Page" class="screen screen--bg">
 
   <!-- nav -->
   <nav class="nav">
@@ -38,19 +39,59 @@
 
   <!-- reference cards -->
   <div class="refs-list">
-    <sc-for list="{{ refs }}" as="r" hint-placeholder-count="3">
-      <div class="ref-card" onClick="{{ r.toggle }}">
-        <div class="ref-head">
-          <div class="ref-title">{{ r.title }}</div>
-          <div class="ref-kind-wrap">
-            <div class="ref-kind">{{ r.kind }}</div>
-            <span class="ref-symbol">{{ r.symbol }}</span>
-          </div>
+
+    <div class="ref-card">
+      <div class="ref-head">
+        <div class="ref-title">AI prompts used</div>
+        <div class="ref-kind-wrap">
+          <div class="ref-kind">PROMPT LOG</div>
+          <span class="ref-symbol">+</span>
         </div>
-        <div class="ref-body">{{ r.body }}</div>
-        <div style="{{ r.detailStyle }}">{{ r.detail }}</div>
       </div>
-    </sc-for>
+      <div class="ref-body">Wireframing and hi-fi design prompts used to build this project, kept as a plain-text log for transparency.</div>
+      <div class="ref-detail ref-detail--tall">Design Session: ArtConnect Homepage and Gallery (High Fidelity)
+Scope: Dark, gallery at night high fidelity design for the Homepage and Gallery screens, full bleed scrolling from top to bottom.
+
+Direction established: Moody aesthetic inspired by Diverso, paired with Cormorant, Archivo, and Space Mono typography, with a deep petrol accent color.
+
+Issue resolved: A persistent sub pixel seam appeared between the hero section and the Featured Works section. Fix: the hero spotlight was separated into an absolute positioned layer that fades to transparent above the section boundary, leaving the lower hero and Featured Works as one continuous flat surface (#0d0e10) with no rendered edge.
+
+Controls added (via CSS variables):
+• Accent palette: toggle between petrol, bronze, plum, and sage themes.
+• Gallery lighting: a night to day dimmer affecting spotlight and frame glow together.
+• Frame matting: toggle between matted and full bleed artwork cards.
+
+Layout refinements: Hero scrim direction changed from left to right to top to bottom behind the featured painting; the prior left scrim was removed; a subtle vertical gradient was added to the Gallery grid background.
+
+Status: All changes merged and live.
+
+Next steps under consideration: Extend high fidelity design to the remaining five screens (Events, Event Detail Modal, Submit Artwork, FAQ, Reference) in the same dark gallery mood, or continue iterating on Homepage and Gallery.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-head">
+        <div class="ref-title">Image &amp; content sources</div>
+        <div class="ref-kind-wrap">
+          <div class="ref-kind">CREDITS</div>
+          <span class="ref-symbol">+</span>
+        </div>
+      </div>
+      <div class="ref-body">Artwork imagery and cataloguing referenced from the Rijksmuseum public-domain collection.</div>
+      <div class="ref-detail">Works, artist names, and dates (e.g. The Night Watch, The Milkmaid) drawn from the Rijksmuseum's public-domain catalogue for placeholder content.</div>
+    </div>
+
+    <div class="ref-card">
+      <div class="ref-head">
+        <div class="ref-title">Tools &amp; design inspiration</div>
+        <div class="ref-kind-wrap">
+          <div class="ref-kind">CITATIONS</div>
+          <span class="ref-symbol">+</span>
+        </div>
+      </div>
+      <div class="ref-body">Rijksmuseum · Baltic Centre for Contemporary Art · Dverso—cited for layout and lighting direction.</div>
+      <div class="ref-detail">Dverso informed the moody spotlight treatment; Baltic and Rijksmuseum informed grid density and framing conventions.</div>
+    </div>
+
   </div>
 
   <!-- FOOTER -->
@@ -85,56 +126,9 @@
       <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
     </div>
   </footer>
-</section>
+</main>
 
 </div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;$preview&quot;: {},
-  &quot;accent&quot;: {
-    &quot;editor&quot;: &quot;color&quot;,
-    &quot;default&quot;: [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
-    &quot;options&quot;: [
-      [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
-      [&quot;#6e4a2c&quot;, &quot;#c79a63&quot;],
-      [&quot;#4e3a5c&quot;, &quot;#a98bc2&quot;],
-      [&quot;#3a5240&quot;, &quot;#8fb79a&quot;]
-    ],
-    &quot;tsType&quot;: &quot;string[]&quot;,
-    &quot;section&quot;: &quot;Theme&quot;,
-    &quot;label&quot;: &quot;Accent palette&quot;
-  }
-}">
-class Component extends DCLogic {
-  state = { open: -1 };
-  renderVals() {
-    const acc = this.props.accent || ["#27545c", "#6BB1B5"];
-    const ac = Array.isArray(acc) ? acc[0] : acc;
-    const ac2 = Array.isArray(acc) ? (acc[1] || acc[0]) : acc;
-    const vars = { "--ac": ac, "--ac2": ac2 };
-    const rootRef = (el) => { if (!el) return; for (const k in vars) el.style.setProperty(k, vars[k]); };
-    const items = [
-      { title: "AI prompts used", kind: "PROMPT LOG", body: "Wireframing and hi-fi design prompts used to build this project, kept as a plain-text log for transparency.", detail: "Design Session: ArtConnect Homepage and Gallery (High Fidelity)\nScope: Dark, gallery at night high fidelity design for the Homepage and Gallery screens, full bleed scrolling from top to bottom.\n\nDirection established: Moody aesthetic inspired by Diverso, paired with Cormorant, Archivo, and Space Mono typography, with a deep petrol accent color.\n\nIssue resolved: A persistent sub pixel seam appeared between the hero section and the Featured Works section. Fix: the hero spotlight was separated into an absolute positioned layer that fades to transparent above the section boundary, leaving the lower hero and Featured Works as one continuous flat surface (#0d0e10) with no rendered edge.\n\nControls added (via CSS variables):\n• Accent palette: toggle between petrol, bronze, plum, and sage themes.\n• Gallery lighting: a night to day dimmer affecting spotlight and frame glow together.\n• Frame matting: toggle between matted and full bleed artwork cards.\n\nLayout refinements: Hero scrim direction changed from left to right to top to bottom behind the featured painting; the prior left scrim was removed; a subtle vertical gradient was added to the Gallery grid background.\n\nStatus: All changes merged and live.\n\nNext steps under consideration: Extend high fidelity design to the remaining five screens (Events, Event Detail Modal, Submit Artwork, FAQ, Reference) in the same dark gallery mood, or continue iterating on Homepage and Gallery." },
-      { title: "Image & content sources", kind: "CREDITS", body: "Artwork imagery and cataloguing referenced from the Rijksmuseum public-domain collection.", detail: "Works, artist names, and dates (e.g. The Night Watch, The Milkmaid) drawn from the Rijksmuseum's public-domain catalogue for placeholder content." },
-      { title: "Tools & design inspiration", kind: "CITATIONS", body: "Rijksmuseum · Baltic Centre for Contemporary Art · Dverso—cited for layout and lighting direction.", detail: "Dverso informed the moody spotlight treatment; Baltic and Rijksmuseum informed grid density and framing conventions." },
-    ];
-    const refs = items.map((it, i) => {
-      const open = this.state.open === i;
-      const openMaxHeight = i === 0 ? "1400px" : "200px";
-      return {
-        ...it,
-        symbol: open ? "−" : "+",
-        detailStyle: open
-          ? `max-height:${openMaxHeight};opacity:1;margin-top:18px;padding-top:18px;border-top:1px solid rgba(232,224,206,.12);font:400 13px/1.8 'Space Mono',monospace;color:#8e8b84;overflow:hidden;white-space:pre-line;transition:max-height .4s ease, opacity .35s ease, margin-top .4s ease, padding-top .4s ease, border-color .4s ease`
-          : "max-height:0px;opacity:0;margin-top:0px;padding-top:0px;border-top:1px solid transparent;font:400 13px/1.8 'Space Mono',monospace;color:#8e8b84;overflow:hidden;white-space:pre-line;transition:max-height .4s ease, opacity .3s ease, margin-top .4s ease, padding-top .4s ease, border-color .4s ease",
-        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
-      };
-    });
-    return { rootRef, refs };
-  }
-}
-
-</script>
 </body>
 </html>

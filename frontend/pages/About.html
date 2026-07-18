@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27><rect width=%2716%27 height=%2716%27 fill=%27%230d0e10%27/><text x=%278%27 y=%2712.5%27 font-size=%2712%27 text-anchor=%27middle%27 fill=%27%236BB1B5%27 font-family=%27serif%27>A</text></svg>">
+<title>About — ArtConnect</title>
+<meta name="description" content="About ArtConnect — our mission, our space, and the people behind the gallery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/About.css">
-<script src="../js/support.js"></script>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-</helmet>
 
-<div ref="{{ rootRef }}" class="site">
+<div class="site">
 
-<section data-screen-label="About" class="screen screen--bg">
+<main data-screen-label="About" class="screen screen--bg">
 
   <!-- nav -->
   <nav class="nav">
@@ -71,17 +71,33 @@
   <div class="about-team">
     <div class="eyebrow">THE TEAM</div>
     <div class="team-grid">
-      <sc-for list="{{ team }}" as="p" hint-placeholder-count="3">
-        <div>
-          <div class="team-photo">
-            <div class="team-photo-glow"></div>
-          </div>
-          <div class="team-meta">
-            <div class="team-name">{{ p.name }}</div>
-            <div class="team-role">{{ p.role }}</div>
-          </div>
+      <div>
+        <div class="team-photo">
+          <div class="team-photo-glow"></div>
         </div>
-      </sc-for>
+        <div class="team-meta">
+          <div class="team-name">Mira Voss</div>
+          <div class="team-role">Founder &amp; Director</div>
+        </div>
+      </div>
+      <div>
+        <div class="team-photo">
+          <div class="team-photo-glow"></div>
+        </div>
+        <div class="team-meta">
+          <div class="team-name">Elias Kohn</div>
+          <div class="team-role">Curator</div>
+        </div>
+      </div>
+      <div>
+        <div class="team-photo">
+          <div class="team-photo-glow"></div>
+        </div>
+        <div class="team-meta">
+          <div class="team-name">Priya Anand</div>
+          <div class="team-role">Artist Relations</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -97,7 +113,7 @@
       <p class="involve-text">Artists, collectors, and volunteers are always welcome. Submit a piece for review or reach out about hosting an event.</p>
       <div class="visit-ctas">
         <a href="./Submit.html" class="btn-primary">Submit work  →</a>
-        <span onClick="{{ contactUs }}" class="link-underline is-clickable">Contact us</span>
+        <a href="mailto:hello@artconnect.org" class="link-underline">Contact us</a>
       </div>
     </div>
   </div>
@@ -134,64 +150,9 @@
       <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
     </div>
   </footer>
-</section>
+</main>
 
 </div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;$preview&quot;: {},
-  &quot;accent&quot;: {
-    &quot;editor&quot;: &quot;color&quot;,
-    &quot;default&quot;: [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
-    &quot;options&quot;: [
-      [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
-      [&quot;#6e4a2c&quot;, &quot;#c79a63&quot;],
-      [&quot;#4e3a5c&quot;, &quot;#a98bc2&quot;],
-      [&quot;#3a5240&quot;, &quot;#8fb79a&quot;]
-    ],
-    &quot;tsType&quot;: &quot;string[]&quot;,
-    &quot;section&quot;: &quot;Theme&quot;,
-    &quot;label&quot;: &quot;Accent palette&quot;
-  },
-  &quot;lighting&quot;: {
-    &quot;editor&quot;: &quot;range&quot;,
-    &quot;default&quot;: 55,
-    &quot;min&quot;: 0,
-    &quot;max&quot;: 100,
-    &quot;step&quot;: 1,
-    &quot;unit&quot;: &quot;%&quot;,
-    &quot;tsType&quot;: &quot;number&quot;,
-    &quot;section&quot;: &quot;Atmosphere&quot;,
-    &quot;label&quot;: &quot;Gallery lighting (night → day)&quot;
-  }
-}">
-class Component extends DCLogic {
-  renderVals() {
-    const acc = this.props.accent || ["#27545c", "#6BB1B5"];
-    const ac = Array.isArray(acc) ? acc[0] : acc;
-    const ac2 = Array.isArray(acc) ? (acc[1] || acc[0]) : acc;
-    const L = this.props.lighting ?? 55;
-    const vars = { "--ac": ac, "--ac2": ac2, "--glow": (L / 55).toFixed(3) };
-    const rootRef = (el) => { if (!el) return; for (const k in vars) el.style.setProperty(k, vars[k]); };
-    return {
-      rootRef,
-      contactUs: () => {
-        try {
-          window.location.href = "mailto:hello@artconnect.org";
-        } catch (e) {
-          alert("Unable to open your email client. Please email hello@artconnect.org directly.");
-        }
-      },
-      team: [
-        { name: "Mira Voss", role: "Founder & Director" },
-        { name: "Elias Kohn", role: "Curator" },
-        { name: "Priya Anand", role: "Artist Relations" },
-      ],
-    };
-  }
-}
-
-</script>
 </body>
 </html>

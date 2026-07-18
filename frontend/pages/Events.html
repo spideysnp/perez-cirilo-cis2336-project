@@ -1,22 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27><rect width=%2716%27 height=%2716%27 fill=%27%230d0e10%27/><text x=%278%27 y=%2712.5%27 font-size=%2712%27 text-anchor=%27middle%27 fill=%27%236BB1B5%27 font-family=%27serif%27>A</text></svg>">
+<title>Events — ArtConnect</title>
+<meta name="description" content="Upcoming ArtConnect events — openings, talks, and late evenings at the gallery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap">
 <link rel="stylesheet" href="../css/common.css">
 <link rel="stylesheet" href="../css/Events.css">
-<script src="../js/support.js"></script>
+<script src="../js/events.js" defer></script>
 </head>
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-</helmet>
 
-<div ref="{{ rootRef }}" class="site">
+<div class="site">
 
-<section data-screen-label="Events" class="screen screen--bg">
+<main data-screen-label="Events" class="screen screen--bg">
 
   <!-- nav -->
   <nav class="nav">
@@ -42,42 +43,125 @@
   <!-- filter bar -->
   <div class="filter-bar">
     <div class="filter-group">
-      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
-        <span onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</span>
-      </sc-for>
+      <span class="pill pill--active" data-cat="All">All</span>
+      <span class="pill" data-cat="Talks">Talks</span>
+      <span class="pill" data-cat="Openings">Openings</span>
+      <span class="pill" data-cat="Evenings">Evenings</span>
     </div>
     <div class="sort-wrap">
-      <span onClick="{{ toggleSort }}" class="sort-toggle">SORT: {{ sortLabel }} ▾</span>
-      <sc-if value="{{ sortOpen }}" hint-placeholder-val="{{ false }}">
-        <div class="sort-menu">
-          <sc-for list="{{ sortOptions }}" as="s" hint-placeholder-count="2">
-            <div onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</div>
-          </sc-for>
-        </div>
-      </sc-if>
+      <span class="sort-toggle">SORT: SOONEST ▾</span>
+      <div class="sort-menu" hidden>
+        <div class="sort-option sort-option--active" data-sort="soonest">Soonest</div>
+        <div class="sort-option" data-sort="latest">Latest</div>
+      </div>
     </div>
   </div>
 
-  <!-- events list -->
+  <!-- events list (default order: soonest first) -->
   <div class="events-list">
-    <sc-for list="{{ visibleEvents }}" as="e" hint-placeholder-count="6">
-      <div onClick="{{ e.onClick }}" class="event-row">
-        <div class="event-date">
-          <div class="event-day">{{ e.day }}</div>
-          <div class="event-mon">{{ e.mon }}</div>
-        </div>
-        <div class="event-divider"></div>
-        <div class="event-thumb" style="background:url('{{ e.img }}') center/cover no-repeat">
-          <div class="art-glow"></div>
-        </div>
-        <div class="event-info">
-          <div class="event-title">{{ e.title }}</div>
-          <div class="event-meta">{{ e.meta }}</div>
-        </div>
-        <span class="event-tag">{{ e.tag }}</span>
-        <span class="event-view">View  →</span>
+
+    <div class="event-row" data-cat="Evenings" data-key="712" data-tag="EVENING" data-title="Late at the Gallery. Dutch Masters by candlelight." data-datetime="12 July · 19:00–22:00" data-location="Main Hall" data-desc="Join us after hours for a candlelit walkthrough of the Dutch Masters collection, with live commentary from our curator and a glass of wine on arrival." data-price="Free · RSVP required" data-img="../images/Dutch-Masters-by-Candlelight.webp">
+      <div class="event-date">
+        <div class="event-day">12</div>
+        <div class="event-mon">JUL</div>
       </div>
-    </sc-for>
+      <div class="event-divider"></div>
+      <div class="event-thumb"><picture><source srcset="../images/Dutch-Masters-by-Candlelight.avif" type="image/avif"><img src="../images/Dutch-Masters-by-Candlelight.webp" alt="" loading="lazy" decoding="async"></picture>
+        <div class="art-glow"></div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">Late at the Gallery. Dutch Masters by candlelight.</div>
+        <div class="event-meta">19:00 · Main Hall</div>
+      </div>
+      <span class="event-tag">EVENING</span>
+      <span class="event-view">View  →</span>
+    </div>
+
+    <div class="event-row" data-cat="Talks" data-key="719" data-tag="TALK" data-title="Artist talk on collecting contemporary work." data-datetime="19 July · 18:30–19:30" data-location="Studio 2" data-desc="A conversation on building a personal collection, with tips for new and seasoned collectors alike." data-price="Free · RSVP required" data-img="../images/Artist-Talk-on-Collecting-Contemporary-Work.webp">
+      <div class="event-date">
+        <div class="event-day">19</div>
+        <div class="event-mon">JUL</div>
+      </div>
+      <div class="event-divider"></div>
+      <div class="event-thumb"><picture><source srcset="../images/Artist-Talk-on-Collecting-Contemporary-Work.avif" type="image/avif"><img src="../images/Artist-Talk-on-Collecting-Contemporary-Work.webp" alt="" loading="lazy" decoding="async"></picture>
+        <div class="art-glow"></div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">Artist talk on collecting contemporary work.</div>
+        <div class="event-meta">18:30 · Studio 2</div>
+      </div>
+      <span class="event-tag">TALK</span>
+      <span class="event-view">View  →</span>
+    </div>
+
+    <div class="event-row" data-cat="Openings" data-key="802" data-tag="OPENING" data-title="Open submission preview night." data-datetime="02 August · 20:00–23:00" data-location="West Wing" data-desc="A first look at newly submitted works ahead of their public debut, with the artists in attendance." data-price="Free · RSVP required" data-img="../images/Open-Submission-Preview-Night.webp">
+      <div class="event-date">
+        <div class="event-day">02</div>
+        <div class="event-mon">AUG</div>
+      </div>
+      <div class="event-divider"></div>
+      <div class="event-thumb"><picture><source srcset="../images/Open-Submission-Preview-Night.avif" type="image/avif"><img src="../images/Open-Submission-Preview-Night.webp" alt="" loading="lazy" decoding="async"></picture>
+        <div class="art-glow"></div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">Open submission preview night.</div>
+        <div class="event-meta">20:00 · West Wing</div>
+      </div>
+      <span class="event-tag">OPENING</span>
+      <span class="event-view">View  →</span>
+    </div>
+
+    <div class="event-row" data-cat="Talks" data-key="809" data-tag="TALK" data-title="Curator walkthrough. Dutch Golden Age." data-datetime="09 August · 17:00–18:00" data-location="Main Hall" data-desc="Our curator leads a guided walkthrough of the Dutch Golden Age gallery, covering technique, provenance, and stories behind the works." data-price="Free · RSVP required" data-img="../images/Curator-Walkthrough.webp">
+      <div class="event-date">
+        <div class="event-day">09</div>
+        <div class="event-mon">AUG</div>
+      </div>
+      <div class="event-divider"></div>
+      <div class="event-thumb"><picture><source srcset="../images/Curator-Walkthrough.avif" type="image/avif"><img src="../images/Curator-Walkthrough.webp" alt="" loading="lazy" decoding="async"></picture>
+        <div class="art-glow"></div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">Curator walkthrough. Dutch Golden Age.</div>
+        <div class="event-meta">17:00 · Main Hall</div>
+      </div>
+      <span class="event-tag">TALK</span>
+      <span class="event-view">View  →</span>
+    </div>
+
+    <div class="event-row" data-cat="Evenings" data-key="823" data-tag="EVENING" data-title="Late at the Gallery. Jazz &amp; wine evening." data-datetime="23 August · 19:30–22:30" data-location="Courtyard" data-desc="An evening of live jazz and wine in the courtyard, surrounded by rotating outdoor sculpture pieces." data-price="$15 · RSVP required" data-img="../images/Jazz-and-Wine-Evening.webp">
+      <div class="event-date">
+        <div class="event-day">23</div>
+        <div class="event-mon">AUG</div>
+      </div>
+      <div class="event-divider"></div>
+      <div class="event-thumb"><picture><source srcset="../images/Jazz-and-Wine-Evening.avif" type="image/avif"><img src="../images/Jazz-and-Wine-Evening.webp" alt="" loading="lazy" decoding="async"></picture>
+        <div class="art-glow"></div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">Late at the Gallery. Jazz &amp; wine evening.</div>
+        <div class="event-meta">19:30 · Courtyard</div>
+      </div>
+      <span class="event-tag">EVENING</span>
+      <span class="event-view">View  →</span>
+    </div>
+
+    <div class="event-row" data-cat="Openings" data-key="905" data-tag="OPENING" data-title="New works opening. City painters collective." data-datetime="05 September · 18:00–21:00" data-location="West Wing" data-desc="The opening night for a new group show from the city's painters collective, with several artists in attendance." data-price="Free · RSVP required" data-img="../images/New-Works-Opening.webp">
+      <div class="event-date">
+        <div class="event-day">05</div>
+        <div class="event-mon">SEP</div>
+      </div>
+      <div class="event-divider"></div>
+      <div class="event-thumb"><picture><source srcset="../images/New-Works-Opening.avif" type="image/avif"><img src="../images/New-Works-Opening.webp" alt="" loading="lazy" decoding="async"></picture>
+        <div class="art-glow"></div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">New works opening. City painters collective.</div>
+        <div class="event-meta">18:00 · West Wing</div>
+      </div>
+      <span class="event-tag">OPENING</span>
+      <span class="event-view">View  →</span>
+    </div>
+
   </div>
 
   <!-- FOOTER -->
@@ -112,128 +196,33 @@
       <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
     </div>
   </footer>
-</section>
+</main>
 
-<sc-if value="{{ eventOpen }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ closeEvent }}" class="modal-overlay">
-    <div onClick="{{ stopProp }}" class="modal-box modal-box--event">
-      <div class="event-modal-head">
-        <div>
-          <div class="event-modal-tag">{{ event.tag }}</div>
-          <div class="event-modal-title">{{ event.title }}</div>
-        </div>
-        <span onClick="{{ closeEvent }}" class="modal-close">✕</span>
+<!-- event detail modal -->
+<div class="modal-overlay" id="event-modal" hidden>
+  <div class="modal-box modal-box--event">
+    <div class="event-modal-head">
+      <div>
+        <div class="event-modal-tag" id="event-modal-tag"></div>
+        <div class="event-modal-title" id="event-modal-title"></div>
       </div>
-      <div class="event-modal-imgpad">
-        <div class="event-modal-img" style="background:url('{{ event.img }}') center/cover no-repeat">
-          <div class="event-modal-imgglow"></div>
-        </div>
-      </div>
-      <div class="event-modal-meta">{{ event.datetime }} · {{ event.location }}</div>
-      <div class="event-modal-desc">{{ event.description }}</div>
-      <div class="event-modal-foot">
-        <span class="event-modal-price">{{ event.price }}</span>
-        <span class="btn-primary btn-primary--cal">Add to Calendar</span>
+      <span class="modal-close" data-close>✕</span>
+    </div>
+    <div class="event-modal-imgpad">
+      <div class="event-modal-img" id="event-modal-img">
+        <div class="event-modal-imgglow"></div>
       </div>
     </div>
+    <div class="event-modal-meta" id="event-modal-meta"></div>
+    <div class="event-modal-desc" id="event-modal-desc"></div>
+    <div class="event-modal-foot">
+      <span class="event-modal-price" id="event-modal-price"></span>
+      <span class="btn-primary btn-primary--cal">Add to Calendar</span>
+    </div>
   </div>
-</sc-if>
+</div>
 
 </div>
 
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{
-  &quot;$preview&quot;: {},
-  &quot;accent&quot;: {
-    &quot;editor&quot;: &quot;color&quot;,
-    &quot;default&quot;: [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
-    &quot;options&quot;: [
-      [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
-      [&quot;#6e4a2c&quot;, &quot;#c79a63&quot;],
-      [&quot;#4e3a5c&quot;, &quot;#a98bc2&quot;],
-      [&quot;#3a5240&quot;, &quot;#8fb79a&quot;]
-    ],
-    &quot;tsType&quot;: &quot;string[]&quot;,
-    &quot;section&quot;: &quot;Theme&quot;,
-    &quot;label&quot;: &quot;Accent palette&quot;
-  },
-  &quot;lighting&quot;: {
-    &quot;editor&quot;: &quot;range&quot;,
-    &quot;default&quot;: 55,
-    &quot;min&quot;: 0,
-    &quot;max&quot;: 100,
-    &quot;step&quot;: 1,
-    &quot;unit&quot;: &quot;%&quot;,
-    &quot;tsType&quot;: &quot;number&quot;,
-    &quot;section&quot;: &quot;Atmosphere&quot;,
-    &quot;label&quot;: &quot;Gallery lighting (night → day)&quot;
-  }
-}">
-class Component extends DCLogic {
-  state = { active: "All", sort: "soonest", sortOpen: false, event: null };
-  events = [
-    { day: "12", mon: "JUL", title: "Late at the Gallery. Dutch Masters by candlelight.", meta: "19:00 · Main Hall", tag: "EVENING", cat: "Evenings", key: 712, datetime: "12 July · 19:00–22:00", location: "Main Hall", description: "Join us after hours for a candlelit walkthrough of the Dutch Masters collection, with live commentary from our curator and a glass of wine on arrival.", price: "Free · RSVP required", img: "../images/Dutch-Masters-by-Candlelight.jpeg" },
-    { day: "19", mon: "JUL", title: "Artist talk on collecting contemporary work.", meta: "18:30 · Studio 2", tag: "TALK", cat: "Talks", key: 719, datetime: "19 July · 18:30–19:30", location: "Studio 2", description: "A conversation on building a personal collection, with tips for new and seasoned collectors alike.", price: "Free · RSVP required", img: "../images/Artist-Talk-on-Collecting-Contemporary-Work.jpeg" },
-    { day: "02", mon: "AUG", title: "Open submission preview night.", meta: "20:00 · West Wing", tag: "OPENING", cat: "Openings", key: 802, datetime: "02 August · 20:00–23:00", location: "West Wing", description: "A first look at newly submitted works ahead of their public debut, with the artists in attendance.", price: "Free · RSVP required", img: "../images/Open-Submission-Preview-Night.jpeg" },
-    { day: "09", mon: "AUG", title: "Curator walkthrough. Dutch Golden Age.", meta: "17:00 · Main Hall", tag: "TALK", cat: "Talks", key: 809, datetime: "09 August · 17:00–18:00", location: "Main Hall", description: "Our curator leads a guided walkthrough of the Dutch Golden Age gallery, covering technique, provenance, and stories behind the works.", price: "Free · RSVP required", img: "../images/Curator-Walkthrough.jpeg" },
-    { day: "23", mon: "AUG", title: "Late at the Gallery. Jazz & wine evening.", meta: "19:30 · Courtyard", tag: "EVENING", cat: "Evenings", key: 823, datetime: "23 August · 19:30–22:30", location: "Courtyard", description: "An evening of live jazz and wine in the courtyard, surrounded by rotating outdoor sculpture pieces.", price: "$15 · RSVP required", img: "../images/Jazz-and-Wine-Evening.jpeg" },
-    { day: "05", mon: "SEP", title: "New works opening. City painters collective.", meta: "18:00 · West Wing", tag: "OPENING", cat: "Openings", key: 905, datetime: "05 September · 18:00–21:00", location: "West Wing", description: "The opening night for a new group show from the city's painters collective, with several artists in attendance.", price: "Free · RSVP required", img: "../images/New-Works-Opening.webp" },
-  ];
-  renderVals() {
-    const acc = this.props.accent || ["#27545c", "#6BB1B5"];
-    const ac = Array.isArray(acc) ? acc[0] : acc;
-    const ac2 = Array.isArray(acc) ? (acc[1] || acc[0]) : acc;
-    const L = this.props.lighting ?? 55;
-    const vars = {
-      "--ac": ac,
-      "--ac2": ac2,
-      "--glow": (L / 55).toFixed(3),
-    };
-    const rootRef = (el) => {
-      if (!el) return;
-      for (const k in vars) el.style.setProperty(k, vars[k]);
-    };
-    const cats = ["All", "Talks", "Openings", "Evenings"];
-    const filters = cats.map(c => ({
-      label: c,
-      onClick: () => this.setState({ active: c }),
-      style: c === this.state.active
-        ? "background:var(--ac,#27545c);color:#EAF3F3;padding:9px 18px;border-radius:999px;cursor:default;transition:background .35s ease, color .35s ease"
-        : "border:1px solid rgba(232,224,206,.18);color:#a8a59c;padding:9px 18px;border-radius:999px;cursor:pointer;transition:background .35s ease, color .35s ease, border-color .35s ease",
-    }));
-
-    let visibleEvents = this.state.active === "All"
-      ? this.events.slice()
-      : this.events.filter(e => e.cat === this.state.active);
-    visibleEvents.sort((a, b) => this.state.sort === "soonest" ? a.key - b.key : b.key - a.key);
-    visibleEvents = visibleEvents.map(e => ({ ...e, onClick: () => this.setState({ event: e }) }));
-
-    const sortDefs = [
-      { id: "soonest", label: "Soonest" },
-      { id: "latest", label: "Latest" },
-    ];
-    const sortOptions = sortDefs.map(s => ({
-      label: s.label,
-      onClick: () => this.setState({ sort: s.id, sortOpen: false }),
-      style: `padding:12px 18px;font:12px 'Space Mono',monospace;letter-spacing:.06em;cursor:pointer;color:${s.id === this.state.sort ? '#ECE9E2' : '#a8a59c'};background:${s.id === this.state.sort ? 'rgba(232,224,206,.06)' : 'transparent'}`,
-    }));
-
-    return {
-      rootRef,
-      filters,
-      visibleEvents,
-      sortLabel: this.state.sort.toUpperCase(),
-      sortOpen: this.state.sortOpen,
-      sortOptions,
-      toggleSort: () => this.setState(s => ({ sortOpen: !s.sortOpen })),
-      event: this.state.event || {},
-      eventOpen: !!this.state.event,
-      closeEvent: () => this.setState({ event: null }),
-      stopProp: (e) => e.stopPropagation(),
-    };
-  }
-}
-
-</script>
 </body>
 </html>
