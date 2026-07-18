@@ -1,0 +1,28 @@
+/* =====================================================
+   ArtConnect — FAQ.css
+   FAQ accordion. Note: the open/closed answer styles
+   and the +/× symbol rotation are computed by
+   JavaScript at runtime and intentionally stay inline.
+   ===================================================== */
+
+a { color: #6BB1B5; }
+a:hover { color: #8fc7ca; }
+
+.faq-list { padding: 20px 64px 120px; max-width: 900px; }
+.faq-item { border-bottom: 1px solid rgba(232, 224, 206, .14); }
+.faq-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 6px;
+  cursor: pointer;
+}
+.faq-row:hover { background: rgba(232, 224, 206, .03); }
+.faq-q { font: 500 18px 'Cormorant Garamond', serif; }
+.faq-symbol {
+  font: 20px 'Archivo', sans-serif;
+  color: var(--ac2, #6BB1B5);
+  flex-shrink: 0;
+  margin-left: 20px;
+  transition: transform .35s ease;
+}

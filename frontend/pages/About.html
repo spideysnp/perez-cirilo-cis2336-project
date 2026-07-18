@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/About.css">
 <script src="../js/support.js"></script>
 </head>
 <body>
@@ -10,81 +12,73 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Archivo:wght@400;500;600&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
-<style>
-  body { margin:0; background:#0d0e10; }
-  * { box-sizing:border-box; }
-  ::selection { background:#2a5860; color:#fff; }
-  a { color:#6BB1B5; }
-  a:hover { color:#8fc7ca; }
-</style>
 </helmet>
 
-<div ref="{{ rootRef }}" style="background:#0d0e10;color:#ECE9E2;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;min-width:1100px;overflow-x:hidden">
+<div ref="{{ rootRef }}" class="site">
 
-<section data-screen-label="About" style="position:relative;background:#0d0e10">
+<section data-screen-label="About" class="screen screen--bg">
 
   <!-- nav -->
-  <nav style="position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 64px;border-bottom:1px solid rgba(232,224,206,.1)">
-    <div style="font:600 16px 'Archivo',sans-serif;letter-spacing:.36em;color:#ECE9E2">ARTCONNECT</div>
-    <div style="display:flex;align-items:center;gap:34px;font:500 13px 'Archivo',sans-serif;letter-spacing:.02em;color:#a8a59c">
-      <a href="../index.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Home</a>
-      <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
-      <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
-      <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit</a>
-      <a href="./About.html" style="color:#ECE9E2;font-weight:600;text-decoration:none;transition:color .25s ease" style-hover="color:#F3F1EB">About</a>
+  <nav class="nav">
+    <div class="nav-brand">ARTCONNECT</div>
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="./Gallery.html" class="nav-link">Gallery</a>
+      <a href="./Events.html" class="nav-link">Events</a>
+      <a href="./Submit.html" class="nav-link">Submit</a>
+      <a href="./About.html" class="nav-link nav-link--active">About</a>
     </div>
   </nav>
 
   <!-- intro -->
-  <div style="padding:100px 64px 90px;display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:end">
+  <div class="about-intro">
     <div>
-      <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:24px">ABOUT ARTCONNECT</div>
-      <h1 style="font:500 62px/1.05 'Cormorant Garamond',serif;letter-spacing:-.01em;margin:0;color:#F3F1EB">A living gallery for the city's artists.</h1>
+      <div class="eyebrow">ABOUT ARTCONNECT</div>
+      <h1 class="about-title">A living gallery for the city's artists.</h1>
     </div>
-    <p style="font:400 16px/1.75 'Archivo',sans-serif;color:#a8a59c;margin:0">ArtConnect began as a single room above a print shop and grew into a home for artists who had none. We hang work by painters, sculptors, and photographers living and working in the city. On view, for sale, and open to anyone who walks in.</p>
+    <p class="about-lede">ArtConnect began as a single room above a print shop and grew into a home for artists who had none. We hang work by painters, sculptors, and photographers living and working in the city. On view, for sale, and open to anyone who walks in.</p>
   </div>
 
   <!-- feature panel -->
-  <div style="padding:0 64px 100px;display:grid;grid-template-columns:1fr 1fr;gap:34px">
-    <div style="position:relative;aspect-ratio:4/3;background:radial-gradient(120% 95% at 50% 32%, #26282d 0%, #15161a 60%, #0e0f12 100%);border:1px solid rgba(255,255,255,.06);overflow:hidden">
-      <div style="position:absolute;inset:0;background:radial-gradient(58% 46% at 50% 38%, rgba(216,198,162,calc(.14*var(--glow,1))), transparent 72%)"></div>
-      <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 30px">
-        <div style="font:500 26px 'Cormorant Garamond',serif;color:#ECE9E2">The main hall</div>
-        <div style="font:11px 'Space Mono',monospace;color:rgba(232,224,206,.45);letter-spacing:.1em;margin-top:12px">14 HARBOUR LANE</div>
+  <div class="about-panels">
+    <div class="about-hall">
+      <div class="about-hall-glow"></div>
+      <div class="about-hall-label">
+        <div class="about-hall-title">The main hall</div>
+        <div class="about-hall-sub">14 HARBOUR LANE</div>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;justify-content:center;gap:36px">
-      <div style="display:flex;gap:34px">
+    <div class="about-stats-col">
+      <div class="about-stats">
         <div>
-          <div style="font:500 44px 'Cormorant Garamond',serif;color:#F3F1EB">128</div>
-          <div style="font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#6f6d68;margin-top:8px">WORKS ON VIEW</div>
+          <div class="stat-num">128</div>
+          <div class="stat-label">WORKS ON VIEW</div>
         </div>
         <div>
-          <div style="font:500 44px 'Cormorant Garamond',serif;color:#F3F1EB">46</div>
-          <div style="font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#6f6d68;margin-top:8px">ARTISTS SHOWN</div>
+          <div class="stat-num">46</div>
+          <div class="stat-label">ARTISTS SHOWN</div>
         </div>
         <div>
-          <div style="font:500 44px 'Cormorant Garamond',serif;color:#F3F1EB">9</div>
-          <div style="font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#6f6d68;margin-top:8px">YEARS OPEN</div>
+          <div class="stat-num">9</div>
+          <div class="stat-label">YEARS OPEN</div>
         </div>
       </div>
-      <p style="font:400 15px/1.75 'Archivo',sans-serif;color:#a8a59c;margin:0;max-width:440px">Every piece is chosen with the artist in the room. No commission on first sales, no submission fee. Just a space to be seen.</p>
+      <p class="about-note">Every piece is chosen with the artist in the room. No commission on first sales, no submission fee. Just a space to be seen.</p>
     </div>
   </div>
 
   <!-- team -->
-  <div style="padding:0 64px 110px">
-    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:54px">THE TEAM</div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:34px">
+  <div class="about-team">
+    <div class="eyebrow">THE TEAM</div>
+    <div class="team-grid">
       <sc-for list="{{ team }}" as="p" hint-placeholder-count="3">
         <div>
-          <div style="position:relative;aspect-ratio:4/5;background:radial-gradient(120% 95% at 50% 32%, #26282d 0%, #15161a 60%, #0e0f12 100%);border:1px solid rgba(255,255,255,.06)">
-            <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,calc(.1*var(--glow,1))), transparent 72%)"></div>
+          <div class="team-photo">
+            <div class="team-photo-glow"></div>
           </div>
-          <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(232,224,206,.12)">
-            <div style="font:500 17px 'Cormorant Garamond',serif;color:#ECE9E2">{{ p.name }}</div>
-            <div style="font:11px 'Space Mono',monospace;color:#6f6d68;letter-spacing:.06em;margin-top:6px">{{ p.role }}</div>
+          <div class="team-meta">
+            <div class="team-name">{{ p.name }}</div>
+            <div class="team-role">{{ p.role }}</div>
           </div>
         </div>
       </sc-for>
@@ -92,51 +86,51 @@
   </div>
 
   <!-- visit -->
-  <div style="padding:70px 64px 110px;border-top:1px solid rgba(232,224,206,.12);display:grid;grid-template-columns:1fr 1fr;gap:80px">
+  <div class="about-visit">
     <div>
-      <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:24px">VISIT US</div>
-      <div style="font:500 34px/1.2 'Cormorant Garamond',serif;color:#F3F1EB;margin-bottom:24px">14 Harbour Lane</div>
-      <div style="font:400 15px/2 'Archivo',sans-serif;color:#a8a59c">Open Tuesday–Sunday · 11:00–18:00<br>Closed Mondays and public holidays<br>hello@artconnect.org · +1 (204) 555-0148</div>
+      <div class="eyebrow">VISIT US</div>
+      <div class="visit-addr">14 Harbour Lane</div>
+      <div class="visit-hours">Open Tuesday–Sunday · 11:00–18:00<br>Closed Mondays and public holidays<br>hello@artconnect.org · +1 (204) 555-0148</div>
     </div>
     <div>
-      <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:24px">GETTING INVOLVED</div>
-      <p style="font:400 15px/1.8 'Archivo',sans-serif;color:#a8a59c;margin:0 0 26px">Artists, collectors, and volunteers are always welcome. Submit a piece for review or reach out about hosting an event.</p>
-      <div style="display:flex;gap:16px">
-        <a href="./Submit.html" style="background:var(--ac,#27545c);color:#EAF3F3;padding:15px 28px;border-radius:2px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;text-decoration:none;transition:background .3s" style-hover="background:#2f656e">Submit work  →</a>
-        <span onClick="{{ contactUs }}" style="color:#cfccc4;padding:15px 8px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;border-bottom:1px solid rgba(232,224,206,.28);cursor:pointer;transition:color .25s ease" style-hover="color:#ECE9E2">Contact us</span>
+      <div class="eyebrow">GETTING INVOLVED</div>
+      <p class="involve-text">Artists, collectors, and volunteers are always welcome. Submit a piece for review or reach out about hosting an event.</p>
+      <div class="visit-ctas">
+        <a href="./Submit.html" class="btn-primary">Submit work  →</a>
+        <span onClick="{{ contactUs }}" class="link-underline is-clickable">Contact us</span>
       </div>
     </div>
   </div>
 
   <!-- FOOTER -->
-  <footer style="padding:80px 64px 44px;background:#0a0b0c;border-top:1px solid rgba(232,224,206,.1)">
-    <div style="display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap">
-      <div style="max-width:340px">
-        <div style="font:500 38px/1 'Cormorant Garamond',serif;color:#F3F1EB">ArtConnect</div>
-        <p style="font:400 13px/1.7 'Archivo',sans-serif;color:#6f6d68;margin:18px 0 0">A gallery for the city's artists—discover, visit, and collect.</p>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">ArtConnect</div>
+        <p class="footer-tagline">A gallery for the city's artists—discover, visit, and collect.</p>
       </div>
-      <div style="display:flex;gap:70px">
+      <div class="footer-cols">
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">VISIT</div>
-          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
+          <div class="footer-heading">VISIT</div>
+          <div class="footer-text">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
         </div>
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">EXPLORE</div>
-          <div style="display:flex;flex-direction:column;gap:10px;font:400 13px 'Archivo',sans-serif;color:#a8a59c">
-            <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
-            <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
-            <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit work</a>
-            <a href="./FAQ.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">FAQ</a>
-            <a href="./References.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">References</a>
+          <div class="footer-heading">EXPLORE</div>
+          <div class="footer-links">
+            <a href="./Gallery.html" class="footer-link">Gallery</a>
+            <a href="./Events.html" class="footer-link">Events</a>
+            <a href="./Submit.html" class="footer-link">Submit work</a>
+            <a href="./FAQ.html" class="footer-link">FAQ</a>
+            <a href="./References.html" class="footer-link">References</a>
           </div>
         </div>
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">DEVELOPER</div>
-          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">cperez60@uh.edu</a></div>
+          <div class="footer-heading">DEVELOPER</div>
+          <div class="footer-text">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" class="footer-link">cperez60@uh.edu</a></div>
         </div>
       </div>
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:22px;border-top:1px solid rgba(232,224,206,.1);font:10px 'Space Mono',monospace;letter-spacing:.08em;color:#5a5853">
+    <div class="footer-bottom">
       <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
     </div>
   </footer>
@@ -169,7 +163,7 @@
     &quot;unit&quot;: &quot;%&quot;,
     &quot;tsType&quot;: &quot;number&quot;,
     &quot;section&quot;: &quot;Atmosphere&quot;,
-    &quot;label&quot;: &quot;Gallery lighting (night \u2192 day)&quot;
+    &quot;label&quot;: &quot;Gallery lighting (night → day)&quot;
   }
 }">
 class Component extends DCLogic {

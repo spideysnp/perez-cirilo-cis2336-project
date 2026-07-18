@@ -1,0 +1,101 @@
+/* =====================================================
+   ArtConnect — index.css (Homepage)
+   Hero, featured works, homepage events list, and
+   homepage-specific overrides.
+   ===================================================== */
+
+@keyframes hf {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- hero ---------- */
+.hero { position: relative; height: 100vh; min-height: 780px; overflow: hidden; background: #0d0e10; }
+.hero-spot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 82%;
+  background: radial-gradient(120% 120% at 72% 30%, #1d1f24 0%, #121316 32%, rgba(13, 14, 16, 0) 72%);
+  opacity: var(--spot, 1);
+  pointer-events: none;
+}
+.nav--overlay { position: absolute; top: 0; left: 0; right: 0; background: #0d0e10; }
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 12, 14, .94) 0%, rgba(11, 12, 14, .6) 38%, transparent 64%);
+  overflow: visible;
+}
+.hero-art {
+  position: absolute;
+  top: 50%;
+  right: 7%;
+  transform: translateY(-50%);
+  width: 38%;
+  max-width: 500px;
+  aspect-ratio: 4/5;
+  border: 1px solid rgba(255, 255, 255, .07);
+  box-shadow: 0 50px 110px rgba(0, 0, 0, .65);
+  overflow: hidden;
+  cursor: pointer;
+}
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(58% 46% at 50% 36%, rgba(216, 198, 162, calc(.16 * var(--glow, 1))), transparent 72%);
+}
+.hero-art-title { font: 500 40px 'Cormorant Garamond', serif; color: #ECE9E2; line-height: 1.05; }
+.hero-art-sub { font: 11px 'Space Mono', monospace; color: rgba(232, 224, 206, .5); letter-spacing: .1em; margin-top: 14px; }
+.hero-art-credit {
+  position: absolute;
+  top: 16px;
+  left: 18px;
+  font: 10px 'Space Mono', monospace;
+  color: rgba(232, 224, 206, .34);
+  letter-spacing: .1em;
+}
+.hero-intro { position: absolute; left: 64px; bottom: 13%; max-width: 600px; animation: hf .9s .1s both ease-out; }
+.hero-kicker { font: 12px 'Space Mono', monospace; letter-spacing: .18em; color: var(--ac2, #6BB1B5); margin-bottom: 24px; }
+.hero-title { font: 500 74px/1.0 'Cormorant Garamond', serif; letter-spacing: -.01em; margin: 0; color: #F3F1EB; }
+.hero-sub { font: 400 16px/1.7 'Archivo', sans-serif; color: #a8a59c; max-width: 440px; margin: 26px 0 34px; }
+.hero-ctas { display: flex; align-items: center; gap: 16px; }
+
+/* ---------- featured works ---------- */
+.featured { padding: 110px 64px 90px; }
+.featured-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 54px; }
+.featured-head .eyebrow { margin-bottom: 16px; }
+.featured-title { font: 500 46px/1 'Cormorant Garamond', serif; margin: 0; color: #F3F1EB; }
+.view-all {
+  font: 500 13px 'Archivo', sans-serif;
+  letter-spacing: .04em;
+  color: #a8a59c;
+  border-bottom: 1px solid rgba(232, 224, 206, .22);
+  padding-bottom: 4px;
+  text-decoration: none;
+  transition: color .25s ease;
+}
+.view-all:hover { color: #ECE9E2; }
+.featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
+.featured-grid .art-title { font: 500 30px/1.08 'Cormorant Garamond', serif; }
+
+/* ---------- homepage events list ---------- */
+.home-events { padding: 30px 64px 110px; background: #0d0e10; }
+.home-events .eyebrow { margin-bottom: 30px; }
+.home-events-list { border-top: 1px solid rgba(232, 224, 206, .14); }
+.home-event-row {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  padding: 30px 6px;
+  border-bottom: 1px solid rgba(232, 224, 206, .14);
+  transition: background .3s;
+  cursor: pointer;
+}
+.home-event-row:hover { background: rgba(232, 224, 206, .03); }
+.event-divider { width: 1px; height: 46px; background: rgba(232, 224, 206, .14); }
+.event-info { flex: 1; }
+.home-event-title { font: 500 19px 'Cormorant Garamond', serif; color: #ECE9E2; }
+.home-event-meta { font: 11px 'Space Mono', monospace; color: #6f6d68; letter-spacing: .05em; margin-top: 7px; }
+.event-arrow { font-size: 18px; color: var(--ac2, #6BB1B5); }

@@ -1,0 +1,8 @@
+/* =====================================================
+   ArtConnect — Gallery.css
+   Gallery page. Most of this page's styling is shared
+   (cards, filter bar, modal) and lives in common.css.
+   ===================================================== */
+
+a { color: #6BB1B5; }
+a:hover { color: #8fc7ca; }

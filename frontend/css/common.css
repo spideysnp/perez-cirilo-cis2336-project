@@ -1,0 +1,301 @@
+/* =====================================================
+   ArtConnect — common.css
+   Shared styles used across every page: fonts, base
+   resets, navigation, footer, page headers, artwork
+   cards, filter bars, modals, and buttons.
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap');
+
+/* ---------- base ---------- */
+body { margin: 0; background: #0d0e10; }
+* { box-sizing: border-box; }
+::selection { background: #2a5860; color: #fff; }
+
+.site {
+  background: #0d0e10;
+  color: #ECE9E2;
+  font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  min-width: 1100px;
+  overflow-x: hidden;
+}
+
+.screen { position: relative; }
+.screen--bg { background: #0d0e10; }
+
+/* ---------- navigation ---------- */
+.nav {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 64px;
+  border-bottom: 1px solid rgba(232, 224, 206, .1);
+}
+.nav-brand { font: 600 16px 'Archivo', sans-serif; letter-spacing: .36em; color: #ECE9E2; }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  font: 500 13px 'Archivo', sans-serif;
+  letter-spacing: .02em;
+  color: #a8a59c;
+}
+.nav-link { color: #a8a59c; text-decoration: none; transition: color .25s ease; }
+.nav-link:hover { color: #ECE9E2; }
+.nav-link--active { color: #ECE9E2; font-weight: 600; }
+.nav-link--active:hover { color: #F3F1EB; }
+
+/* ---------- page headers ---------- */
+.page-head { padding: 70px 64px 40px; }
+.eyebrow {
+  font: 12px 'Space Mono', monospace;
+  letter-spacing: .18em;
+  color: var(--ac2, #6BB1B5);
+  margin-bottom: 20px;
+}
+.page-title-row { display: flex; align-items: flex-end; justify-content: space-between; }
+.page-title {
+  font: 500 80px/.92 'Cormorant Garamond', serif;
+  margin: 0;
+  letter-spacing: -.01em;
+  color: #F3F1EB;
+}
+.page-meta {
+  font: 12px 'Space Mono', monospace;
+  letter-spacing: .1em;
+  color: #6f6d68;
+  padding-bottom: 10px;
+}
+
+/* ---------- filter / sort bar (Gallery, Events) ---------- */
+.filter-bar {
+  padding: 24px 64px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(232, 224, 206, .12);
+}
+.filter-group { display: flex; gap: 10px; font: 500 12px 'Archivo', sans-serif; letter-spacing: .04em; }
+.sort-wrap { position: relative; }
+.sort-toggle {
+  font: 12px 'Space Mono', monospace;
+  letter-spacing: .06em;
+  color: #a8a59c;
+  cursor: pointer;
+  user-select: none;
+}
+.sort-menu {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  background: #121316;
+  border: 1px solid rgba(232, 224, 206, .16);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, .5);
+  z-index: 10;
+  min-width: 140px;
+}
+
+/* ---------- artwork cards (Home, Gallery) ---------- */
+.works-grid {
+  padding: 50px 64px 110px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px 34px;
+  background: linear-gradient(0deg, #0A0B0B, #0D0E10);
+}
+.work-card { cursor: pointer; }
+.art-frame {
+  position: relative;
+  aspect-ratio: 4/5;
+  border: 1px solid rgba(255, 255, 255, .06);
+  overflow: hidden;
+  transition: transform .5s ease, box-shadow .5s ease;
+}
+.art-frame:hover { transform: translateY(-7px); box-shadow: 0 36px 70px rgba(0, 0, 0, .55); }
+.art-img { position: absolute; inset: 0; }
+.art-mat {
+  position: absolute;
+  inset: var(--matpad, 16px);
+  border: 1px solid rgba(232, 224, 206, calc(.10 * var(--mat, 1)));
+}
+.art-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(56% 46% at 50% 38%, rgba(216, 198, 162, calc(.13 * var(--glow, 1))), transparent 72%);
+}
+.art-title-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  padding: 0 22px;
+}
+.art-title-wrap--wide { padding: 0 30px; }
+.art-title { font: 500 28px/1.1 'Cormorant Garamond', serif; color: #ECE9E2; }
+.art-credit {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  font: 10px 'Space Mono', monospace;
+  color: rgba(232, 224, 206, .32);
+  letter-spacing: .1em;
+}
+.work-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(232, 224, 206, .12);
+}
+.work-artist { font: 500 15px 'Archivo', sans-serif; color: #ECE9E2; }
+.work-year { font: 11px 'Space Mono', monospace; color: #6f6d68; letter-spacing: .06em; margin-top: 5px; }
+.work-price { font: 500 13px 'Archivo', sans-serif; color: var(--ac2, #6BB1B5); }
+
+/* ---------- event date block (Home, Events) ---------- */
+.event-date { width: 74px; text-align: center; flex-shrink: 0; }
+.event-day { font: 500 40px/1 'Cormorant Garamond', serif; color: #F3F1EB; }
+.event-mon { font: 11px 'Space Mono', monospace; letter-spacing: .16em; color: #6f6d68; margin-top: 4px; }
+.event-tag {
+  font: 11px 'Space Mono', monospace;
+  letter-spacing: .1em;
+  color: #8e8b84;
+  border: 1px solid rgba(232, 224, 206, .18);
+  padding: 6px 12px;
+  border-radius: 2px;
+}
+
+/* ---------- modals ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 9, 10, .75);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+}
+.modal-box {
+  width: 100%;
+  background: #121316;
+  border: 1px solid rgba(232, 224, 206, .1);
+  box-shadow: 0 60px 120px rgba(0, 0, 0, .6);
+  position: relative;
+}
+.modal-box--artwork { max-width: 640px; }
+.modal-box--event { max-width: 600px; }
+.modal-close { font: 18px 'Archivo', sans-serif; color: #8e8b84; cursor: pointer; transition: color .25s ease; }
+.modal-close:hover { color: #ECE9E2; }
+.modal-close--corner { position: absolute; top: 20px; right: 24px; }
+
+/* artwork detail modal (Home, Gallery) */
+.artwork-modal-body { padding: 40px; }
+.artwork-modal-imgwrap {
+  position: relative;
+  aspect-ratio: 4/5;
+  max-width: 280px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, .06);
+}
+.artwork-modal-titles { text-align: center; margin-top: 26px; }
+.artwork-modal-title { font: 500 28px 'Cormorant Garamond', serif; color: #F3F1EB; }
+.artwork-modal-sub { font: 12px 'Space Mono', monospace; letter-spacing: .06em; color: #6f6d68; margin-top: 10px; }
+.artwork-modal-desc { font: 400 14px/1.75 'Archivo', sans-serif; color: #a8a59c; margin-top: 22px; }
+.artwork-modal-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(232, 224, 206, .1);
+}
+.artwork-modal-price { font: 500 13px 'Archivo', sans-serif; color: var(--ac2, #6BB1B5); }
+
+/* event detail modal (Home, Events) */
+.event-modal-head { display: flex; align-items: flex-start; justify-content: space-between; padding: 34px 38px 0; }
+.event-modal-tag { font: 11px 'Space Mono', monospace; letter-spacing: .14em; color: var(--ac2, #6BB1B5); }
+.event-modal-title { font: 500 30px 'Cormorant Garamond', serif; color: #F3F1EB; margin-top: 10px; }
+.event-modal-imgpad { padding: 26px 38px 0; }
+.event-modal-img { position: relative; aspect-ratio: 16/9; border: 1px solid rgba(255, 255, 255, .06); }
+.event-modal-imgglow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(56% 46% at 50% 38%, rgba(216, 198, 162, .14), transparent 72%);
+}
+.event-modal-meta { padding: 24px 38px 0; font: 11px 'Space Mono', monospace; letter-spacing: .08em; color: #8e8b84; }
+.event-modal-desc { padding: 14px 38px 0; font: 400 14px/1.7 'Archivo', sans-serif; color: #a8a59c; }
+.event-modal-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 38px 36px;
+  margin-top: 22px;
+  border-top: 1px solid rgba(232, 224, 206, .1);
+}
+.event-modal-price { font: 11px 'Space Mono', monospace; letter-spacing: .08em; color: #6f6d68; }
+
+/* ---------- buttons & links ---------- */
+.btn-primary {
+  background: var(--ac, #27545c);
+  color: #EAF3F3;
+  padding: 15px 28px;
+  border-radius: 2px;
+  font: 500 13px 'Archivo', sans-serif;
+  letter-spacing: .06em;
+  text-decoration: none;
+  transition: background .3s;
+}
+.btn-primary:hover { background: #2f656e; }
+.btn-primary--cal { padding: 14px 30px; cursor: pointer; }
+.btn-outline {
+  border: 1px solid rgba(232, 224, 206, .24);
+  color: #ECE9E2;
+  padding: 10px 22px;
+  border-radius: 2px;
+  font: 500 12px 'Archivo', sans-serif;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: background .25s ease;
+}
+.btn-outline:hover { background: rgba(232, 224, 206, .06); }
+.link-underline {
+  color: #cfccc4;
+  padding: 15px 8px;
+  font: 500 13px 'Archivo', sans-serif;
+  letter-spacing: .06em;
+  border-bottom: 1px solid rgba(232, 224, 206, .28);
+  text-decoration: none;
+  transition: color .25s ease;
+}
+.link-underline:hover { color: #ECE9E2; }
+.is-clickable { cursor: pointer; }
+
+/* ---------- footer ---------- */
+.footer { padding: 80px 64px 44px; background: #0a0b0c; border-top: 1px solid rgba(232, 224, 206, .1); }
+.footer-grid { display: flex; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
+.footer-brand-col { max-width: 340px; }
+.footer-logo { font: 500 38px/1 'Cormorant Garamond', serif; color: #F3F1EB; }
+.footer-tagline { font: 400 13px/1.7 'Archivo', sans-serif; color: #6f6d68; margin: 18px 0 0; }
+.footer-cols { display: flex; gap: 70px; }
+.footer-heading { font: 10px 'Space Mono', monospace; letter-spacing: .16em; color: #5a5853; margin-bottom: 16px; }
+.footer-text { font: 400 13px/2.1 'Archivo', sans-serif; color: #a8a59c; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; font: 400 13px 'Archivo', sans-serif; color: #a8a59c; }
+.footer-link { color: #a8a59c; text-decoration: none; transition: color .25s ease; }
+.footer-link:hover { color: #ECE9E2; }
+.footer-link--active { color: #ECE9E2; }
+.footer-link--active:hover { color: #F3F1EB; }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 56px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(232, 224, 206, .1);
+  font: 10px 'Space Mono', monospace;
+  letter-spacing: .08em;
+  color: #5a5853;
+}

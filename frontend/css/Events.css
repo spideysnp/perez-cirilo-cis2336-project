@@ -1,0 +1,41 @@
+/* =====================================================
+   ArtConnect — Events.css
+   Events page: event list rows and thumbnails.
+   Filter bar, date block, and detail modal live in
+   common.css.
+   ===================================================== */
+
+a { color: #6BB1B5; }
+a:hover { color: #8fc7ca; }
+
+.events-list { padding: 20px 64px 110px; }
+.event-row {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  padding: 34px 6px;
+  border-bottom: 1px solid rgba(232, 224, 206, .14);
+  transition: background .3s;
+  cursor: pointer;
+}
+.event-row:hover { background: rgba(232, 224, 206, .03); }
+.event-row .event-tag { flex-shrink: 0; }
+.event-divider { width: 1px; height: 56px; background: rgba(232, 224, 206, .14); }
+.event-thumb {
+  position: relative;
+  width: 90px;
+  aspect-ratio: 4/5;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, .06);
+}
+.event-info { flex: 1; }
+.event-title { font: 500 22px 'Cormorant Garamond', serif; color: #ECE9E2; }
+.event-meta { font: 11px 'Space Mono', monospace; color: #6f6d68; letter-spacing: .05em; margin-top: 8px; }
+.event-view {
+  font: 500 13px 'Archivo', sans-serif;
+  letter-spacing: .06em;
+  color: #cfccc4;
+  border-bottom: 1px solid rgba(232, 224, 206, .28);
+  padding-bottom: 3px;
+  flex-shrink: 0;
+}

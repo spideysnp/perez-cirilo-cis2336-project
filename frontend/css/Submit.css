@@ -1,0 +1,76 @@
+/* =====================================================
+   ArtConnect — Submit.css
+   Artist submission form page. Note: validated field
+   borders (normal vs error state) are applied by
+   JavaScript at runtime and intentionally stay inline.
+   ===================================================== */
+
+a { color: #6BB1B5; }
+a:hover { color: #8fc7ca; }
+input, textarea, select { font-family: 'Archivo', sans-serif; }
+input::placeholder, textarea::placeholder { color: #6f6d68; }
+
+/* ---------- header ---------- */
+.submit-head { padding: 80px 64px 20px; text-align: center; }
+.submit-head .eyebrow { margin-bottom: 24px; }
+.submit-title {
+  font: 500 58px/1.05 'Cormorant Garamond', serif;
+  letter-spacing: -.01em;
+  margin: 0 auto;
+  color: #F3F1EB;
+  max-width: 680px;
+}
+.submit-sub { font: 400 15px/1.7 'Archivo', sans-serif; color: #a8a59c; max-width: 480px; margin: 22px auto 0; }
+
+/* ---------- form ---------- */
+.form-wrap { padding: 56px 64px 120px; display: flex; justify-content: center; }
+.form { width: 100%; max-width: 620px; display: flex; flex-direction: column; gap: 18px; }
+.field-label {
+  display: block;
+  font: 11px 'Space Mono', monospace;
+  letter-spacing: .1em;
+  color: #8e8b84;
+  margin-bottom: 8px;
+}
+.req { color: var(--ac2, #6BB1B5); }
+.field-error { font: 11px 'Space Mono', monospace; color: #c25a4a; margin-top: 6px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field-input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 1px solid rgba(232, 224, 206, .2);
+  border-radius: 2px;
+  padding: 0 16px;
+  font: 400 14px 'Archivo', sans-serif;
+  color: #ECE9E2;
+  outline: none;
+}
+.upload-box {
+  height: 50px;
+  border: 1px dashed rgba(232, 224, 206, .3);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font: 400 13px 'Archivo', sans-serif;
+  color: #8e8b84;
+  cursor: pointer;
+}
+.upload-box:hover { border-color: rgba(232, 224, 206, .5); color: #ECE9E2; }
+.form-error { font: 12px 'Space Mono', monospace; color: #c25a4a; text-align: center; }
+.form-actions { display: flex; justify-content: center; margin-top: 14px; }
+.btn-primary--submit { padding: 16px 48px; cursor: pointer; }
+
+/* ---------- confirmation modal ---------- */
+.modal-box--confirm { max-width: 480px; padding: 48px 44px; text-align: center; }
+.confirm-kicker {
+  font: 12px 'Space Mono', monospace;
+  letter-spacing: .18em;
+  color: var(--ac2, #6BB1B5);
+  margin-bottom: 18px;
+}
+.confirm-title { font: 500 30px 'Cormorant Garamond', serif; color: #F3F1EB; }
+.confirm-text { font: 400 14px/1.7 'Archivo', sans-serif; color: #a8a59c; margin: 18px 0 0; }
+.btn-outline--confirm { display: inline-block; margin-top: 28px; padding: 12px 30px; }

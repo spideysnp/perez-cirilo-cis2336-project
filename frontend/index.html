@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./css/common.css">
+<link rel="stylesheet" href="./css/index.css">
 <script src="./js/support.js"></script>
 </head>
 <body>
@@ -10,92 +12,85 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Archivo:wght@400;500;600&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
-<style>
-  body { margin:0; background:#0d0e10; }
-  * { box-sizing:border-box; }
-  ::selection { background:#2a5860; color:#fff; }
-  @keyframes hf { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-</style>
 </helmet>
 
-<div ref="{{ rootRef }}" style="background:#0d0e10;color:#ECE9E2;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;min-width:1100px;overflow-x:hidden">
+<div ref="{{ rootRef }}" class="site">
 
 
 
 <!-- =================== SCREEN 01 · HOMEPAGE =================== -->
-<section data-screen-label="Homepage" style="position:relative">
+<section data-screen-label="Homepage" class="screen">
 
   <!-- HERO -->
-  <div style="position:relative;height:100vh;min-height:780px;overflow:hidden;background:#0d0e10">
+  <div class="hero">
 
-    <div style="position:absolute;top:0;left:0;right:0;height:82%;background:radial-gradient(120% 120% at 72% 30%, #1d1f24 0%, #121316 32%, rgba(13,14,16,0) 72%);opacity:var(--spot,1);pointer-events:none"></div>
+    <div class="hero-spot"></div>
 
-    <nav style="position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 64px;background:#0d0e10;border-bottom:1px solid rgba(232,224,206,.1)">
-      <div style="font:600 16px 'Archivo',sans-serif;letter-spacing:.36em;color:#ECE9E2">ARTCONNECT</div>
-      <div style="display:flex;align-items:center;gap:34px;font:500 13px 'Archivo',sans-serif;letter-spacing:.02em;color:#a8a59c">
-        <a href="./index.html" style="color:#ECE9E2;font-weight:600;text-decoration:none;transition:color .25s ease" style-hover="color:#F3F1EB">Home</a>
-        <a href="./pages/Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
-        <a href="./pages/Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
-        <a href="./pages/Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit</a>
-        <a href="./pages/About.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">About</a>
+    <nav class="nav nav--overlay">
+      <div class="nav-brand">ARTCONNECT</div>
+      <div class="nav-links">
+        <a href="./index.html" class="nav-link nav-link--active">Home</a>
+        <a href="./pages/Gallery.html" class="nav-link">Gallery</a>
+        <a href="./pages/Events.html" class="nav-link">Events</a>
+        <a href="./pages/Submit.html" class="nav-link">Submit</a>
+        <a href="./pages/About.html" class="nav-link">About</a>
       </div>
     </nav>
 
-    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,12,14,.94) 0%, rgba(11,12,14,.6) 38%, transparent 64%); overflow: visible"></div>
-    <div onClick="{{ openNightWatch }}" onMouseEnter="{{ nightWatchEnter }}" onMouseLeave="{{ nightWatchLeave }}" style="position:absolute;top:50%;right:7%;transform:translateY(-50%);width:38%;max-width:500px;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.07);box-shadow:0 50px 110px rgba(0,0,0,.65);overflow:hidden;cursor:pointer">
-      <div ref="{{ nightWatchSlotRef }}" style="position:absolute;inset:0;background:url('./images/Van-Rijn-1642.jpg') center/cover no-repeat"></div>
+    <div class="hero-scrim"></div>
+    <div onClick="{{ openNightWatch }}" onMouseEnter="{{ nightWatchEnter }}" onMouseLeave="{{ nightWatchLeave }}" class="hero-art">
+      <div ref="{{ nightWatchSlotRef }}" class="art-img" style="background:url('./images/Van-Rijn-1642.jpg') center/cover no-repeat"></div>
       <div style="{{ nightWatchCoverStyle }}">
-        <div style="position:absolute;inset:var(--matpad,16px);border:1px solid rgba(232,224,206,calc(.10*var(--mat,1)))"></div>
-        <div style="position:absolute;inset:0;background:radial-gradient(58% 46% at 50% 36%, rgba(216,198,162,calc(.16*var(--glow,1))), transparent 72%)"></div>
-        <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 30px">
-          <div style="font:500 40px 'Cormorant Garamond',serif;color:#ECE9E2;line-height:1.05">The Night Watch</div>
-          <div style="font:11px 'Space Mono',monospace;color:rgba(232,224,206,.5);letter-spacing:.1em;margin-top:14px">REMBRANDT VAN RIJN · 1642</div>
+        <div class="art-mat"></div>
+        <div class="hero-glow"></div>
+        <div class="art-title-wrap art-title-wrap--wide">
+          <div class="hero-art-title">The Night Watch</div>
+          <div class="hero-art-sub">REMBRANDT VAN RIJN · 1642</div>
         </div>
-        <span style="position:absolute;top:16px;left:18px;font:10px 'Space Mono',monospace;color:rgba(232,224,206,.34);letter-spacing:.1em">RIJKS · PD</span>
+        <span class="hero-art-credit">RIJKS · PD</span>
       </div>
     </div>
 
-    <div style="position:absolute;left:64px;bottom:13%;max-width:600px;animation:hf .9s .1s both ease-out">
-      <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:24px">ARTCONNECT — NOW ON VIEW UNTIL 14 SEPT</div>
-      <h1 style="font:500 74px/1.0 'Cormorant Garamond',serif;letter-spacing:-.01em;margin:0;color:#F3F1EB">Where the city's art comes to light.</h1>
-      <p style="font:400 16px/1.7 'Archivo',sans-serif;color:#a8a59c;max-width:440px;margin:26px 0 34px">A living gallery of work from artists across the city. On view, for sale, and in person.</p>
-      <div style="display:flex;align-items:center;gap:16px">
-        <a href="./pages/Gallery.html" style="background:var(--ac,#27545c);color:#EAF3F3;padding:15px 28px;border-radius:2px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;text-decoration:none;transition:background .3s" style-hover="background:#2f656e">Enter the gallery  →</a>
-        <a href="./pages/Events.html" style="color:#cfccc4;padding:15px 8px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;border-bottom:1px solid rgba(232,224,206,.28);text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Upcoming events</a>
+    <div class="hero-intro">
+      <div class="hero-kicker">ARTCONNECT — NOW ON VIEW UNTIL 14 SEPT</div>
+      <h1 class="hero-title">Where the city's art comes to light.</h1>
+      <p class="hero-sub">A living gallery of work from artists across the city. On view, for sale, and in person.</p>
+      <div class="hero-ctas">
+        <a href="./pages/Gallery.html" class="btn-primary">Enter the gallery  →</a>
+        <a href="./pages/Events.html" class="link-underline">Upcoming events</a>
       </div>
     </div>
   </div>
 
   <!-- FEATURED WORKS -->
-  <div style="padding:110px 64px 90px">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:54px">
+  <div class="featured">
+    <div class="featured-head">
       <div>
-        <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:16px">FEATURED WORKS</div>
-        <h2 style="font:500 46px/1 'Cormorant Garamond',serif;margin:0;color:#F3F1EB">Currently on the walls</h2>
+        <div class="eyebrow">FEATURED WORKS</div>
+        <h2 class="featured-title">Currently on the walls</h2>
       </div>
-      <a href="./pages/Gallery.html" style="font:500 13px 'Archivo',sans-serif;letter-spacing:.04em;color:#a8a59c;border-bottom:1px solid rgba(232,224,206,.22);padding-bottom:4px;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">View all {{ worksCount }} works  →</a>
+      <a href="./pages/Gallery.html" class="view-all">View all {{ worksCount }} works  →</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:34px">
+    <div class="featured-grid">
       <sc-for list="{{ featured }}" as="w" hint-placeholder-count="3">
-        <div onClick="{{ w.onClick }}" style="cursor:pointer">
-          <div onMouseEnter="{{ w.onMouseEnter }}" onMouseLeave="{{ w.onMouseLeave }}" style="position:relative;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:transform .5s ease, box-shadow .5s ease" style-hover="transform:translateY(-7px);box-shadow:0 36px 70px rgba(0,0,0,.55)">
-            <div ref="{{ w.slotRef }}" style="position:absolute;inset:0;background:url('{{ w.img }}') center/cover no-repeat"></div>
+        <div onClick="{{ w.onClick }}" class="work-card">
+          <div onMouseEnter="{{ w.onMouseEnter }}" onMouseLeave="{{ w.onMouseLeave }}" class="art-frame">
+            <div ref="{{ w.slotRef }}" class="art-img" style="background:url('{{ w.img }}') center/cover no-repeat"></div>
             <div style="{{ w.coverStyle }}">
-              <div style="position:absolute;inset:var(--matpad,16px);border:1px solid rgba(232,224,206,calc(.10*var(--mat,1)))"></div>
-              <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,calc(.13*var(--glow,1))), transparent 72%)"></div>
-              <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 22px">
-                <div style="font:500 30px/1.08 'Cormorant Garamond',serif;color:#ECE9E2">{{ w.title }}</div>
+              <div class="art-mat"></div>
+              <div class="art-glow"></div>
+              <div class="art-title-wrap">
+                <div class="art-title">{{ w.title }}</div>
               </div>
-              <span style="position:absolute;top:14px;left:16px;font:10px 'Space Mono',monospace;color:rgba(232,224,206,.32);letter-spacing:.1em">RIJKS · PD</span>
+              <span class="art-credit">RIJKS · PD</span>
             </div>
           </div>
-          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid rgba(232,224,206,.12)">
+          <div class="work-meta">
             <div>
-              <div style="font:500 15px 'Archivo',sans-serif;color:#ECE9E2">{{ w.artist }}</div>
-              <div style="font:11px 'Space Mono',monospace;color:#6f6d68;letter-spacing:.06em;margin-top:5px">{{ w.year }} · {{ w.tag }}</div>
+              <div class="work-artist">{{ w.artist }}</div>
+              <div class="work-year">{{ w.year }} · {{ w.tag }}</div>
             </div>
-            <div style="font:500 13px 'Archivo',sans-serif;color:var(--ac2,#6BB1B5)">{{ w.price }}</div>
+            <div class="work-price">{{ w.price }}</div>
           </div>
         </div>
       </sc-for>
@@ -103,22 +98,22 @@
   </div>
 
   <!-- UPCOMING EVENTS -->
-  <div style="padding:30px 64px 110px;background:#0d0e10">
-    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:30px">UPCOMING EVENTS</div>
-    <div style="border-top:1px solid rgba(232,224,206,.14)">
+  <div class="home-events">
+    <div class="eyebrow">UPCOMING EVENTS</div>
+    <div class="home-events-list">
       <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
-        <div onClick="{{ e.onClick }}" style="display:flex;align-items:center;gap:38px;padding:30px 6px;border-bottom:1px solid rgba(232,224,206,.14);transition:background .3s;cursor:pointer" style-hover="background:rgba(232,224,206,.03)">
-          <div style="width:74px;text-align:center;flex-shrink:0">
-            <div style="font:500 40px/1 'Cormorant Garamond',serif;color:#F3F1EB">{{ e.day }}</div>
-            <div style="font:11px 'Space Mono',monospace;letter-spacing:.16em;color:#6f6d68;margin-top:4px">{{ e.mon }}</div>
+        <div onClick="{{ e.onClick }}" class="home-event-row">
+          <div class="event-date">
+            <div class="event-day">{{ e.day }}</div>
+            <div class="event-mon">{{ e.mon }}</div>
           </div>
-          <div style="width:1px;height:46px;background:rgba(232,224,206,.14)"></div>
-          <div style="flex:1">
-            <div style="font:500 19px 'Cormorant Garamond',serif;color:#ECE9E2">{{ e.title }}</div>
-            <div style="font:11px 'Space Mono',monospace;color:#6f6d68;letter-spacing:.05em;margin-top:7px">{{ e.meta }}</div>
+          <div class="event-divider"></div>
+          <div class="event-info">
+            <div class="home-event-title">{{ e.title }}</div>
+            <div class="home-event-meta">{{ e.meta }}</div>
           </div>
-          <span style="font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;border:1px solid rgba(232,224,206,.18);padding:6px 12px;border-radius:2px">{{ e.tag }}</span>
-          <span style="font-size:18px;color:var(--ac2,#6BB1B5)">→</span>
+          <span class="event-tag">{{ e.tag }}</span>
+          <span class="event-arrow">→</span>
         </div>
       </sc-for>
     </div>
@@ -127,26 +122,26 @@
 </section>
 
 <!-- =================== SCREEN 02 · GALLERY =================== -->
-<section data-screen-label="Gallery" style="position:relative;background:#0d0e10">
+<section data-screen-label="Gallery" class="screen screen--bg">
 
-  <div style="padding:70px 64px 40px">
-    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:20px">THE COLLECTION</div>
-    <div style="display:flex;align-items:flex-end;justify-content:space-between">
-      <h1 style="font:500 80px/.92 'Cormorant Garamond',serif;margin:0;letter-spacing:-.01em;color:#F3F1EB">Gallery</h1>
-      <div style="font:12px 'Space Mono',monospace;letter-spacing:.1em;color:#6f6d68;padding-bottom:10px">{{ worksCount }} WORKS · {{ artistsCount }} ARTISTS</div>
+  <div class="page-head">
+    <div class="eyebrow">THE COLLECTION</div>
+    <div class="page-title-row">
+      <h1 class="page-title">Gallery</h1>
+      <div class="page-meta">{{ worksCount }} WORKS · {{ artistsCount }} ARTISTS</div>
     </div>
   </div>
 
-  <div style="padding:24px 64px 50px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(232,224,206,.12)">
-    <div style="display:flex;gap:10px;font:500 12px 'Archivo',sans-serif;letter-spacing:.04em">
+  <div class="filter-bar">
+    <div class="filter-group">
       <sc-for list="{{ galFilters }}" as="f" hint-placeholder-count="5">
         <span onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</span>
       </sc-for>
     </div>
-    <div style="position:relative">
-      <span onClick="{{ toggleGalSort }}" style="font:12px 'Space Mono',monospace;letter-spacing:.06em;color:#a8a59c;cursor:pointer;user-select:none">SORT: {{ galSortLabel }} ▾</span>
+    <div class="sort-wrap">
+      <span onClick="{{ toggleGalSort }}" class="sort-toggle">SORT: {{ galSortLabel }} ▾</span>
       <sc-if value="{{ galSortOpen }}" hint-placeholder-val="{{ false }}">
-        <div style="position:absolute;top:28px;right:0;background:#121316;border:1px solid rgba(232,224,206,.16);box-shadow:0 20px 44px rgba(0,0,0,.5);z-index:10;min-width:140px">
+        <div class="sort-menu">
           <sc-for list="{{ galSortOptions }}" as="s" hint-placeholder-count="2">
             <div onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</div>
           </sc-for>
@@ -155,81 +150,81 @@
     </div>
   </div>
 
-  <div style="padding: 50px 64px 110px; display: grid; grid-template-columns: repeat(3,1fr); gap: 34px 34px; background: linear-gradient(0deg, #0A0B0B, #0D0E10)">
+  <div class="works-grid">
     <sc-for list="{{ visibleWorks }}" as="w" hint-placeholder-count="9">
-      <div onClick="{{ w.onClick }}" style="cursor:pointer">
-        <div onMouseEnter="{{ w.onMouseEnter }}" onMouseLeave="{{ w.onMouseLeave }}" style="position:relative;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:transform .5s ease, box-shadow .5s ease" style-hover="transform:translateY(-7px);box-shadow:0 36px 70px rgba(0,0,0,.55)">
-          <div ref="{{ w.slotRef }}" style="position:absolute;inset:0;background:url('{{ w.img }}') center/cover no-repeat"></div>
+      <div onClick="{{ w.onClick }}" class="work-card">
+        <div onMouseEnter="{{ w.onMouseEnter }}" onMouseLeave="{{ w.onMouseLeave }}" class="art-frame">
+          <div ref="{{ w.slotRef }}" class="art-img" style="background:url('{{ w.img }}') center/cover no-repeat"></div>
           <div style="{{ w.coverStyle }}">
-            <div style="position:absolute;inset:var(--matpad,16px);border:1px solid rgba(232,224,206,calc(.10*var(--mat,1)))"></div>
-            <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,calc(.13*var(--glow,1))), transparent 72%)"></div>
-            <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 22px">
-              <div style="font:500 28px/1.1 'Cormorant Garamond',serif;color:#ECE9E2">{{ w.title }}</div>
+            <div class="art-mat"></div>
+            <div class="art-glow"></div>
+            <div class="art-title-wrap">
+              <div class="art-title">{{ w.title }}</div>
             </div>
-            <span style="position:absolute;top:14px;left:16px;font:10px 'Space Mono',monospace;color:rgba(232,224,206,.32);letter-spacing:.1em">RIJKS · PD</span>
+            <span class="art-credit">RIJKS · PD</span>
           </div>
         </div>
-        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid rgba(232,224,206,.12)">
+        <div class="work-meta">
           <div>
-            <div style="font:500 15px 'Archivo',sans-serif;color:#ECE9E2">{{ w.artist }}</div>
-            <div style="font:11px 'Space Mono',monospace;color:#6f6d68;letter-spacing:.06em;margin-top:5px">{{ w.year }} · {{ w.tag }}</div>
+            <div class="work-artist">{{ w.artist }}</div>
+            <div class="work-year">{{ w.year }} · {{ w.tag }}</div>
           </div>
-          <div style="font:500 13px 'Archivo',sans-serif;color:var(--ac2,#6BB1B5)">{{ w.price }}</div>
+          <div class="work-price">{{ w.price }}</div>
         </div>
       </div>
     </sc-for>
   </div>
 
   <!-- FOOTER -->
-  <footer style="padding:80px 64px 44px;background:#0a0b0c;border-top:1px solid rgba(232,224,206,.1)">
-    <div style="display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap">
-      <div style="max-width:340px">
-        <div style="font:500 38px/1 'Cormorant Garamond',serif;color:#F3F1EB">ArtConnect</div>
-        <p style="font:400 13px/1.7 'Archivo',sans-serif;color:#6f6d68;margin:18px 0 0">A gallery for the city's artists—discover, visit, and collect.</p>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">ArtConnect</div>
+        <p class="footer-tagline">A gallery for the city's artists—discover, visit, and collect.</p>
       </div>
-      <div style="display:flex;gap:70px">
+      <div class="footer-cols">
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">VISIT</div>
-          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
+          <div class="footer-heading">VISIT</div>
+          <div class="footer-text">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
         </div>
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">EXPLORE</div>
-          <div style="display:flex;flex-direction:column;gap:10px;font:400 13px 'Archivo',sans-serif;color:#a8a59c">
-            <a href="./pages/Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
-            <a href="./pages/Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
-            <a href="./pages/Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit work</a>
-            <a href="./pages/FAQ.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">FAQ</a>
-            <a href="./pages/References.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">References</a>
+          <div class="footer-heading">EXPLORE</div>
+          <div class="footer-links">
+            <a href="./pages/Gallery.html" class="footer-link">Gallery</a>
+            <a href="./pages/Events.html" class="footer-link">Events</a>
+            <a href="./pages/Submit.html" class="footer-link">Submit work</a>
+            <a href="./pages/FAQ.html" class="footer-link">FAQ</a>
+            <a href="./pages/References.html" class="footer-link">References</a>
           </div>
         </div>
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">DEVELOPER</div>
-          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">cperez60@uh.edu</a></div>
+          <div class="footer-heading">DEVELOPER</div>
+          <div class="footer-text">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" class="footer-link">cperez60@uh.edu</a></div>
         </div>
       </div>
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:22px;border-top:1px solid rgba(232,224,206,.1);font:10px 'Space Mono',monospace;letter-spacing:.08em;color:#5a5853">
+    <div class="footer-bottom">
       <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
     </div>
   </footer>
 </section>
 
 <sc-if value="{{ artworkOpen }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ closeArtwork }}" style="position:fixed;inset:0;background:rgba(8,9,10,.75);z-index:50;display:flex;align-items:center;justify-content:center;padding:60px">
-    <div onClick="{{ stopProp }}" style="width:100%;max-width:640px;background:#121316;border:1px solid rgba(232,224,206,.1);box-shadow:0 60px 120px rgba(0,0,0,.6);position:relative">
-      <span onClick="{{ closeArtwork }}" style="position:absolute;top:20px;right:24px;font:18px 'Archivo',sans-serif;color:#8e8b84;cursor:pointer;transition:color .25s ease" style-hover="color:#ECE9E2">✕</span>
-      <div style="padding:40px">
-        <div style="position:relative;aspect-ratio:4/5;max-width:280px;margin:0 auto;border:1px solid rgba(255,255,255,.06)">
-          <div ref="{{ artworkSlotRef }}" style="position:absolute;inset:0;background:url('{{ artwork.img }}') center/cover no-repeat"></div>
+  <div onClick="{{ closeArtwork }}" class="modal-overlay">
+    <div onClick="{{ stopProp }}" class="modal-box modal-box--artwork">
+      <span onClick="{{ closeArtwork }}" class="modal-close modal-close--corner">✕</span>
+      <div class="artwork-modal-body">
+        <div class="artwork-modal-imgwrap">
+          <div ref="{{ artworkSlotRef }}" class="art-img" style="background:url('{{ artwork.img }}') center/cover no-repeat"></div>
         </div>
-        <div style="text-align:center;margin-top:26px">
-          <div style="font:500 28px 'Cormorant Garamond',serif;color:#F3F1EB">{{ artwork.title }}</div>
-          <div style="font:12px 'Space Mono',monospace;letter-spacing:.06em;color:#6f6d68;margin-top:10px">{{ artwork.artist }} · {{ artwork.year }} · {{ artwork.tag }}</div>
+        <div class="artwork-modal-titles">
+          <div class="artwork-modal-title">{{ artwork.title }}</div>
+          <div class="artwork-modal-sub">{{ artwork.artist }} · {{ artwork.year }} · {{ artwork.tag }}</div>
         </div>
-        <div style="font:400 14px/1.75 'Archivo',sans-serif;color:#a8a59c;margin-top:22px">{{ artwork.description }}</div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:26px;padding-top:20px;border-top:1px solid rgba(232,224,206,.1)">
-          <span style="font:500 13px 'Archivo',sans-serif;color:var(--ac2,#6BB1B5)">{{ artwork.price }}</span>
-          <span onClick="{{ closeArtwork }}" style="border:1px solid rgba(232,224,206,.24);color:#ECE9E2;padding:10px 22px;border-radius:2px;font:500 12px 'Archivo',sans-serif;letter-spacing:.06em;cursor:pointer;transition:background .25s ease" style-hover="background:rgba(232,224,206,.06)">Close</span>
+        <div class="artwork-modal-desc">{{ artwork.description }}</div>
+        <div class="artwork-modal-foot">
+          <span class="artwork-modal-price">{{ artwork.price }}</span>
+          <span onClick="{{ closeArtwork }}" class="btn-outline">Close</span>
         </div>
       </div>
     </div>
@@ -237,25 +232,25 @@
 </sc-if>
 
 <sc-if value="{{ eventOpen }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ closeEvent }}" style="position:fixed;inset:0;background:rgba(8,9,10,.75);z-index:50;display:flex;align-items:center;justify-content:center;padding:60px">
-    <div onClick="{{ stopProp }}" style="width:100%;max-width:600px;background:#121316;border:1px solid rgba(232,224,206,.1);box-shadow:0 60px 120px rgba(0,0,0,.6);position:relative">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:34px 38px 0">
+  <div onClick="{{ closeEvent }}" class="modal-overlay">
+    <div onClick="{{ stopProp }}" class="modal-box modal-box--event">
+      <div class="event-modal-head">
         <div>
-          <div style="font:11px 'Space Mono',monospace;letter-spacing:.14em;color:var(--ac2,#6BB1B5)">{{ event.tag }}</div>
-          <div style="font:500 30px 'Cormorant Garamond',serif;color:#F3F1EB;margin-top:10px">{{ event.title }}</div>
+          <div class="event-modal-tag">{{ event.tag }}</div>
+          <div class="event-modal-title">{{ event.title }}</div>
         </div>
-        <span onClick="{{ closeEvent }}" style="font:18px 'Archivo',sans-serif;color:#8e8b84;cursor:pointer;transition:color .25s ease" style-hover="color:#ECE9E2">✕</span>
+        <span onClick="{{ closeEvent }}" class="modal-close">✕</span>
       </div>
-      <div style="padding:26px 38px 0">
-        <div style="position:relative;aspect-ratio:16/9;background:url('{{ event.img }}') center/cover no-repeat;border:1px solid rgba(255,255,255,.06)">
-          <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,.14), transparent 72%)"></div>
+      <div class="event-modal-imgpad">
+        <div class="event-modal-img" style="background:url('{{ event.img }}') center/cover no-repeat">
+          <div class="event-modal-imgglow"></div>
         </div>
       </div>
-      <div style="padding:24px 38px 0;font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#8e8b84">{{ event.datetime }} · {{ event.location }}</div>
-      <div style="padding:14px 38px 0;font:400 14px/1.7 'Archivo',sans-serif;color:#a8a59c">{{ event.description }}</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:30px 38px 36px;margin-top:22px;border-top:1px solid rgba(232,224,206,.1)">
-        <span style="font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#6f6d68">{{ event.price }}</span>
-        <span style="background:var(--ac,#27545c);color:#EAF3F3;padding:14px 30px;border-radius:2px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;transition:background .3s;cursor:pointer" style-hover="background:#2f656e">Add to Calendar</span>
+      <div class="event-modal-meta">{{ event.datetime }} · {{ event.location }}</div>
+      <div class="event-modal-desc">{{ event.description }}</div>
+      <div class="event-modal-foot">
+        <span class="event-modal-price">{{ event.price }}</span>
+        <span class="btn-primary btn-primary--cal">Add to Calendar</span>
       </div>
     </div>
   </div>
@@ -288,7 +283,7 @@
     &quot;unit&quot;: &quot;%&quot;,
     &quot;tsType&quot;: &quot;number&quot;,
     &quot;section&quot;: &quot;Atmosphere&quot;,
-    &quot;label&quot;: &quot;Gallery lighting (night \u2192 day)&quot;
+    &quot;label&quot;: &quot;Gallery lighting (night → day)&quot;
   },
   &quot;matting&quot;: {
     &quot;editor&quot;: &quot;enum&quot;,

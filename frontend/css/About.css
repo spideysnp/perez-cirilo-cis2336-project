@@ -1,0 +1,94 @@
+/* =====================================================
+   ArtConnect — About.css
+   About page: intro, feature panel, stats, team grid,
+   and visit sections.
+   ===================================================== */
+
+a { color: #6BB1B5; }
+a:hover { color: #8fc7ca; }
+
+/* ---------- intro ---------- */
+.about-intro {
+  padding: 100px 64px 90px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 80px;
+  align-items: end;
+}
+.about-intro .eyebrow { margin-bottom: 24px; }
+.about-title {
+  font: 500 62px/1.05 'Cormorant Garamond', serif;
+  letter-spacing: -.01em;
+  margin: 0;
+  color: #F3F1EB;
+}
+.about-lede { font: 400 16px/1.75 'Archivo', sans-serif; color: #a8a59c; margin: 0; }
+
+/* ---------- feature panel ---------- */
+.about-panels { padding: 0 64px 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+.about-hall {
+  position: relative;
+  aspect-ratio: 4/3;
+  background: radial-gradient(120% 95% at 50% 32%, #26282d 0%, #15161a 60%, #0e0f12 100%);
+  border: 1px solid rgba(255, 255, 255, .06);
+  overflow: hidden;
+}
+.about-hall-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(58% 46% at 50% 38%, rgba(216, 198, 162, calc(.14 * var(--glow, 1))), transparent 72%);
+}
+.about-hall-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  padding: 0 30px;
+}
+.about-hall-title { font: 500 26px 'Cormorant Garamond', serif; color: #ECE9E2; }
+.about-hall-sub {
+  font: 11px 'Space Mono', monospace;
+  color: rgba(232, 224, 206, .45);
+  letter-spacing: .1em;
+  margin-top: 12px;
+}
+.about-stats-col { display: flex; flex-direction: column; justify-content: center; gap: 36px; }
+.about-stats { display: flex; gap: 34px; }
+.stat-num { font: 500 44px 'Cormorant Garamond', serif; color: #F3F1EB; }
+.stat-label { font: 11px 'Space Mono', monospace; letter-spacing: .1em; color: #6f6d68; margin-top: 8px; }
+.about-note { font: 400 15px/1.75 'Archivo', sans-serif; color: #a8a59c; margin: 0; max-width: 440px; }
+
+/* ---------- team ---------- */
+.about-team { padding: 0 64px 110px; }
+.about-team .eyebrow { margin-bottom: 54px; }
+.team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; }
+.team-photo {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: radial-gradient(120% 95% at 50% 32%, #26282d 0%, #15161a 60%, #0e0f12 100%);
+  border: 1px solid rgba(255, 255, 255, .06);
+}
+.team-photo-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(56% 46% at 50% 38%, rgba(216, 198, 162, calc(.1 * var(--glow, 1))), transparent 72%);
+}
+.team-meta { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(232, 224, 206, .12); }
+.team-name { font: 500 17px 'Cormorant Garamond', serif; color: #ECE9E2; }
+.team-role { font: 11px 'Space Mono', monospace; color: #6f6d68; letter-spacing: .06em; margin-top: 6px; }
+
+/* ---------- visit ---------- */
+.about-visit {
+  padding: 70px 64px 110px;
+  border-top: 1px solid rgba(232, 224, 206, .12);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+.about-visit .eyebrow { margin-bottom: 24px; }
+.visit-addr { font: 500 34px/1.2 'Cormorant Garamond', serif; color: #F3F1EB; margin-bottom: 24px; }
+.visit-hours { font: 400 15px/2 'Archivo', sans-serif; color: #a8a59c; }
+.involve-text { font: 400 15px/1.8 'Archivo', sans-serif; color: #a8a59c; margin: 0 0 26px; }
+.visit-ctas { display: flex; gap: 16px; }

@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/References.css">
 <script src="../js/support.js"></script>
 </head>
 <body>
@@ -10,84 +12,76 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Archivo:wght@400;500;600&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
-<style>
-  body { margin:0; background:#0d0e10; }
-  * { box-sizing:border-box; }
-  ::selection { background:#2a5860; color:#fff; }
-  a { color:#6BB1B5; }
-  a:hover { color:#8fc7ca; }
-</style>
 </helmet>
 
-<div ref="{{ rootRef }}" style="background:#0d0e10;color:#ECE9E2;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;min-width:1100px;overflow-x:hidden">
+<div ref="{{ rootRef }}" class="site">
 
-<section data-screen-label="Reference Page" style="position:relative;background:#0d0e10">
+<section data-screen-label="Reference Page" class="screen screen--bg">
 
   <!-- nav -->
-  <nav style="position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 64px;border-bottom:1px solid rgba(232,224,206,.1)">
-    <div style="font:600 16px 'Archivo',sans-serif;letter-spacing:.36em;color:#ECE9E2">ARTCONNECT</div>
-    <div style="display:flex;align-items:center;gap:34px;font:500 13px 'Archivo',sans-serif;letter-spacing:.02em;color:#a8a59c">
-      <a href="../index.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Home</a>
-      <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
-      <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
-      <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit</a>
-      <a href="./About.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">About</a>
+  <nav class="nav">
+    <div class="nav-brand">ARTCONNECT</div>
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="./Gallery.html" class="nav-link">Gallery</a>
+      <a href="./Events.html" class="nav-link">Events</a>
+      <a href="./Submit.html" class="nav-link">Submit</a>
+      <a href="./About.html" class="nav-link">About</a>
     </div>
   </nav>
 
   <!-- header -->
-  <div style="padding:70px 64px 40px">
-    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:20px">APPENDIX</div>
-    <h1 style="font:500 64px/1 'Cormorant Garamond',serif;margin:0;letter-spacing:-.01em;color:#F3F1EB">References &amp; AI Prompts</h1>
+  <div class="page-head">
+    <div class="eyebrow">APPENDIX</div>
+    <h1 class="refs-title">References &amp; AI Prompts</h1>
   </div>
 
   <!-- reference cards -->
-  <div style="padding:20px 64px 120px;display:flex;flex-direction:column;gap:20px;max-width:900px">
+  <div class="refs-list">
     <sc-for list="{{ refs }}" as="r" hint-placeholder-count="3">
-      <div style="border:1px solid rgba(232,224,206,.14);padding:28px 32px;cursor:pointer;transition:background .3s" onClick="{{ r.toggle }}" style-hover="background:rgba(232,224,206,.03)">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px">
-          <div style="font:500 19px 'Cormorant Garamond',serif;color:#ECE9E2">{{ r.title }}</div>
-          <div style="display:flex;align-items:center;gap:16px;flex-shrink:0">
-            <div style="font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#6f6d68">{{ r.kind }}</div>
-            <span style="font:18px 'Archivo',sans-serif;color:var(--ac2,#6BB1B5)">{{ r.symbol }}</span>
+      <div class="ref-card" onClick="{{ r.toggle }}">
+        <div class="ref-head">
+          <div class="ref-title">{{ r.title }}</div>
+          <div class="ref-kind-wrap">
+            <div class="ref-kind">{{ r.kind }}</div>
+            <span class="ref-symbol">{{ r.symbol }}</span>
           </div>
         </div>
-        <div style="font:400 14px/1.7 'Archivo',sans-serif;color:#a8a59c">{{ r.body }}</div>
+        <div class="ref-body">{{ r.body }}</div>
         <div style="{{ r.detailStyle }}">{{ r.detail }}</div>
       </div>
     </sc-for>
   </div>
 
   <!-- FOOTER -->
-  <footer style="padding:80px 64px 44px;background:#0a0b0c;border-top:1px solid rgba(232,224,206,.1)">
-    <div style="display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap">
-      <div style="max-width:340px">
-        <div style="font:500 38px/1 'Cormorant Garamond',serif;color:#F3F1EB">ArtConnect</div>
-        <p style="font:400 13px/1.7 'Archivo',sans-serif;color:#6f6d68;margin:18px 0 0">A gallery for the city's artists—discover, visit, and collect.</p>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">ArtConnect</div>
+        <p class="footer-tagline">A gallery for the city's artists—discover, visit, and collect.</p>
       </div>
-      <div style="display:flex;gap:70px">
+      <div class="footer-cols">
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">VISIT</div>
-          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
+          <div class="footer-heading">VISIT</div>
+          <div class="footer-text">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
         </div>
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">EXPLORE</div>
-          <div style="display:flex;flex-direction:column;gap:10px;font:400 13px 'Archivo',sans-serif;color:#a8a59c">
-            <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
-            <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
-            <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit work</a>
-            <a href="./FAQ.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">FAQ</a>
-            <a href="./References.html" style="color:#ECE9E2;text-decoration:none;transition:color .25s ease" style-hover="color:#F3F1EB">References</a>
+          <div class="footer-heading">EXPLORE</div>
+          <div class="footer-links">
+            <a href="./Gallery.html" class="footer-link">Gallery</a>
+            <a href="./Events.html" class="footer-link">Events</a>
+            <a href="./Submit.html" class="footer-link">Submit work</a>
+            <a href="./FAQ.html" class="footer-link">FAQ</a>
+            <a href="./References.html" class="footer-link footer-link--active">References</a>
           </div>
         </div>
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">DEVELOPER</div>
-          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">cperez60@uh.edu</a></div>
+          <div class="footer-heading">DEVELOPER</div>
+          <div class="footer-text">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" class="footer-link">cperez60@uh.edu</a></div>
         </div>
       </div>
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:22px;border-top:1px solid rgba(232,224,206,.1);font:10px 'Space Mono',monospace;letter-spacing:.08em;color:#5a5853">
+    <div class="footer-bottom">
       <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
     </div>
   </footer>

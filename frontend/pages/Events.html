@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/Events.css">
 <script src="../js/support.js"></script>
 </head>
 <body>
@@ -10,52 +12,44 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Archivo:wght@400;500;600&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
-<style>
-  body { margin:0; background:#0d0e10; }
-  * { box-sizing:border-box; }
-  ::selection { background:#2a5860; color:#fff; }
-  a { color:#6BB1B5; }
-  a:hover { color:#8fc7ca; }
-</style>
 </helmet>
 
-<div ref="{{ rootRef }}" style="background:#0d0e10;color:#ECE9E2;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;min-width:1100px;overflow-x:hidden">
+<div ref="{{ rootRef }}" class="site">
 
-<section data-screen-label="Events" style="position:relative;background:#0d0e10">
+<section data-screen-label="Events" class="screen screen--bg">
 
   <!-- nav -->
-  <nav style="position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 64px;border-bottom:1px solid rgba(232,224,206,.1)">
-    <div style="font:600 16px 'Archivo',sans-serif;letter-spacing:.36em;color:#ECE9E2">ARTCONNECT</div>
-    <div style="display:flex;align-items:center;gap:34px;font:500 13px 'Archivo',sans-serif;letter-spacing:.02em;color:#a8a59c">
-      <a href="../index.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Home</a>
-      <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
-      <a href="./Events.html" style="color:#ECE9E2;font-weight:600;text-decoration:none;transition:color .25s ease" style-hover="color:#F3F1EB">Events</a>
-      <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit</a>
-      <a href="./About.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">About</a>
+  <nav class="nav">
+    <div class="nav-brand">ARTCONNECT</div>
+    <div class="nav-links">
+      <a href="../index.html" class="nav-link">Home</a>
+      <a href="./Gallery.html" class="nav-link">Gallery</a>
+      <a href="./Events.html" class="nav-link nav-link--active">Events</a>
+      <a href="./Submit.html" class="nav-link">Submit</a>
+      <a href="./About.html" class="nav-link">About</a>
     </div>
   </nav>
 
   <!-- header -->
-  <div style="padding:70px 64px 40px">
-    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:20px">WHAT'S ON</div>
-    <div style="display:flex;align-items:flex-end;justify-content:space-between">
-      <h1 style="font:500 80px/.92 'Cormorant Garamond',serif;margin:0;letter-spacing:-.01em;color:#F3F1EB">Events</h1>
-      <div style="font:12px 'Space Mono',monospace;letter-spacing:.1em;color:#6f6d68;padding-bottom:10px">6 UPCOMING</div>
+  <div class="page-head">
+    <div class="eyebrow">WHAT'S ON</div>
+    <div class="page-title-row">
+      <h1 class="page-title">Events</h1>
+      <div class="page-meta">6 UPCOMING</div>
     </div>
   </div>
 
   <!-- filter bar -->
-  <div style="padding:24px 64px 50px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(232,224,206,.12)">
-    <div style="display:flex;gap:10px;font:500 12px 'Archivo',sans-serif;letter-spacing:.04em">
+  <div class="filter-bar">
+    <div class="filter-group">
       <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
         <span onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</span>
       </sc-for>
     </div>
-    <div style="position:relative">
-      <span onClick="{{ toggleSort }}" style="font:12px 'Space Mono',monospace;letter-spacing:.06em;color:#a8a59c;cursor:pointer;user-select:none">SORT: {{ sortLabel }} ▾</span>
+    <div class="sort-wrap">
+      <span onClick="{{ toggleSort }}" class="sort-toggle">SORT: {{ sortLabel }} ▾</span>
       <sc-if value="{{ sortOpen }}" hint-placeholder-val="{{ false }}">
-        <div style="position:absolute;top:28px;right:0;background:#121316;border:1px solid rgba(232,224,206,.16);box-shadow:0 20px 44px rgba(0,0,0,.5);z-index:10;min-width:140px">
+        <div class="sort-menu">
           <sc-for list="{{ sortOptions }}" as="s" hint-placeholder-count="2">
             <div onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</div>
           </sc-for>
@@ -65,81 +59,81 @@
   </div>
 
   <!-- events list -->
-  <div style="padding:20px 64px 110px">
+  <div class="events-list">
     <sc-for list="{{ visibleEvents }}" as="e" hint-placeholder-count="6">
-      <div onClick="{{ e.onClick }}" style="display:flex;align-items:center;gap:38px;padding:34px 6px;border-bottom:1px solid rgba(232,224,206,.14);transition:background .3s;cursor:pointer" style-hover="background:rgba(232,224,206,.03)">
-        <div style="width:74px;text-align:center;flex-shrink:0">
-          <div style="font:500 40px/1 'Cormorant Garamond',serif;color:#F3F1EB">{{ e.day }}</div>
-          <div style="font:11px 'Space Mono',monospace;letter-spacing:.16em;color:#6f6d68;margin-top:4px">{{ e.mon }}</div>
+      <div onClick="{{ e.onClick }}" class="event-row">
+        <div class="event-date">
+          <div class="event-day">{{ e.day }}</div>
+          <div class="event-mon">{{ e.mon }}</div>
         </div>
-        <div style="width:1px;height:56px;background:rgba(232,224,206,.14)"></div>
-        <div style="position:relative;width:90px;aspect-ratio:4/5;flex-shrink:0;background:url('{{ e.img }}') center/cover no-repeat;border:1px solid rgba(255,255,255,.06)">
-          <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,calc(.13*var(--glow,1))), transparent 72%)"></div>
+        <div class="event-divider"></div>
+        <div class="event-thumb" style="background:url('{{ e.img }}') center/cover no-repeat">
+          <div class="art-glow"></div>
         </div>
-        <div style="flex:1">
-          <div style="font:500 22px 'Cormorant Garamond',serif;color:#ECE9E2">{{ e.title }}</div>
-          <div style="font:11px 'Space Mono',monospace;color:#6f6d68;letter-spacing:.05em;margin-top:8px">{{ e.meta }}</div>
+        <div class="event-info">
+          <div class="event-title">{{ e.title }}</div>
+          <div class="event-meta">{{ e.meta }}</div>
         </div>
-        <span style="font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;border:1px solid rgba(232,224,206,.18);padding:6px 12px;border-radius:2px;flex-shrink:0">{{ e.tag }}</span>
-        <span style="font-size:13px 'Archivo',sans-serif;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;color:#cfccc4;border-bottom:1px solid rgba(232,224,206,.28);padding-bottom:3px;flex-shrink:0">View  →</span>
+        <span class="event-tag">{{ e.tag }}</span>
+        <span class="event-view">View  →</span>
       </div>
     </sc-for>
   </div>
 
   <!-- FOOTER -->
-  <footer style="padding:80px 64px 44px;background:#0a0b0c;border-top:1px solid rgba(232,224,206,.1)">
-    <div style="display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap">
-      <div style="max-width:340px">
-        <div style="font:500 38px/1 'Cormorant Garamond',serif;color:#F3F1EB">ArtConnect</div>
-        <p style="font:400 13px/1.7 'Archivo',sans-serif;color:#6f6d68;margin:18px 0 0">A gallery for the city's artists—discover, visit, and collect.</p>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-logo">ArtConnect</div>
+        <p class="footer-tagline">A gallery for the city's artists—discover, visit, and collect.</p>
       </div>
-      <div style="display:flex;gap:70px">
+      <div class="footer-cols">
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">VISIT</div>
-          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
+          <div class="footer-heading">VISIT</div>
+          <div class="footer-text">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
         </div>
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">EXPLORE</div>
-          <div style="display:flex;flex-direction:column;gap:10px;font:400 13px 'Archivo',sans-serif;color:#a8a59c">
-            <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
-            <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
-            <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit work</a>
-            <a href="./FAQ.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">FAQ</a>
-            <a href="./References.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">References</a>
+          <div class="footer-heading">EXPLORE</div>
+          <div class="footer-links">
+            <a href="./Gallery.html" class="footer-link">Gallery</a>
+            <a href="./Events.html" class="footer-link">Events</a>
+            <a href="./Submit.html" class="footer-link">Submit work</a>
+            <a href="./FAQ.html" class="footer-link">FAQ</a>
+            <a href="./References.html" class="footer-link">References</a>
           </div>
         </div>
         <div>
-          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">DEVELOPER</div>
-          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">cperez60@uh.edu</a></div>
+          <div class="footer-heading">DEVELOPER</div>
+          <div class="footer-text">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" class="footer-link">cperez60@uh.edu</a></div>
         </div>
       </div>
     </div>
-    <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:22px;border-top:1px solid rgba(232,224,206,.1);font:10px 'Space Mono',monospace;letter-spacing:.08em;color:#5a5853">
+    <div class="footer-bottom">
       <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
     </div>
   </footer>
 </section>
 
 <sc-if value="{{ eventOpen }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ closeEvent }}" style="position:fixed;inset:0;background:rgba(8,9,10,.75);z-index:50;display:flex;align-items:center;justify-content:center;padding:60px">
-    <div onClick="{{ stopProp }}" style="width:100%;max-width:600px;background:#121316;border:1px solid rgba(232,224,206,.1);box-shadow:0 60px 120px rgba(0,0,0,.6);position:relative">
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:34px 38px 0">
+  <div onClick="{{ closeEvent }}" class="modal-overlay">
+    <div onClick="{{ stopProp }}" class="modal-box modal-box--event">
+      <div class="event-modal-head">
         <div>
-          <div style="font:11px 'Space Mono',monospace;letter-spacing:.14em;color:var(--ac2,#6BB1B5)">{{ event.tag }}</div>
-          <div style="font:500 30px 'Cormorant Garamond',serif;color:#F3F1EB;margin-top:10px">{{ event.title }}</div>
+          <div class="event-modal-tag">{{ event.tag }}</div>
+          <div class="event-modal-title">{{ event.title }}</div>
         </div>
-        <span onClick="{{ closeEvent }}" style="font:18px 'Archivo',sans-serif;color:#8e8b84;cursor:pointer;transition:color .25s ease" style-hover="color:#ECE9E2">✕</span>
+        <span onClick="{{ closeEvent }}" class="modal-close">✕</span>
       </div>
-      <div style="padding:26px 38px 0">
-        <div style="position:relative;aspect-ratio:16/9;background:url('{{ event.img }}') center/cover no-repeat;border:1px solid rgba(255,255,255,.06)">
-          <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,.14), transparent 72%)"></div>
+      <div class="event-modal-imgpad">
+        <div class="event-modal-img" style="background:url('{{ event.img }}') center/cover no-repeat">
+          <div class="event-modal-imgglow"></div>
         </div>
       </div>
-      <div style="padding:24px 38px 0;font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#8e8b84">{{ event.datetime }} · {{ event.location }}</div>
-      <div style="padding:14px 38px 0;font:400 14px/1.7 'Archivo',sans-serif;color:#a8a59c">{{ event.description }}</div>
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:30px 38px 36px;margin-top:22px;border-top:1px solid rgba(232,224,206,.1)">
-        <span style="font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#6f6d68">{{ event.price }}</span>
-        <span style="background:var(--ac,#27545c);color:#EAF3F3;padding:14px 30px;border-radius:2px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;transition:background .3s;cursor:pointer" style-hover="background:#2f656e">Add to Calendar</span>
+      <div class="event-modal-meta">{{ event.datetime }} · {{ event.location }}</div>
+      <div class="event-modal-desc">{{ event.description }}</div>
+      <div class="event-modal-foot">
+        <span class="event-modal-price">{{ event.price }}</span>
+        <span class="btn-primary btn-primary--cal">Add to Calendar</span>
       </div>
     </div>
   </div>
@@ -172,7 +166,7 @@
     &quot;unit&quot;: &quot;%&quot;,
     &quot;tsType&quot;: &quot;number&quot;,
     &quot;section&quot;: &quot;Atmosphere&quot;,
-    &quot;label&quot;: &quot;Gallery lighting (night \u2192 day)&quot;
+    &quot;label&quot;: &quot;Gallery lighting (night → day)&quot;
   }
 }">
 class Component extends DCLogic {

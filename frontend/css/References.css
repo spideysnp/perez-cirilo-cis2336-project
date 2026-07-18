@@ -1,0 +1,36 @@
+/* =====================================================
+   ArtConnect — References.css
+   References & AI prompts page. Note: the expandable
+   detail panel styles are computed by JavaScript at
+   runtime and intentionally stay inline.
+   ===================================================== */
+
+a { color: #6BB1B5; }
+a:hover { color: #8fc7ca; }
+
+.refs-title {
+  font: 500 64px/1 'Cormorant Garamond', serif;
+  margin: 0;
+  letter-spacing: -.01em;
+  color: #F3F1EB;
+}
+.refs-list {
+  padding: 20px 64px 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 900px;
+}
+.ref-card {
+  border: 1px solid rgba(232, 224, 206, .14);
+  padding: 28px 32px;
+  cursor: pointer;
+  transition: background .3s;
+}
+.ref-card:hover { background: rgba(232, 224, 206, .03); }
+.ref-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
+.ref-title { font: 500 19px 'Cormorant Garamond', serif; color: #ECE9E2; }
+.ref-kind-wrap { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.ref-kind { font: 11px 'Space Mono', monospace; letter-spacing: .08em; color: #6f6d68; }
+.ref-symbol { font: 18px 'Archivo', sans-serif; color: var(--ac2, #6BB1B5); }
+.ref-body { font: 400 14px/1.7 'Archivo', sans-serif; color: #a8a59c; }
