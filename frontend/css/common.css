@@ -5,7 +5,9 @@
    cards, filter bars, modals, and buttons.
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Archivo:wght@400;500;600&family=Space+Mono&display=swap');
+/* Google Fonts are loaded via a <link> tag in each page's <head> (not
+   @import here) so the browser can fetch them in parallel with the rest
+   of the page instead of blocking on this stylesheet first. */
 
 /* ---------- base ---------- */
 body { margin: 0; background: #0d0e10; }
@@ -18,6 +20,13 @@ body { margin: 0; background: #0d0e10; }
   font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   min-width: 1100px;
   overflow-x: hidden;
+  /* theme variables (previously set by the JS runtime at boot) */
+  --ac: #27545c;
+  --ac2: #6BB1B5;
+  --glow: 1;
+  --spot: 0.86;
+  --mat: 1;
+  --matpad: 16px;
 }
 
 .screen { position: relative; }
@@ -65,7 +74,7 @@ body { margin: 0; background: #0d0e10; }
 .page-meta {
   font: 12px 'Space Mono', monospace;
   letter-spacing: .1em;
-  color: #6f6d68;
+  color: #82807a;
   padding-bottom: 10px;
 }
 
@@ -78,6 +87,20 @@ body { margin: 0; background: #0d0e10; }
   border-bottom: 1px solid rgba(232, 224, 206, .12);
 }
 .filter-group { display: flex; gap: 10px; font: 500 12px 'Archivo', sans-serif; letter-spacing: .04em; }
+.pill {
+  border: 1px solid rgba(232, 224, 206, .18);
+  color: #a8a59c;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background .35s ease, color .35s ease, border-color .35s ease;
+}
+.pill--active {
+  background: var(--ac, #27545c);
+  border: none;
+  color: #EAF3F3;
+  cursor: default;
+}
 .sort-wrap { position: relative; }
 .sort-toggle {
   font: 12px 'Space Mono', monospace;
@@ -96,6 +119,15 @@ body { margin: 0; background: #0d0e10; }
   z-index: 10;
   min-width: 140px;
 }
+.sort-option {
+  padding: 12px 18px;
+  font: 12px 'Space Mono', monospace;
+  letter-spacing: .06em;
+  cursor: pointer;
+  color: #a8a59c;
+  background: transparent;
+}
+.sort-option--active { color: #ECE9E2; background: rgba(232, 224, 206, .06); }
 
 /* ---------- artwork cards (Home, Gallery) ---------- */
 .works-grid {
@@ -115,6 +147,16 @@ body { margin: 0; background: #0d0e10; }
 }
 .art-frame:hover { transform: translateY(-7px); box-shadow: 0 36px 70px rgba(0, 0, 0, .55); }
 .art-img { position: absolute; inset: 0; }
+.art-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.art-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transition: transform .5s ease;
+  background: radial-gradient(120% 95% at 50% 32%, #26282d 0%, #15161a 60%, #0e0f12 100%);
+  transform: translateY(0);
+}
+.art-frame:hover .art-cover { transform: translateY(-100%); }
 .art-mat {
   position: absolute;
   inset: var(--matpad, 16px);
@@ -153,13 +195,13 @@ body { margin: 0; background: #0d0e10; }
   border-top: 1px solid rgba(232, 224, 206, .12);
 }
 .work-artist { font: 500 15px 'Archivo', sans-serif; color: #ECE9E2; }
-.work-year { font: 11px 'Space Mono', monospace; color: #6f6d68; letter-spacing: .06em; margin-top: 5px; }
+.work-year { font: 11px 'Space Mono', monospace; color: #82807a; letter-spacing: .06em; margin-top: 5px; }
 .work-price { font: 500 13px 'Archivo', sans-serif; color: var(--ac2, #6BB1B5); }
 
 /* ---------- event date block (Home, Events) ---------- */
 .event-date { width: 74px; text-align: center; flex-shrink: 0; }
 .event-day { font: 500 40px/1 'Cormorant Garamond', serif; color: #F3F1EB; }
-.event-mon { font: 11px 'Space Mono', monospace; letter-spacing: .16em; color: #6f6d68; margin-top: 4px; }
+.event-mon { font: 11px 'Space Mono', monospace; letter-spacing: .16em; color: #82807a; margin-top: 4px; }
 .event-tag {
   font: 11px 'Space Mono', monospace;
   letter-spacing: .1em;
@@ -170,6 +212,10 @@ body { margin: 0; background: #0d0e10; }
 }
 
 /* ---------- modals ---------- */
+.modal-overlay[hidden],
+.sort-menu[hidden],
+.work-card[hidden],
+.event-row[hidden] { display: none; }
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -204,7 +250,7 @@ body { margin: 0; background: #0d0e10; }
 }
 .artwork-modal-titles { text-align: center; margin-top: 26px; }
 .artwork-modal-title { font: 500 28px 'Cormorant Garamond', serif; color: #F3F1EB; }
-.artwork-modal-sub { font: 12px 'Space Mono', monospace; letter-spacing: .06em; color: #6f6d68; margin-top: 10px; }
+.artwork-modal-sub { font: 12px 'Space Mono', monospace; letter-spacing: .06em; color: #82807a; margin-top: 10px; }
 .artwork-modal-desc { font: 400 14px/1.75 'Archivo', sans-serif; color: #a8a59c; margin-top: 22px; }
 .artwork-modal-foot {
   display: flex;
@@ -237,7 +283,7 @@ body { margin: 0; background: #0d0e10; }
   margin-top: 22px;
   border-top: 1px solid rgba(232, 224, 206, .1);
 }
-.event-modal-price { font: 11px 'Space Mono', monospace; letter-spacing: .08em; color: #6f6d68; }
+.event-modal-price { font: 11px 'Space Mono', monospace; letter-spacing: .08em; color: #82807a; }
 
 /* ---------- buttons & links ---------- */
 .btn-primary {
@@ -280,9 +326,9 @@ body { margin: 0; background: #0d0e10; }
 .footer-grid { display: flex; justify-content: space-between; gap: 60px; flex-wrap: wrap; }
 .footer-brand-col { max-width: 340px; }
 .footer-logo { font: 500 38px/1 'Cormorant Garamond', serif; color: #F3F1EB; }
-.footer-tagline { font: 400 13px/1.7 'Archivo', sans-serif; color: #6f6d68; margin: 18px 0 0; }
+.footer-tagline { font: 400 13px/1.7 'Archivo', sans-serif; color: #82807a; margin: 18px 0 0; }
 .footer-cols { display: flex; gap: 70px; }
-.footer-heading { font: 10px 'Space Mono', monospace; letter-spacing: .16em; color: #5a5853; margin-bottom: 16px; }
+.footer-heading { font: 10px 'Space Mono', monospace; letter-spacing: .16em; color: #7f7d76; margin-bottom: 16px; }
 .footer-text { font: 400 13px/2.1 'Archivo', sans-serif; color: #a8a59c; }
 .footer-links { display: flex; flex-direction: column; gap: 10px; font: 400 13px 'Archivo', sans-serif; color: #a8a59c; }
 .footer-link { color: #a8a59c; text-decoration: none; transition: color .25s ease; }
@@ -297,5 +343,5 @@ body { margin: 0; background: #0d0e10; }
   border-top: 1px solid rgba(232, 224, 206, .1);
   font: 10px 'Space Mono', monospace;
   letter-spacing: .08em;
-  color: #5a5853;
+  color: #7f7d76;
 }

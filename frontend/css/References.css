@@ -31,6 +31,27 @@ a:hover { color: #8fc7ca; }
 .ref-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
 .ref-title { font: 500 19px 'Cormorant Garamond', serif; color: #ECE9E2; }
 .ref-kind-wrap { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
-.ref-kind { font: 11px 'Space Mono', monospace; letter-spacing: .08em; color: #6f6d68; }
+.ref-kind { font: 11px 'Space Mono', monospace; letter-spacing: .08em; color: #82807a; }
 .ref-symbol { font: 18px 'Archivo', sans-serif; color: var(--ac2, #6BB1B5); }
 .ref-body { font: 400 14px/1.7 'Archivo', sans-serif; color: #a8a59c; }
+.ref-detail {
+  max-height: 0px;
+  opacity: 0;
+  margin-top: 0px;
+  padding-top: 0px;
+  border-top: 1px solid transparent;
+  font: 400 13px/1.8 'Space Mono', monospace;
+  color: #8e8b84;
+  overflow: hidden;
+  white-space: pre-line;
+  transition: max-height .4s ease, opacity .3s ease, margin-top .4s ease, padding-top .4s ease, border-color .4s ease;
+}
+.ref-card--open .ref-detail {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(232, 224, 206, .12);
+  transition: max-height .4s ease, opacity .35s ease, margin-top .4s ease, padding-top .4s ease, border-color .4s ease;
+}
+.ref-card--open .ref-detail--tall { max-height: 1400px; }

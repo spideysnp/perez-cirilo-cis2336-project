@@ -18,11 +18,30 @@ a:hover { color: #8fc7ca; }
   cursor: pointer;
 }
 .faq-row:hover { background: rgba(232, 224, 206, .03); }
-.faq-q { font: 500 18px 'Cormorant Garamond', serif; }
+.faq-q { font: 500 18px 'Cormorant Garamond', serif; color: #ECE9E2; }
 .faq-symbol {
   font: 20px 'Archivo', sans-serif;
   color: var(--ac2, #6BB1B5);
   flex-shrink: 0;
   margin-left: 20px;
   transition: transform .35s ease;
+  transform: rotate(0deg);
 }
+.faq-answer {
+  max-height: 0px;
+  opacity: 0;
+  padding: 0 6px 0;
+  font: 400 14px/1.75 'Archivo', sans-serif;
+  color: #a8a59c;
+  max-width: 640px;
+  overflow: hidden;
+  transition: max-height .4s ease, opacity .3s ease;
+}
+.faq-item--open .faq-answer {
+  max-height: 240px;
+  opacity: 1;
+  padding: 0 6px 26px;
+  transition: max-height .4s ease, opacity .35s ease;
+}
+.faq-item--open .faq-q { color: #F3F1EB; }
+.faq-item--open .faq-symbol { transform: rotate(45deg); }
