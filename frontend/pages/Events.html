@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Archivo:wght@400;500;600&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#0d0e10; }
+  * { box-sizing:border-box; }
+  ::selection { background:#2a5860; color:#fff; }
+  a { color:#6BB1B5; }
+  a:hover { color:#8fc7ca; }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#0d0e10;color:#ECE9E2;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;min-width:1100px;overflow-x:hidden">
+
+<section data-screen-label="Events" style="position:relative;background:#0d0e10">
+
+  <!-- nav -->
+  <nav style="position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 64px;border-bottom:1px solid rgba(232,224,206,.1)">
+    <div style="font:600 16px 'Archivo',sans-serif;letter-spacing:.36em;color:#ECE9E2">ARTCONNECT</div>
+    <div style="display:flex;align-items:center;gap:34px;font:500 13px 'Archivo',sans-serif;letter-spacing:.02em;color:#a8a59c">
+      <a href="../index.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Home</a>
+      <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
+      <a href="./Events.html" style="color:#ECE9E2;font-weight:600;text-decoration:none;transition:color .25s ease" style-hover="color:#F3F1EB">Events</a>
+      <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit</a>
+      <a href="./About.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">About</a>
+    </div>
+  </nav>
+
+  <!-- header -->
+  <div style="padding:70px 64px 40px">
+    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:20px">WHAT'S ON</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between">
+      <h1 style="font:500 80px/.92 'Cormorant Garamond',serif;margin:0;letter-spacing:-.01em;color:#F3F1EB">Events</h1>
+      <div style="font:12px 'Space Mono',monospace;letter-spacing:.1em;color:#6f6d68;padding-bottom:10px">6 UPCOMING</div>
+    </div>
+  </div>
+
+  <!-- filter bar -->
+  <div style="padding:24px 64px 50px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(232,224,206,.12)">
+    <div style="display:flex;gap:10px;font:500 12px 'Archivo',sans-serif;letter-spacing:.04em">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+        <span onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</span>
+      </sc-for>
+    </div>
+    <div style="position:relative">
+      <span onClick="{{ toggleSort }}" style="font:12px 'Space Mono',monospace;letter-spacing:.06em;color:#a8a59c;cursor:pointer;user-select:none">SORT: {{ sortLabel }} ▾</span>
+      <sc-if value="{{ sortOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;top:28px;right:0;background:#121316;border:1px solid rgba(232,224,206,.16);box-shadow:0 20px 44px rgba(0,0,0,.5);z-index:10;min-width:140px">
+          <sc-for list="{{ sortOptions }}" as="s" hint-placeholder-count="2">
+            <div onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- events list -->
+  <div style="padding:20px 64px 110px">
+    <sc-for list="{{ visibleEvents }}" as="e" hint-placeholder-count="6">
+      <div onClick="{{ e.onClick }}" style="display:flex;align-items:center;gap:38px;padding:34px 6px;border-bottom:1px solid rgba(232,224,206,.14);transition:background .3s;cursor:pointer" style-hover="background:rgba(232,224,206,.03)">
+        <div style="width:74px;text-align:center;flex-shrink:0">
+          <div style="font:500 40px/1 'Cormorant Garamond',serif;color:#F3F1EB">{{ e.day }}</div>
+          <div style="font:11px 'Space Mono',monospace;letter-spacing:.16em;color:#6f6d68;margin-top:4px">{{ e.mon }}</div>
+        </div>
+        <div style="width:1px;height:56px;background:rgba(232,224,206,.14)"></div>
+        <div style="position:relative;width:90px;aspect-ratio:4/5;flex-shrink:0;background:url('{{ e.img }}') center/cover no-repeat;border:1px solid rgba(255,255,255,.06)">
+          <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,calc(.13*var(--glow,1))), transparent 72%)"></div>
+        </div>
+        <div style="flex:1">
+          <div style="font:500 22px 'Cormorant Garamond',serif;color:#ECE9E2">{{ e.title }}</div>
+          <div style="font:11px 'Space Mono',monospace;color:#6f6d68;letter-spacing:.05em;margin-top:8px">{{ e.meta }}</div>
+        </div>
+        <span style="font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;border:1px solid rgba(232,224,206,.18);padding:6px 12px;border-radius:2px;flex-shrink:0">{{ e.tag }}</span>
+        <span style="font-size:13px 'Archivo',sans-serif;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;color:#cfccc4;border-bottom:1px solid rgba(232,224,206,.28);padding-bottom:3px;flex-shrink:0">View  →</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="padding:80px 64px 44px;background:#0a0b0c;border-top:1px solid rgba(232,224,206,.1)">
+    <div style="display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap">
+      <div style="max-width:340px">
+        <div style="font:500 38px/1 'Cormorant Garamond',serif;color:#F3F1EB">ArtConnect</div>
+        <p style="font:400 13px/1.7 'Archivo',sans-serif;color:#6f6d68;margin:18px 0 0">A gallery for the city's artists—discover, visit, and collect.</p>
+      </div>
+      <div style="display:flex;gap:70px">
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">VISIT</div>
+          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
+        </div>
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">EXPLORE</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font:400 13px 'Archivo',sans-serif;color:#a8a59c">
+            <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
+            <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
+            <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit work</a>
+            <a href="./FAQ.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">FAQ</a>
+            <a href="./References.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">References</a>
+          </div>
+        </div>
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">DEVELOPER</div>
+          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">cperez60@uh.edu</a></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:22px;border-top:1px solid rgba(232,224,206,.1);font:10px 'Space Mono',monospace;letter-spacing:.08em;color:#5a5853">
+      <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
+    </div>
+  </footer>
+</section>
+
+<sc-if value="{{ eventOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeEvent }}" style="position:fixed;inset:0;background:rgba(8,9,10,.75);z-index:50;display:flex;align-items:center;justify-content:center;padding:60px">
+    <div onClick="{{ stopProp }}" style="width:100%;max-width:600px;background:#121316;border:1px solid rgba(232,224,206,.1);box-shadow:0 60px 120px rgba(0,0,0,.6);position:relative">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:34px 38px 0">
+        <div>
+          <div style="font:11px 'Space Mono',monospace;letter-spacing:.14em;color:var(--ac2,#6BB1B5)">{{ event.tag }}</div>
+          <div style="font:500 30px 'Cormorant Garamond',serif;color:#F3F1EB;margin-top:10px">{{ event.title }}</div>
+        </div>
+        <span onClick="{{ closeEvent }}" style="font:18px 'Archivo',sans-serif;color:#8e8b84;cursor:pointer;transition:color .25s ease" style-hover="color:#ECE9E2">✕</span>
+      </div>
+      <div style="padding:26px 38px 0">
+        <div style="position:relative;aspect-ratio:16/9;background:url('{{ event.img }}') center/cover no-repeat;border:1px solid rgba(255,255,255,.06)">
+          <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,.14), transparent 72%)"></div>
+        </div>
+      </div>
+      <div style="padding:24px 38px 0;font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#8e8b84">{{ event.datetime }} · {{ event.location }}</div>
+      <div style="padding:14px 38px 0;font:400 14px/1.7 'Archivo',sans-serif;color:#a8a59c">{{ event.description }}</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:30px 38px 36px;margin-top:22px;border-top:1px solid rgba(232,224,206,.1)">
+        <span style="font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#6f6d68">{{ event.price }}</span>
+        <span style="background:var(--ac,#27545c);color:#EAF3F3;padding:14px 30px;border-radius:2px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;transition:background .3s;cursor:pointer" style-hover="background:#2f656e">Add to Calendar</span>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {},
+  &quot;accent&quot;: {
+    &quot;editor&quot;: &quot;color&quot;,
+    &quot;default&quot;: [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
+    &quot;options&quot;: [
+      [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
+      [&quot;#6e4a2c&quot;, &quot;#c79a63&quot;],
+      [&quot;#4e3a5c&quot;, &quot;#a98bc2&quot;],
+      [&quot;#3a5240&quot;, &quot;#8fb79a&quot;]
+    ],
+    &quot;tsType&quot;: &quot;string[]&quot;,
+    &quot;section&quot;: &quot;Theme&quot;,
+    &quot;label&quot;: &quot;Accent palette&quot;
+  },
+  &quot;lighting&quot;: {
+    &quot;editor&quot;: &quot;range&quot;,
+    &quot;default&quot;: 55,
+    &quot;min&quot;: 0,
+    &quot;max&quot;: 100,
+    &quot;step&quot;: 1,
+    &quot;unit&quot;: &quot;%&quot;,
+    &quot;tsType&quot;: &quot;number&quot;,
+    &quot;section&quot;: &quot;Atmosphere&quot;,
+    &quot;label&quot;: &quot;Gallery lighting (night \u2192 day)&quot;
+  }
+}">
+class Component extends DCLogic {
+  state = { active: "All", sort: "soonest", sortOpen: false, event: null };
+  events = [
+    { day: "12", mon: "JUL", title: "Late at the Gallery. Dutch Masters by candlelight.", meta: "19:00 · Main Hall", tag: "EVENING", cat: "Evenings", key: 712, datetime: "12 July · 19:00–22:00", location: "Main Hall", description: "Join us after hours for a candlelit walkthrough of the Dutch Masters collection, with live commentary from our curator and a glass of wine on arrival.", price: "Free · RSVP required", img: "../images/Dutch-Masters-by-Candlelight.jpeg" },
+    { day: "19", mon: "JUL", title: "Artist talk on collecting contemporary work.", meta: "18:30 · Studio 2", tag: "TALK", cat: "Talks", key: 719, datetime: "19 July · 18:30–19:30", location: "Studio 2", description: "A conversation on building a personal collection, with tips for new and seasoned collectors alike.", price: "Free · RSVP required", img: "../images/Artist-Talk-on-Collecting-Contemporary-Work.jpeg" },
+    { day: "02", mon: "AUG", title: "Open submission preview night.", meta: "20:00 · West Wing", tag: "OPENING", cat: "Openings", key: 802, datetime: "02 August · 20:00–23:00", location: "West Wing", description: "A first look at newly submitted works ahead of their public debut, with the artists in attendance.", price: "Free · RSVP required", img: "../images/Open-Submission-Preview-Night.jpeg" },
+    { day: "09", mon: "AUG", title: "Curator walkthrough. Dutch Golden Age.", meta: "17:00 · Main Hall", tag: "TALK", cat: "Talks", key: 809, datetime: "09 August · 17:00–18:00", location: "Main Hall", description: "Our curator leads a guided walkthrough of the Dutch Golden Age gallery, covering technique, provenance, and stories behind the works.", price: "Free · RSVP required", img: "../images/Curator-Walkthrough.jpeg" },
+    { day: "23", mon: "AUG", title: "Late at the Gallery. Jazz & wine evening.", meta: "19:30 · Courtyard", tag: "EVENING", cat: "Evenings", key: 823, datetime: "23 August · 19:30–22:30", location: "Courtyard", description: "An evening of live jazz and wine in the courtyard, surrounded by rotating outdoor sculpture pieces.", price: "$15 · RSVP required", img: "../images/Jazz-and-Wine-Evening.jpeg" },
+    { day: "05", mon: "SEP", title: "New works opening. City painters collective.", meta: "18:00 · West Wing", tag: "OPENING", cat: "Openings", key: 905, datetime: "05 September · 18:00–21:00", location: "West Wing", description: "The opening night for a new group show from the city's painters collective, with several artists in attendance.", price: "Free · RSVP required", img: "../images/New-Works-Opening.webp" },
+  ];
+  renderVals() {
+    const acc = this.props.accent || ["#27545c", "#6BB1B5"];
+    const ac = Array.isArray(acc) ? acc[0] : acc;
+    const ac2 = Array.isArray(acc) ? (acc[1] || acc[0]) : acc;
+    const L = this.props.lighting ?? 55;
+    const vars = {
+      "--ac": ac,
+      "--ac2": ac2,
+      "--glow": (L / 55).toFixed(3),
+    };
+    const rootRef = (el) => {
+      if (!el) return;
+      for (const k in vars) el.style.setProperty(k, vars[k]);
+    };
+    const cats = ["All", "Talks", "Openings", "Evenings"];
+    const filters = cats.map(c => ({
+      label: c,
+      onClick: () => this.setState({ active: c }),
+      style: c === this.state.active
+        ? "background:var(--ac,#27545c);color:#EAF3F3;padding:9px 18px;border-radius:999px;cursor:default;transition:background .35s ease, color .35s ease"
+        : "border:1px solid rgba(232,224,206,.18);color:#a8a59c;padding:9px 18px;border-radius:999px;cursor:pointer;transition:background .35s ease, color .35s ease, border-color .35s ease",
+    }));
+
+    let visibleEvents = this.state.active === "All"
+      ? this.events.slice()
+      : this.events.filter(e => e.cat === this.state.active);
+    visibleEvents.sort((a, b) => this.state.sort === "soonest" ? a.key - b.key : b.key - a.key);
+    visibleEvents = visibleEvents.map(e => ({ ...e, onClick: () => this.setState({ event: e }) }));
+
+    const sortDefs = [
+      { id: "soonest", label: "Soonest" },
+      { id: "latest", label: "Latest" },
+    ];
+    const sortOptions = sortDefs.map(s => ({
+      label: s.label,
+      onClick: () => this.setState({ sort: s.id, sortOpen: false }),
+      style: `padding:12px 18px;font:12px 'Space Mono',monospace;letter-spacing:.06em;cursor:pointer;color:${s.id === this.state.sort ? '#ECE9E2' : '#a8a59c'};background:${s.id === this.state.sort ? 'rgba(232,224,206,.06)' : 'transparent'}`,
+    }));
+
+    return {
+      rootRef,
+      filters,
+      visibleEvents,
+      sortLabel: this.state.sort.toUpperCase(),
+      sortOpen: this.state.sortOpen,
+      sortOptions,
+      toggleSort: () => this.setState(s => ({ sortOpen: !s.sortOpen })),
+      event: this.state.event || {},
+      eventOpen: !!this.state.event,
+      closeEvent: () => this.setState({ event: null }),
+      stopProp: (e) => e.stopPropagation(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

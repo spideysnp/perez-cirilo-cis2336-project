@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Archivo:wght@400;500;600&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#0d0e10; }
+  * { box-sizing:border-box; }
+  ::selection { background:#2a5860; color:#fff; }
+  a { color:#6BB1B5; }
+  a:hover { color:#8fc7ca; }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#0d0e10;color:#ECE9E2;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;min-width:1100px;overflow-x:hidden">
+
+<section data-screen-label="FAQ" style="position:relative;background:#0d0e10">
+
+  <!-- nav -->
+  <nav style="position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 64px;border-bottom:1px solid rgba(232,224,206,.1)">
+    <div style="font:600 16px 'Archivo',sans-serif;letter-spacing:.36em;color:#ECE9E2">ARTCONNECT</div>
+    <div style="display:flex;align-items:center;gap:34px;font:500 13px 'Archivo',sans-serif;letter-spacing:.02em;color:#a8a59c">
+      <a href="../index.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Home</a>
+      <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
+      <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
+      <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit</a>
+      <a href="./About.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">About</a>
+    </div>
+  </nav>
+
+  <!-- header -->
+  <div style="padding:70px 64px 40px">
+    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:20px">SUPPORT</div>
+    <h1 style="font:500 80px/.92 'Cormorant Garamond',serif;margin:0;letter-spacing:-.01em;color:#F3F1EB">FAQ</h1>
+  </div>
+
+  <!-- accordion -->
+  <div style="padding:20px 64px 120px;max-width:900px">
+    <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="6">
+      <div style="border-bottom:1px solid rgba(232,224,206,.14)">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:26px 6px;cursor:pointer" onClick="{{ q.toggle }}" style-hover="background:rgba(232,224,206,.03)">
+          <span style="font:500 18px 'Cormorant Garamond',serif;color:{{ q.titleColor }}">{{ q.question }}</span>
+          <span style="font:20px 'Archivo',sans-serif;color:var(--ac2,#6BB1B5);flex-shrink:0;margin-left:20px;transition:transform .35s ease;{{ q.symbolTransform }}">+</span>
+        </div>
+        <div style="{{ q.answerStyle }}">{{ q.answer }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="padding:80px 64px 44px;background:#0a0b0c;border-top:1px solid rgba(232,224,206,.1)">
+    <div style="display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap">
+      <div style="max-width:340px">
+        <div style="font:500 38px/1 'Cormorant Garamond',serif;color:#F3F1EB">ArtConnect</div>
+        <p style="font:400 13px/1.7 'Archivo',sans-serif;color:#6f6d68;margin:18px 0 0">A gallery for the city's artists—discover, visit, and collect.</p>
+      </div>
+      <div style="display:flex;gap:70px">
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">VISIT</div>
+          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
+        </div>
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">EXPLORE</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font:400 13px 'Archivo',sans-serif;color:#a8a59c">
+            <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
+            <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
+            <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit work</a>
+            <a href="./FAQ.html" style="color:#ECE9E2;text-decoration:none;transition:color .25s ease" style-hover="color:#F3F1EB">FAQ</a>
+            <a href="./References.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">References</a>
+          </div>
+        </div>
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">DEVELOPER</div>
+          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">cperez60@uh.edu</a></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:22px;border-top:1px solid rgba(232,224,206,.1);font:10px 'Space Mono',monospace;letter-spacing:.08em;color:#5a5853">
+      <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
+    </div>
+  </footer>
+</section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {},
+  &quot;accent&quot;: {
+    &quot;editor&quot;: &quot;color&quot;,
+    &quot;default&quot;: [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
+    &quot;options&quot;: [
+      [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
+      [&quot;#6e4a2c&quot;, &quot;#c79a63&quot;],
+      [&quot;#4e3a5c&quot;, &quot;#a98bc2&quot;],
+      [&quot;#3a5240&quot;, &quot;#8fb79a&quot;]
+    ],
+    &quot;tsType&quot;: &quot;string[]&quot;,
+    &quot;section&quot;: &quot;Theme&quot;,
+    &quot;label&quot;: &quot;Accent palette&quot;
+  }
+}">
+class Component extends DCLogic {
+  state = { open: 1 };
+  renderVals() {
+    const acc = this.props.accent || ["#27545c", "#6BB1B5"];
+    const ac = Array.isArray(acc) ? acc[0] : acc;
+    const ac2 = Array.isArray(acc) ? (acc[1] || acc[0]) : acc;
+    const vars = { "--ac": ac, "--ac2": ac2 };
+    const rootRef = (el) => { if (!el) return; for (const k in vars) el.style.setProperty(k, vars[k]); };
+    const items = [
+      { question: "How do I submit my artwork?", answer: "Fill out the Submit form with your details, category, and images. Our curators review every piece within two weeks." },
+      { question: "Is there a submission fee?", answer: "No. Submission and first-sale listing are free. We only ask that you keep your profile and pricing up to date." },
+      { question: "Can I sell my work through ArtConnect?", answer: "Yes. Mark a piece for sale with a price, or list it as \"Not for sale\" if it's for display only." },
+      { question: "Do you take a commission?", answer: "We take a modest 10% commission on sales made through the gallery, waived entirely on an artist's first sale." },
+      { question: "How do I attend an event?", answer: "RSVP from the Events page — most evenings are free, some ticketed events note a price at checkout." },
+      { question: "Can I visit without an appointment?", answer: "Yes, we're open to walk-ins Tuesday–Sunday, 11:00–18:00. Group visits of six or more should book ahead." },
+    ];
+    const faqs = items.map((it, i) => {
+      const open = this.state.open === i;
+      return {
+        question: it.question,
+        answer: it.answer,
+        titleColor: open ? "#F3F1EB" : "#ECE9E2",
+        symbolTransform: open ? "transform:rotate(45deg)" : "transform:rotate(0deg)",
+        answerStyle: open
+          ? "max-height:240px;opacity:1;padding:0 6px 26px;font:400 14px/1.75 'Archivo',sans-serif;color:#a8a59c;max-width:640px;overflow:hidden;transition:max-height .4s ease, opacity .35s ease"
+          : "max-height:0px;opacity:0;padding:0 6px 0;font:400 14px/1.75 'Archivo',sans-serif;color:#a8a59c;max-width:640px;overflow:hidden;transition:max-height .4s ease, opacity .3s ease",
+        toggle: () => this.setState(s => ({ open: s.open === i ? -1 : i })),
+      };
+    });
+    return { rootRef, faqs };
+  }
+}
+
+</script>
+</body>
+</html>

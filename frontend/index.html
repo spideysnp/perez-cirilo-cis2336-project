@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Archivo:wght@400;500;600&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#0d0e10; }
+  * { box-sizing:border-box; }
+  ::selection { background:#2a5860; color:#fff; }
+  @keyframes hf { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#0d0e10;color:#ECE9E2;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;min-width:1100px;overflow-x:hidden">
+
+
+
+<!-- =================== SCREEN 01 · HOMEPAGE =================== -->
+<section data-screen-label="Homepage" style="position:relative">
+
+  <!-- HERO -->
+  <div style="position:relative;height:100vh;min-height:780px;overflow:hidden;background:#0d0e10">
+
+    <div style="position:absolute;top:0;left:0;right:0;height:82%;background:radial-gradient(120% 120% at 72% 30%, #1d1f24 0%, #121316 32%, rgba(13,14,16,0) 72%);opacity:var(--spot,1);pointer-events:none"></div>
+
+    <nav style="position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 64px;background:#0d0e10;border-bottom:1px solid rgba(232,224,206,.1)">
+      <div style="font:600 16px 'Archivo',sans-serif;letter-spacing:.36em;color:#ECE9E2">ARTCONNECT</div>
+      <div style="display:flex;align-items:center;gap:34px;font:500 13px 'Archivo',sans-serif;letter-spacing:.02em;color:#a8a59c">
+        <a href="./index.html" style="color:#ECE9E2;font-weight:600;text-decoration:none;transition:color .25s ease" style-hover="color:#F3F1EB">Home</a>
+        <a href="./pages/Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
+        <a href="./pages/Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
+        <a href="./pages/Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit</a>
+        <a href="./pages/About.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">About</a>
+      </div>
+    </nav>
+
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,12,14,.94) 0%, rgba(11,12,14,.6) 38%, transparent 64%); overflow: visible"></div>
+    <div onClick="{{ openNightWatch }}" onMouseEnter="{{ nightWatchEnter }}" onMouseLeave="{{ nightWatchLeave }}" style="position:absolute;top:50%;right:7%;transform:translateY(-50%);width:38%;max-width:500px;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.07);box-shadow:0 50px 110px rgba(0,0,0,.65);overflow:hidden;cursor:pointer">
+      <div ref="{{ nightWatchSlotRef }}" style="position:absolute;inset:0;background:url('./images/Van-Rijn-1642.jpg') center/cover no-repeat"></div>
+      <div style="{{ nightWatchCoverStyle }}">
+        <div style="position:absolute;inset:var(--matpad,16px);border:1px solid rgba(232,224,206,calc(.10*var(--mat,1)))"></div>
+        <div style="position:absolute;inset:0;background:radial-gradient(58% 46% at 50% 36%, rgba(216,198,162,calc(.16*var(--glow,1))), transparent 72%)"></div>
+        <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 30px">
+          <div style="font:500 40px 'Cormorant Garamond',serif;color:#ECE9E2;line-height:1.05">The Night Watch</div>
+          <div style="font:11px 'Space Mono',monospace;color:rgba(232,224,206,.5);letter-spacing:.1em;margin-top:14px">REMBRANDT VAN RIJN · 1642</div>
+        </div>
+        <span style="position:absolute;top:16px;left:18px;font:10px 'Space Mono',monospace;color:rgba(232,224,206,.34);letter-spacing:.1em">RIJKS · PD</span>
+      </div>
+    </div>
+
+    <div style="position:absolute;left:64px;bottom:13%;max-width:600px;animation:hf .9s .1s both ease-out">
+      <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:24px">ARTCONNECT — NOW ON VIEW UNTIL 14 SEPT</div>
+      <h1 style="font:500 74px/1.0 'Cormorant Garamond',serif;letter-spacing:-.01em;margin:0;color:#F3F1EB">Where the city's art comes to light.</h1>
+      <p style="font:400 16px/1.7 'Archivo',sans-serif;color:#a8a59c;max-width:440px;margin:26px 0 34px">A living gallery of work from artists across the city. On view, for sale, and in person.</p>
+      <div style="display:flex;align-items:center;gap:16px">
+        <a href="./pages/Gallery.html" style="background:var(--ac,#27545c);color:#EAF3F3;padding:15px 28px;border-radius:2px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;text-decoration:none;transition:background .3s" style-hover="background:#2f656e">Enter the gallery  →</a>
+        <a href="./pages/Events.html" style="color:#cfccc4;padding:15px 8px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;border-bottom:1px solid rgba(232,224,206,.28);text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Upcoming events</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED WORKS -->
+  <div style="padding:110px 64px 90px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:54px">
+      <div>
+        <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:16px">FEATURED WORKS</div>
+        <h2 style="font:500 46px/1 'Cormorant Garamond',serif;margin:0;color:#F3F1EB">Currently on the walls</h2>
+      </div>
+      <a href="./pages/Gallery.html" style="font:500 13px 'Archivo',sans-serif;letter-spacing:.04em;color:#a8a59c;border-bottom:1px solid rgba(232,224,206,.22);padding-bottom:4px;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">View all {{ worksCount }} works  →</a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:34px">
+      <sc-for list="{{ featured }}" as="w" hint-placeholder-count="3">
+        <div onClick="{{ w.onClick }}" style="cursor:pointer">
+          <div onMouseEnter="{{ w.onMouseEnter }}" onMouseLeave="{{ w.onMouseLeave }}" style="position:relative;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:transform .5s ease, box-shadow .5s ease" style-hover="transform:translateY(-7px);box-shadow:0 36px 70px rgba(0,0,0,.55)">
+            <div ref="{{ w.slotRef }}" style="position:absolute;inset:0;background:url('{{ w.img }}') center/cover no-repeat"></div>
+            <div style="{{ w.coverStyle }}">
+              <div style="position:absolute;inset:var(--matpad,16px);border:1px solid rgba(232,224,206,calc(.10*var(--mat,1)))"></div>
+              <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,calc(.13*var(--glow,1))), transparent 72%)"></div>
+              <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 22px">
+                <div style="font:500 30px/1.08 'Cormorant Garamond',serif;color:#ECE9E2">{{ w.title }}</div>
+              </div>
+              <span style="position:absolute;top:14px;left:16px;font:10px 'Space Mono',monospace;color:rgba(232,224,206,.32);letter-spacing:.1em">RIJKS · PD</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid rgba(232,224,206,.12)">
+            <div>
+              <div style="font:500 15px 'Archivo',sans-serif;color:#ECE9E2">{{ w.artist }}</div>
+              <div style="font:11px 'Space Mono',monospace;color:#6f6d68;letter-spacing:.06em;margin-top:5px">{{ w.year }} · {{ w.tag }}</div>
+            </div>
+            <div style="font:500 13px 'Archivo',sans-serif;color:var(--ac2,#6BB1B5)">{{ w.price }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- UPCOMING EVENTS -->
+  <div style="padding:30px 64px 110px;background:#0d0e10">
+    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:30px">UPCOMING EVENTS</div>
+    <div style="border-top:1px solid rgba(232,224,206,.14)">
+      <sc-for list="{{ events }}" as="e" hint-placeholder-count="3">
+        <div onClick="{{ e.onClick }}" style="display:flex;align-items:center;gap:38px;padding:30px 6px;border-bottom:1px solid rgba(232,224,206,.14);transition:background .3s;cursor:pointer" style-hover="background:rgba(232,224,206,.03)">
+          <div style="width:74px;text-align:center;flex-shrink:0">
+            <div style="font:500 40px/1 'Cormorant Garamond',serif;color:#F3F1EB">{{ e.day }}</div>
+            <div style="font:11px 'Space Mono',monospace;letter-spacing:.16em;color:#6f6d68;margin-top:4px">{{ e.mon }}</div>
+          </div>
+          <div style="width:1px;height:46px;background:rgba(232,224,206,.14)"></div>
+          <div style="flex:1">
+            <div style="font:500 19px 'Cormorant Garamond',serif;color:#ECE9E2">{{ e.title }}</div>
+            <div style="font:11px 'Space Mono',monospace;color:#6f6d68;letter-spacing:.05em;margin-top:7px">{{ e.meta }}</div>
+          </div>
+          <span style="font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;border:1px solid rgba(232,224,206,.18);padding:6px 12px;border-radius:2px">{{ e.tag }}</span>
+          <span style="font-size:18px;color:var(--ac2,#6BB1B5)">→</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+</section>
+
+<!-- =================== SCREEN 02 · GALLERY =================== -->
+<section data-screen-label="Gallery" style="position:relative;background:#0d0e10">
+
+  <div style="padding:70px 64px 40px">
+    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:20px">THE COLLECTION</div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-between">
+      <h1 style="font:500 80px/.92 'Cormorant Garamond',serif;margin:0;letter-spacing:-.01em;color:#F3F1EB">Gallery</h1>
+      <div style="font:12px 'Space Mono',monospace;letter-spacing:.1em;color:#6f6d68;padding-bottom:10px">{{ worksCount }} WORKS · {{ artistsCount }} ARTISTS</div>
+    </div>
+  </div>
+
+  <div style="padding:24px 64px 50px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(232,224,206,.12)">
+    <div style="display:flex;gap:10px;font:500 12px 'Archivo',sans-serif;letter-spacing:.04em">
+      <sc-for list="{{ galFilters }}" as="f" hint-placeholder-count="5">
+        <span onClick="{{ f.onClick }}" style="{{ f.style }}">{{ f.label }}</span>
+      </sc-for>
+    </div>
+    <div style="position:relative">
+      <span onClick="{{ toggleGalSort }}" style="font:12px 'Space Mono',monospace;letter-spacing:.06em;color:#a8a59c;cursor:pointer;user-select:none">SORT: {{ galSortLabel }} ▾</span>
+      <sc-if value="{{ galSortOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;top:28px;right:0;background:#121316;border:1px solid rgba(232,224,206,.16);box-shadow:0 20px 44px rgba(0,0,0,.5);z-index:10;min-width:140px">
+          <sc-for list="{{ galSortOptions }}" as="s" hint-placeholder-count="2">
+            <div onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <div style="padding: 50px 64px 110px; display: grid; grid-template-columns: repeat(3,1fr); gap: 34px 34px; background: linear-gradient(0deg, #0A0B0B, #0D0E10)">
+    <sc-for list="{{ visibleWorks }}" as="w" hint-placeholder-count="9">
+      <div onClick="{{ w.onClick }}" style="cursor:pointer">
+        <div onMouseEnter="{{ w.onMouseEnter }}" onMouseLeave="{{ w.onMouseLeave }}" style="position:relative;aspect-ratio:4/5;border:1px solid rgba(255,255,255,.06);overflow:hidden;transition:transform .5s ease, box-shadow .5s ease" style-hover="transform:translateY(-7px);box-shadow:0 36px 70px rgba(0,0,0,.55)">
+          <div ref="{{ w.slotRef }}" style="position:absolute;inset:0;background:url('{{ w.img }}') center/cover no-repeat"></div>
+          <div style="{{ w.coverStyle }}">
+            <div style="position:absolute;inset:var(--matpad,16px);border:1px solid rgba(232,224,206,calc(.10*var(--mat,1)))"></div>
+            <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,calc(.13*var(--glow,1))), transparent 72%)"></div>
+            <div style="position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center;padding:0 22px">
+              <div style="font:500 28px/1.1 'Cormorant Garamond',serif;color:#ECE9E2">{{ w.title }}</div>
+            </div>
+            <span style="position:absolute;top:14px;left:16px;font:10px 'Space Mono',monospace;color:rgba(232,224,206,.32);letter-spacing:.1em">RIJKS · PD</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px solid rgba(232,224,206,.12)">
+          <div>
+            <div style="font:500 15px 'Archivo',sans-serif;color:#ECE9E2">{{ w.artist }}</div>
+            <div style="font:11px 'Space Mono',monospace;color:#6f6d68;letter-spacing:.06em;margin-top:5px">{{ w.year }} · {{ w.tag }}</div>
+          </div>
+          <div style="font:500 13px 'Archivo',sans-serif;color:var(--ac2,#6BB1B5)">{{ w.price }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="padding:80px 64px 44px;background:#0a0b0c;border-top:1px solid rgba(232,224,206,.1)">
+    <div style="display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap">
+      <div style="max-width:340px">
+        <div style="font:500 38px/1 'Cormorant Garamond',serif;color:#F3F1EB">ArtConnect</div>
+        <p style="font:400 13px/1.7 'Archivo',sans-serif;color:#6f6d68;margin:18px 0 0">A gallery for the city's artists—discover, visit, and collect.</p>
+      </div>
+      <div style="display:flex;gap:70px">
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">VISIT</div>
+          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
+        </div>
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">EXPLORE</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font:400 13px 'Archivo',sans-serif;color:#a8a59c">
+            <a href="./pages/Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
+            <a href="./pages/Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
+            <a href="./pages/Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit work</a>
+            <a href="./pages/FAQ.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">FAQ</a>
+            <a href="./pages/References.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">References</a>
+          </div>
+        </div>
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">DEVELOPER</div>
+          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">cperez60@uh.edu</a></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:22px;border-top:1px solid rgba(232,224,206,.1);font:10px 'Space Mono',monospace;letter-spacing:.08em;color:#5a5853">
+      <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
+    </div>
+  </footer>
+</section>
+
+<sc-if value="{{ artworkOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeArtwork }}" style="position:fixed;inset:0;background:rgba(8,9,10,.75);z-index:50;display:flex;align-items:center;justify-content:center;padding:60px">
+    <div onClick="{{ stopProp }}" style="width:100%;max-width:640px;background:#121316;border:1px solid rgba(232,224,206,.1);box-shadow:0 60px 120px rgba(0,0,0,.6);position:relative">
+      <span onClick="{{ closeArtwork }}" style="position:absolute;top:20px;right:24px;font:18px 'Archivo',sans-serif;color:#8e8b84;cursor:pointer;transition:color .25s ease" style-hover="color:#ECE9E2">✕</span>
+      <div style="padding:40px">
+        <div style="position:relative;aspect-ratio:4/5;max-width:280px;margin:0 auto;border:1px solid rgba(255,255,255,.06)">
+          <div ref="{{ artworkSlotRef }}" style="position:absolute;inset:0;background:url('{{ artwork.img }}') center/cover no-repeat"></div>
+        </div>
+        <div style="text-align:center;margin-top:26px">
+          <div style="font:500 28px 'Cormorant Garamond',serif;color:#F3F1EB">{{ artwork.title }}</div>
+          <div style="font:12px 'Space Mono',monospace;letter-spacing:.06em;color:#6f6d68;margin-top:10px">{{ artwork.artist }} · {{ artwork.year }} · {{ artwork.tag }}</div>
+        </div>
+        <div style="font:400 14px/1.75 'Archivo',sans-serif;color:#a8a59c;margin-top:22px">{{ artwork.description }}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:26px;padding-top:20px;border-top:1px solid rgba(232,224,206,.1)">
+          <span style="font:500 13px 'Archivo',sans-serif;color:var(--ac2,#6BB1B5)">{{ artwork.price }}</span>
+          <span onClick="{{ closeArtwork }}" style="border:1px solid rgba(232,224,206,.24);color:#ECE9E2;padding:10px 22px;border-radius:2px;font:500 12px 'Archivo',sans-serif;letter-spacing:.06em;cursor:pointer;transition:background .25s ease" style-hover="background:rgba(232,224,206,.06)">Close</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ eventOpen }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ closeEvent }}" style="position:fixed;inset:0;background:rgba(8,9,10,.75);z-index:50;display:flex;align-items:center;justify-content:center;padding:60px">
+    <div onClick="{{ stopProp }}" style="width:100%;max-width:600px;background:#121316;border:1px solid rgba(232,224,206,.1);box-shadow:0 60px 120px rgba(0,0,0,.6);position:relative">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;padding:34px 38px 0">
+        <div>
+          <div style="font:11px 'Space Mono',monospace;letter-spacing:.14em;color:var(--ac2,#6BB1B5)">{{ event.tag }}</div>
+          <div style="font:500 30px 'Cormorant Garamond',serif;color:#F3F1EB;margin-top:10px">{{ event.title }}</div>
+        </div>
+        <span onClick="{{ closeEvent }}" style="font:18px 'Archivo',sans-serif;color:#8e8b84;cursor:pointer;transition:color .25s ease" style-hover="color:#ECE9E2">✕</span>
+      </div>
+      <div style="padding:26px 38px 0">
+        <div style="position:relative;aspect-ratio:16/9;background:url('{{ event.img }}') center/cover no-repeat;border:1px solid rgba(255,255,255,.06)">
+          <div style="position:absolute;inset:0;background:radial-gradient(56% 46% at 50% 38%, rgba(216,198,162,.14), transparent 72%)"></div>
+        </div>
+      </div>
+      <div style="padding:24px 38px 0;font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#8e8b84">{{ event.datetime }} · {{ event.location }}</div>
+      <div style="padding:14px 38px 0;font:400 14px/1.7 'Archivo',sans-serif;color:#a8a59c">{{ event.description }}</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:30px 38px 36px;margin-top:22px;border-top:1px solid rgba(232,224,206,.1)">
+        <span style="font:11px 'Space Mono',monospace;letter-spacing:.08em;color:#6f6d68">{{ event.price }}</span>
+        <span style="background:var(--ac,#27545c);color:#EAF3F3;padding:14px 30px;border-radius:2px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;transition:background .3s;cursor:pointer" style-hover="background:#2f656e">Add to Calendar</span>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {},
+  &quot;accent&quot;: {
+    &quot;editor&quot;: &quot;color&quot;,
+    &quot;default&quot;: [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
+    &quot;options&quot;: [
+      [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
+      [&quot;#6e4a2c&quot;, &quot;#c79a63&quot;],
+      [&quot;#4e3a5c&quot;, &quot;#a98bc2&quot;],
+      [&quot;#3a5240&quot;, &quot;#8fb79a&quot;]
+    ],
+    &quot;tsType&quot;: &quot;string[]&quot;,
+    &quot;section&quot;: &quot;Theme&quot;,
+    &quot;label&quot;: &quot;Accent palette&quot;
+  },
+  &quot;lighting&quot;: {
+    &quot;editor&quot;: &quot;range&quot;,
+    &quot;default&quot;: 55,
+    &quot;min&quot;: 0,
+    &quot;max&quot;: 100,
+    &quot;step&quot;: 1,
+    &quot;unit&quot;: &quot;%&quot;,
+    &quot;tsType&quot;: &quot;number&quot;,
+    &quot;section&quot;: &quot;Atmosphere&quot;,
+    &quot;label&quot;: &quot;Gallery lighting (night \u2192 day)&quot;
+  },
+  &quot;matting&quot;: {
+    &quot;editor&quot;: &quot;enum&quot;,
+    &quot;default&quot;: &quot;Matted&quot;,
+    &quot;options&quot;: [&quot;Matted&quot;, &quot;Full bleed&quot;],
+    &quot;tsType&quot;: &quot;string&quot;,
+    &quot;section&quot;: &quot;Artworks&quot;,
+    &quot;label&quot;: &quot;Frame matting&quot;
+  }
+}">
+class Component extends DCLogic {
+  state = {
+    galActive: "All", galSort: "recent", galSortOpen: false,
+    artwork: null, event: null,
+    hoverKey: null, nightWatchHover: false,
+  };
+  featuredRaw = [
+    { title: "The Milkmaid", artist: "Johannes Vermeer", year: "c. 1660", tag: "Painting", price: "On view", sortKey: 1660, img: "./images/Vermeer-1660.jpg" },
+    { title: "Self-Portrait", artist: "Vincent van Gogh", year: "1887", tag: "Painting", price: "Not for sale", sortKey: 1887, img: "./images/Van-Gogh-1887.jpg" },
+    { title: "The Threatened Swan", artist: "Jan Asselijn", year: "c. 1650", tag: "Painting", price: "$6,800", sortKey: 1650, img: "./images/Asselijn-1650.jpg" },
+  ];
+  works = [
+    { title: "The Night Watch", artist: "Rembrandt van Rijn", year: "1642", tag: "Painting", price: "Not for sale", sortKey: 1642, img: "./images/Van-Rijn-1642.jpg" },
+    { title: "Still Life with Flowers", artist: "Hans Bollongier", year: "1639", tag: "Painting", price: "$4,200", sortKey: 1639, img: "./images/Bollongier-1639.jpg" },
+    { title: "Winter Landscape", artist: "Hendrick Avercamp", year: "c. 1608", tag: "Painting", price: "$3,100", sortKey: 1608, img: "./images/Avercamp-1608.jpg" },
+    { title: "The Milkmaid", artist: "Johannes Vermeer", year: "c. 1660", tag: "Painting", price: "On view", sortKey: 1660, img: "./images/Vermeer-1660.jpg" },
+    { title: "Woman Reading a Letter", artist: "Johannes Vermeer", year: "c. 1663", tag: "Painting", price: "$5,600", sortKey: 1663, img: "./images/Vermeer-1663.jpg" },
+    { title: "River Landscape", artist: "Salomon van Ruysdael", year: "1631", tag: "Painting", price: "$2,400", sortKey: 1631, img: "./images/Van-Ruysdael-1631.jpg" },
+    { title: "Self-Portrait", artist: "Vincent van Gogh", year: "1887", tag: "Painting", price: "Not for sale", sortKey: 1887, img: "./images/Van-Gogh-1887.jpg" },
+    { title: "Portrait of a Couple", artist: "Frans Hals", year: "c. 1622", tag: "Painting", price: "$3,900", sortKey: 1622, img: "./images/Hals-1622.jpg" },
+    { title: "The Threatened Swan", artist: "Jan Asselijn", year: "c. 1650", tag: "Painting", price: "$6,800", sortKey: 1650, img: "./images/Asselijn-1650.jpg" },
+  ];
+  eventsRaw = [
+    { day: "12", mon: "JUL", title: "Late at the Gallery. Dutch Masters by candlelight.", meta: "19:00 · Main Hall", tag: "EVENING", datetime: "12 July · 19:00–22:00", location: "Main Hall", description: "Join us after hours for a candlelit walkthrough of the Dutch Masters collection, with live commentary from our curator and a glass of wine on arrival.", price: "Free · RSVP required", img: "./images/Dutch-Masters-by-Candlelight.jpeg" },
+    { day: "19", mon: "JUL", title: "Artist talk. On collecting contemporary work.", meta: "18:30 · Studio 2", tag: "TALK", datetime: "19 July · 18:30–19:30", location: "Studio 2", description: "A conversation on building a personal collection, with tips for new and seasoned collectors alike.", price: "Free · RSVP required", img: "./images/Artist-Talk-on-Collecting-Contemporary-Work.jpeg" },
+    { day: "02", mon: "AUG", title: "Open submission preview night.", meta: "20:00 · West Wing", tag: "OPENING", datetime: "02 August · 20:00–23:00", location: "West Wing", description: "A first look at newly submitted works ahead of their public debut, with the artists in attendance.", price: "Free · RSVP required", img: "./images/Open-Submission-Preview-Night.jpeg" },
+  ];
+  renderVals() {
+    const acc = this.props.accent || ["#27545c", "#6BB1B5"];
+    const ac = Array.isArray(acc) ? acc[0] : acc;
+    const ac2 = Array.isArray(acc) ? (acc[1] || acc[0]) : acc;
+    const L = this.props.lighting ?? 55;
+    const matted = (this.props.matting ?? "Matted") !== "Full bleed";
+    const vars = {
+      "--ac": ac,
+      "--ac2": ac2,
+      "--glow": (L / 55).toFixed(3),
+      "--spot": (0.5 + (100 - L) / 100 * 0.8).toFixed(3),
+      "--mat": matted ? "1" : "0",
+      "--matpad": matted ? "16px" : "0px",
+    };
+    const rootRef = (el) => {
+      if (!el) return;
+      for (const k in vars) el.style.setProperty(k, vars[k]);
+    };
+
+    const withDesc = (w) => w.description || `A ${w.tag.toLowerCase()} by ${w.artist}, ${w.year}. On display now in the main hall.`;
+    const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+    const coverBase = "position:absolute;inset:0;z-index:2;transition:transform .5s ease;background:radial-gradient(120% 95% at 50% 32%, #26282d 0%, #15161a 60%, #0e0f12 100%);";
+    const hoverProps = (key) => ({
+      onMouseEnter: () => this.setState({ hoverKey: key }),
+      onMouseLeave: () => this.setState(s => (s.hoverKey === key ? { hoverKey: null } : null)),
+      coverStyle: coverBase + (this.state.hoverKey === key ? "transform:translateY(-100%)" : "transform:translateY(0)"),
+    });
+    const slotRef = (slug) => (el) => { if (el) el.id = "art-" + slug; };
+    const featured = this.featuredRaw.map(w => ({ ...w, slug: slugify(w.title), slotRef: slotRef(slugify(w.title)), description: withDesc(w), onClick: () => this.setState({ artwork: w }), ...hoverProps("feat-" + w.title) }));
+
+    const galCats = ["All", "Painting", "Sculpture", "Photography", "Print"];
+    const galFilters = galCats.map(c => ({
+      label: c,
+      onClick: () => this.setState({ galActive: c }),
+      style: c === this.state.galActive
+        ? "background:var(--ac,#27545c);color:#EAF3F3;padding:9px 18px;border-radius:999px;cursor:default;transition:background .35s ease, color .35s ease"
+        : "border:1px solid rgba(232,224,206,.18);color:#a8a59c;padding:9px 18px;border-radius:999px;cursor:pointer;transition:background .35s ease, color .35s ease, border-color .35s ease",
+    }));
+    let visibleWorks = this.state.galActive === "All" ? this.works.slice() : this.works.filter(w => w.tag === this.state.galActive);
+    visibleWorks.sort((a, b) => this.state.galSort === "recent" ? b.sortKey - a.sortKey : a.sortKey - b.sortKey);
+    visibleWorks = visibleWorks.map(w => ({ ...w, slug: slugify(w.title), slotRef: slotRef(slugify(w.title)), description: withDesc(w), onClick: () => this.setState({ artwork: w }), ...hoverProps("gal-" + w.title + w.sortKey) }));
+
+    const galSortDefs = [{ id: "recent", label: "Recent" }, { id: "oldest", label: "Oldest" }];
+    const galSortOptions = galSortDefs.map(s => ({
+      label: s.label,
+      onClick: () => this.setState({ galSort: s.id, galSortOpen: false }),
+      style: `padding:12px 18px;font:12px 'Space Mono',monospace;letter-spacing:.06em;cursor:pointer;color:${s.id === this.state.galSort ? '#ECE9E2' : '#a8a59c'};background:${s.id === this.state.galSort ? 'rgba(232,224,206,.06)' : 'transparent'}`,
+    }));
+
+    const events = this.eventsRaw.map(e => ({ ...e, onClick: () => this.setState({ event: e }) }));
+    const nightWatch = { title: "The Night Watch", artist: "Rembrandt van Rijn", year: "1642", tag: "Painting", price: "Not for sale", description: "Rembrandt's monumental militia portrait, on loan and displayed in the main hall spotlight.", slug: "the-night-watch", img: "./images/Van-Rijn-1642.jpg" };
+
+    return {
+      rootRef,
+      galFilters,
+      visibleWorks,
+      openNightWatch: () => this.setState({ artwork: nightWatch }),
+      nightWatchSlotRef: (el) => { if (el) el.id = "art-the-night-watch"; },
+      nightWatchEnter: () => this.setState({ nightWatchHover: true }),
+      nightWatchLeave: () => this.setState({ nightWatchHover: false }),
+      nightWatchCoverStyle: "position:absolute;inset:0;z-index:2;transition:transform .5s ease;background:radial-gradient(120% 95% at 50% 30%, #2c2e34 0%, #17181b 58%, #0d0e10 100%);" + (this.state.nightWatchHover ? "transform:translateY(-100%)" : "transform:translateY(0)"),
+      worksCount: this.works.length,
+      artistsCount: new Set(this.works.map(w => w.artist)).size,
+      galSortLabel: this.state.galSort.toUpperCase(),
+      galSortOpen: this.state.galSortOpen,
+      galSortOptions,
+      toggleGalSort: () => this.setState(s => ({ galSortOpen: !s.galSortOpen })),
+      featured,
+      events,
+      artwork: this.state.artwork || {},
+      artworkOpen: !!this.state.artwork,
+      artworkSlotRef: (el) => { if (el && this.state.artwork) el.id = "art-" + this.state.artwork.slug; },
+      closeArtwork: () => this.setState({ artwork: null }),
+      event: this.state.event || {},
+      eventOpen: !!this.state.event,
+      closeEvent: () => this.setState({ event: null }),
+      stopProp: (e) => e.stopPropagation(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

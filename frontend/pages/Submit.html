@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="../js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Archivo:wght@400;500;600&amp;family=Space+Mono&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#0d0e10; }
+  * { box-sizing:border-box; }
+  ::selection { background:#2a5860; color:#fff; }
+  a { color:#6BB1B5; }
+  a:hover { color:#8fc7ca; }
+  input, textarea, select { font-family:'Archivo',sans-serif; }
+  input::placeholder, textarea::placeholder { color:#6f6d68; }
+</style>
+</helmet>
+
+<div ref="{{ rootRef }}" style="background:#0d0e10;color:#ECE9E2;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;min-width:1100px;overflow-x:hidden">
+
+<section data-screen-label="Submit Artwork" style="position:relative;background:#0d0e10">
+
+  <!-- nav -->
+  <nav style="position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:30px 64px;border-bottom:1px solid rgba(232,224,206,.1)">
+    <div style="font:600 16px 'Archivo',sans-serif;letter-spacing:.36em;color:#ECE9E2">ARTCONNECT</div>
+    <div style="display:flex;align-items:center;gap:34px;font:500 13px 'Archivo',sans-serif;letter-spacing:.02em;color:#a8a59c">
+      <a href="../index.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Home</a>
+      <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
+      <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
+      <a href="./Submit.html" style="color:#ECE9E2;font-weight:600;text-decoration:none;transition:color .25s ease" style-hover="color:#F3F1EB">Submit</a>
+      <a href="./About.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">About</a>
+    </div>
+  </nav>
+
+  <!-- header -->
+  <div style="padding:80px 64px 20px;text-align:center">
+    <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:24px">SUBMIT WORK</div>
+    <h1 style="font:500 58px/1.05 'Cormorant Garamond',serif;letter-spacing:-.01em;margin:0 auto;color:#F3F1EB;max-width:680px">Show your work on our walls.</h1>
+    <p style="font:400 15px/1.7 'Archivo',sans-serif;color:#a8a59c;max-width:480px;margin:22px auto 0">Open to painters, sculptors, and photographers in the city. No submission fee — our curators review every piece.</p>
+  </div>
+
+  <!-- form -->
+  <div style="padding:56px 64px 120px;display:flex;justify-content:center">
+    <div style="width:100%;max-width:620px;display:flex;flex-direction:column;gap:18px">
+
+      <div>
+        <label style="display:block;font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;margin-bottom:8px">ARTIST NAME <span style="color:var(--ac2,#6BB1B5)">*</span></label>
+        <input type="text" placeholder="Full name" value="{{ form.artistName }}" onChange="{{ onField.artistName }}" style="{{ fieldStyle.artistName }}">
+        <sc-if value="{{ errors.artistName }}" hint-placeholder-val="{{ false }}">
+          <div style="font:11px 'Space Mono',monospace;color:#c25a4a;margin-top:6px">{{ errors.artistName }}</div>
+        </sc-if>
+      </div>
+
+      <div>
+        <label style="display:block;font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;margin-bottom:8px">EMAIL <span style="color:var(--ac2,#6BB1B5)">*</span></label>
+        <input type="email" placeholder="you@email.com" value="{{ form.email }}" onChange="{{ onField.email }}" style="{{ fieldStyle.email }}">
+        <sc-if value="{{ errors.email }}" hint-placeholder-val="{{ false }}">
+          <div style="font:11px 'Space Mono',monospace;color:#c25a4a;margin-top:6px">{{ errors.email }}</div>
+        </sc-if>
+      </div>
+
+      <div>
+        <label style="display:block;font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;margin-bottom:8px">ARTWORK TITLE <span style="color:var(--ac2,#6BB1B5)">*</span></label>
+        <input type="text" placeholder="Title of the piece" value="{{ form.title }}" onChange="{{ onField.title }}" style="{{ fieldStyle.title }}">
+        <sc-if value="{{ errors.title }}" hint-placeholder-val="{{ false }}">
+          <div style="font:11px 'Space Mono',monospace;color:#c25a4a;margin-top:6px">{{ errors.title }}</div>
+        </sc-if>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div>
+          <label style="display:block;font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;margin-bottom:8px">CATEGORY <span style="color:var(--ac2,#6BB1B5)">*</span></label>
+          <select value="{{ form.category }}" onChange="{{ onField.category }}" style="{{ fieldStyle.category }}">
+            <option value="">Select a category</option>
+            <option value="Painting">Painting</option><option value="Sculpture">Sculpture</option><option value="Photography">Photography</option><option value="Print">Print</option>
+          </select>
+          <sc-if value="{{ errors.category }}" hint-placeholder-val="{{ false }}">
+            <div style="font:11px 'Space Mono',monospace;color:#c25a4a;margin-top:6px">{{ errors.category }}</div>
+          </sc-if>
+        </div>
+        <div>
+          <label style="display:block;font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;margin-bottom:8px">MEDIUM</label>
+          <input type="text" placeholder="Oil on canvas" value="{{ form.medium }}" onChange="{{ onField.medium }}" style="width:100%;height:50px;background:transparent;border:1px solid rgba(232,224,206,.2);border-radius:2px;padding:0 16px;font:400 14px 'Archivo',sans-serif;color:#ECE9E2;outline:none">
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+        <div>
+          <label style="display:block;font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;margin-bottom:8px">PRICE</label>
+          <input type="text" placeholder="$ amount or Not for sale" value="{{ form.price }}" onChange="{{ onField.price }}" style="{{ fieldStyle.price }}">
+          <sc-if value="{{ errors.price }}" hint-placeholder-val="{{ false }}">
+            <div style="font:11px 'Space Mono',monospace;color:#c25a4a;margin-top:6px">{{ errors.price }}</div>
+          </sc-if>
+        </div>
+        <div>
+          <label style="display:block;font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;margin-bottom:8px">IMAGE</label>
+          <div style="height:50px;border:1px dashed rgba(232,224,206,.3);border-radius:2px;display:flex;align-items:center;justify-content:center;gap:10px;font:400 13px 'Archivo',sans-serif;color:#8e8b84;cursor:pointer" style-hover="border-color:rgba(232,224,206,.5);color:#ECE9E2">
+            <span>⬆</span><span>Upload image</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label style="display:block;font:11px 'Space Mono',monospace;letter-spacing:.1em;color:#8e8b84;margin-bottom:8px">DESCRIPTION <span style="color:var(--ac2,#6BB1B5)">*</span></label>
+        <textarea placeholder="Tell us about the piece." rows="4" value="{{ form.description }}" onChange="{{ onField.description }}" style="{{ fieldStyle.description }}"></textarea>
+        <sc-if value="{{ errors.description }}" hint-placeholder-val="{{ false }}">
+          <div style="font:11px 'Space Mono',monospace;color:#c25a4a;margin-top:6px">{{ errors.description }}</div>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ showFormError }}" hint-placeholder-val="{{ false }}">
+        <div style="font:12px 'Space Mono',monospace;color:#c25a4a;text-align:center">Please fix the highlighted fields above.</div>
+      </sc-if>
+
+      <div style="display:flex;justify-content:center;margin-top:14px">
+        <span onClick="{{ submitForReview }}" style="background:var(--ac,#27545c);color:#EAF3F3;padding:16px 48px;border-radius:2px;font:500 13px 'Archivo',sans-serif;letter-spacing:.06em;transition:background .3s;cursor:pointer" style-hover="background:#2f656e">Submit for review</span>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeConfirm }}" style="position:fixed;inset:0;background:rgba(8,9,10,.75);z-index:50;display:flex;align-items:center;justify-content:center;padding:60px">
+      <div onClick="{{ stopProp }}" style="width:100%;max-width:480px;background:#121316;border:1px solid rgba(232,224,206,.1);box-shadow:0 60px 120px rgba(0,0,0,.6);padding:48px 44px;text-align:center">
+        <div style="font:12px 'Space Mono',monospace;letter-spacing:.18em;color:var(--ac2,#6BB1B5);margin-bottom:18px">SUBMISSION RECEIVED</div>
+        <div style="font:500 30px 'Cormorant Garamond',serif;color:#F3F1EB">Thank you for your submission.</div>
+        <p style="font:400 14px/1.7 'Archivo',sans-serif;color:#a8a59c;margin:18px 0 0">Your work is now under review by our curators. We'll be in touch by email within two weeks.</p>
+        <span onClick="{{ closeConfirm }}" style="display:inline-block;margin-top:28px;border:1px solid rgba(232,224,206,.24);color:#ECE9E2;padding:12px 30px;border-radius:2px;font:500 12px 'Archivo',sans-serif;letter-spacing:.06em;cursor:pointer;transition:background .25s ease" style-hover="background:rgba(232,224,206,.06)">Close</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- FOOTER -->
+  <footer style="padding:80px 64px 44px;background:#0a0b0c;border-top:1px solid rgba(232,224,206,.1)">
+    <div style="display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap">
+      <div style="max-width:340px">
+        <div style="font:500 38px/1 'Cormorant Garamond',serif;color:#F3F1EB">ArtConnect</div>
+        <p style="font:400 13px/1.7 'Archivo',sans-serif;color:#6f6d68;margin:18px 0 0">A gallery for the city's artists—discover, visit, and collect.</p>
+      </div>
+      <div style="display:flex;gap:70px">
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">VISIT</div>
+          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">14 Harbour Lane<br>Open Tue–Sun · 11–18h<br>hello@artconnect.org</div>
+        </div>
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">EXPLORE</div>
+          <div style="display:flex;flex-direction:column;gap:10px;font:400 13px 'Archivo',sans-serif;color:#a8a59c">
+            <a href="./Gallery.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Gallery</a>
+            <a href="./Events.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Events</a>
+            <a href="./Submit.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">Submit work</a>
+            <a href="./FAQ.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">FAQ</a>
+            <a href="./References.html" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">References</a>
+          </div>
+        </div>
+        <div>
+          <div style="font:10px 'Space Mono',monospace;letter-spacing:.16em;color:#5a5853;margin-bottom:16px">DEVELOPER</div>
+          <div style="font:400 13px/2.1 'Archivo',sans-serif;color:#a8a59c">Cirilo Perez<br><a href="mailto:cperez60@uh.edu" style="color:#a8a59c;text-decoration:none;transition:color .25s ease" style-hover="color:#ECE9E2">cperez60@uh.edu</a></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:56px;padding-top:22px;border-top:1px solid rgba(232,224,206,.1);font:10px 'Space Mono',monospace;letter-spacing:.08em;color:#5a5853">
+      <span>© 2025 ARTCONNECT</span><span>REFERENCE · PRIVACY · TERMS</span>
+    </div>
+  </footer>
+</section>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {},
+  &quot;accent&quot;: {
+    &quot;editor&quot;: &quot;color&quot;,
+    &quot;default&quot;: [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
+    &quot;options&quot;: [
+      [&quot;#27545c&quot;, &quot;#6BB1B5&quot;],
+      [&quot;#6e4a2c&quot;, &quot;#c79a63&quot;],
+      [&quot;#4e3a5c&quot;, &quot;#a98bc2&quot;],
+      [&quot;#3a5240&quot;, &quot;#8fb79a&quot;]
+    ],
+    &quot;tsType&quot;: &quot;string[]&quot;,
+    &quot;section&quot;: &quot;Theme&quot;,
+    &quot;label&quot;: &quot;Accent palette&quot;
+  }
+}">
+class Component extends DCLogic {
+  emptyForm = { artistName: "", email: "", title: "", category: "", medium: "", price: "", description: "" };
+  state = { submitted: false, attempted: false, form: { ...this.emptyForm } };
+
+  validate(form) {
+    const errors = {};
+    if (!form.artistName.trim()) errors.artistName = "Artist name is required.";
+    if (!form.email.trim()) errors.email = "Email is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) errors.email = "Enter a valid email address.";
+    if (!form.title.trim()) errors.title = "Artwork title is required.";
+    if (!form.category) errors.category = "Please select a category.";
+    const price = form.price.trim();
+    if (price && !/^not for sale$/i.test(price) && !/^\$?\d+(\.\d{1,2})?$/.test(price)) {
+      errors.price = "Enter a numeric amount (e.g. 450) or \"Not for sale\".";
+    }
+    if (!form.description.trim()) errors.description = "Please add a description.";
+    return errors;
+  }
+
+  renderVals() {
+    const acc = this.props.accent || ["#27545c", "#6BB1B5"];
+    const ac = Array.isArray(acc) ? acc[0] : acc;
+    const ac2 = Array.isArray(acc) ? (acc[1] || acc[0]) : acc;
+    const vars = { "--ac": ac, "--ac2": ac2 };
+    const rootRef = (el) => { if (!el) return; for (const k in vars) el.style.setProperty(k, vars[k]); };
+
+    const form = this.state.form;
+    const rawErrors = this.validate(form);
+    const errors = this.state.attempted ? rawErrors : {};
+
+    const baseInput = "width:100%;height:50px;background:transparent;border:1px solid rgba(232,224,206,.2);border-radius:2px;padding:0 16px;font:400 14px 'Archivo',sans-serif;color:#ECE9E2;outline:none";
+    const errInput = "width:100%;height:50px;background:transparent;border:1px solid #c25a4a;border-radius:2px;padding:0 16px;font:400 14px 'Archivo',sans-serif;color:#ECE9E2;outline:none";
+    const baseSelect = "width:100%;height:50px;background:#0d0e10;border:1px solid rgba(232,224,206,.2);border-radius:2px;padding:0 16px;font:400 14px 'Archivo',sans-serif;color:#ECE9E2;outline:none";
+    const errSelect = "width:100%;height:50px;background:#0d0e10;border:1px solid #c25a4a;border-radius:2px;padding:0 16px;font:400 14px 'Archivo',sans-serif;color:#ECE9E2;outline:none";
+    const baseArea = "width:100%;background:transparent;border:1px solid rgba(232,224,206,.2);border-radius:2px;padding:14px 16px;font:400 14px/1.6 'Archivo',sans-serif;color:#ECE9E2;outline:none;resize:vertical";
+    const errArea = "width:100%;background:transparent;border:1px solid #c25a4a;border-radius:2px;padding:14px 16px;font:400 14px/1.6 'Archivo',sans-serif;color:#ECE9E2;outline:none;resize:vertical";
+
+    const fieldStyle = {
+      artistName: errors.artistName ? errInput : baseInput,
+      email: errors.email ? errInput : baseInput,
+      title: errors.title ? errInput : baseInput,
+      category: errors.category ? errSelect : baseSelect,
+      price: errors.price ? errInput : baseInput,
+      description: errors.description ? errArea : baseArea,
+    };
+
+    const setField = (key) => (e) => this.setState(s => ({ form: { ...s.form, [key]: e.target.value } }));
+    const onField = {
+      artistName: setField("artistName"),
+      email: setField("email"),
+      title: setField("title"),
+      category: setField("category"),
+      medium: setField("medium"),
+      price: setField("price"),
+      description: setField("description"),
+    };
+
+    return {
+      rootRef,
+      form,
+      errors,
+      fieldStyle,
+      onField,
+      showFormError: this.state.attempted && Object.keys(rawErrors).length > 0,
+      submitted: this.state.submitted,
+      submitForReview: () => {
+        const currentErrors = this.validate(this.state.form);
+        if (Object.keys(currentErrors).length > 0) {
+          this.setState({ attempted: true });
+          return;
+        }
+        this.setState({ submitted: true, attempted: false, form: { ...this.emptyForm } });
+      },
+      closeConfirm: () => this.setState({ submitted: false }),
+      stopProp: (e) => e.stopPropagation(),
+    };
+  }
+}
+
+</script>
+</body>
+</html>
