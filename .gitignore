@@ -1,0 +1,5 @@
+node_modules/
+
+# uploaded submission images are local-only; keep the folder itself
+backend/uploads/*
+!backend/uploads/.gitkeep

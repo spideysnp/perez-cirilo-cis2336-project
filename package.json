@@ -1,0 +1,29 @@
+{
+  "name": "perez-cirilo-cis2336-project",
+  "version": "1.0.0",
+  "description": "A dark, gallery-at-night styled web platform that helps beginner and professional artists showcase their work, promote upcoming events, and connect with the local art community.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon --watch backend backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spideysnp/perez-cirilo-cis2336-project.git"
+  },
+  "keywords": [],
+  "author": "Cirilo Perez <cperez60@uh.edu>",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/spideysnp/perez-cirilo-cis2336-project/issues"
+  },
+  "homepage": "https://github.com/spideysnp/perez-cirilo-cis2336-project#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "multer": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
