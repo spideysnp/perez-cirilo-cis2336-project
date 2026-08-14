@@ -6,8 +6,18 @@
    for field: the browser check is for fast feedback, this one is what actually
    guards the data, since anything can POST to the API directly. */
 
+const fs = require("fs");
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PRICE_RE = /^\$?\d+(\.\d{1,2})?$/;
+
+/* The four categories the gallery filter pills and the Submit page's <select>
+   are built from. This check goes further than submit.js, which only requires
+   the field to be non-empty: the browser can rely on the <select> to keep the
+   value in range, but a request sent straight to the API has no such limit, and
+   a category outside this list would store a work that renders in the gallery
+   yet no filter pill can ever match. */
+const CATEGORIES = ["Painting", "Sculpture", "Photography", "Print"];
 
 /* multipart text fields always arrive as strings, but a field left out of the
    request entirely comes through as undefined */
@@ -27,7 +37,11 @@ const rules = {
     return v ? "" : "Artwork title is required.";
   },
   category: function (v) {
-    return v ? "" : "Please select a category.";
+    if (!v) return "Please select a category.";
+    if (CATEGORIES.indexOf(v) === -1) {
+      return "Category must be one of: " + CATEGORIES.join(", ") + ".";
+    }
+    return "";
   },
   price: function (v) {
     if (!v) return "";
@@ -63,6 +77,12 @@ function validateSubmission(req, res, next) {
   }
 
   if (Object.keys(errors).length) {
+    /* multer has already written the image by the time the text fields are
+       checked, so a rejected submission would otherwise leave its picture
+       behind on disk with no record pointing at it */
+    if (req.file) {
+      fs.unlink(req.file.path, function () {});
+    }
     res.status(400).json({ success: false, errors: errors });
     return;
   }
