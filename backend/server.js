@@ -4,6 +4,9 @@
 const path = require("path");
 const express = require("express");
 
+const artworkRoutes = require("./routes/artworks");
+const eventRoutes = require("./routes/events");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -15,6 +18,10 @@ app.use(express.static(path.join(__dirname, "..", "frontend")));
 
 /* images saved from artwork submissions, referenced as /uploads/<filename> */
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+/* the JSON API the Gallery, Events, and Submit pages read from */
+app.use("/api/artworks", artworkRoutes);
+app.use("/api/events", eventRoutes);
 
 app.listen(PORT, function () {
   console.log("ArtConnect running at http://localhost:" + PORT);
