@@ -43,17 +43,37 @@ const storage = multer.diskStorage({
   }
 });
 
+/* The picture formats a submission may use. SVG is deliberately absent: it is
+   XML that can carry a <script> tag, and anything in this folder is served
+   from the site's own origin, so opening an uploaded SVG directly would run
+   its script as though the page had written it. The other formats here cannot
+   execute regardless of what the file actually contains. */
+const ALLOWED_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"];
+
 /* Turn away anything that is not an image. Rejecting with cb(null, false)
    rather than an error leaves req.file undefined, which validateSubmission
    reports as a normal per-field error under the image input instead of a
    whole-form failure. The reason is stashed on req so the message can say
-   what actually went wrong. */
+   what actually went wrong.
+
+   The extension is the real test, because express.static picks the response's
+   Content-Type from it, and that is what decides how a browser treats the
+   file. The declared mimetype is only a hint: it comes from the client, and
+   some clients send application/octet-stream for formats their own lookup
+   table does not recognise (curl does exactly this for .webp and .avif). So a
+   generic type is tolerated, while a type that positively claims to be
+   something else is not. */
 function fileFilter(req, file, cb) {
-  if (/^image\//.test(file.mimetype)) {
+  const ext = path.extname(String(file.originalname || "")).toLowerCase();
+  const typeIsPlausible =
+    /^image\//.test(file.mimetype) || file.mimetype === "application/octet-stream";
+
+  if (ALLOWED_EXTENSIONS.indexOf(ext) !== -1 && typeIsPlausible) {
     cb(null, true);
     return;
   }
-  req.fileRejected = "That file is not an image. Upload a JPG, PNG, WebP, or GIF.";
+
+  req.fileRejected = "That file is not an image. Upload a JPG, PNG, WebP, GIF, or AVIF.";
   cb(null, false);
 }
 
@@ -65,4 +85,5 @@ const upload = multer({
 
 module.exports = upload;
 module.exports.MAX_BYTES = MAX_BYTES;
+module.exports.ALLOWED_EXTENSIONS = ALLOWED_EXTENSIONS;
 module.exports.sanitizeFilename = sanitizeFilename;
