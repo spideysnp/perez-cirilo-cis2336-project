@@ -6,6 +6,7 @@ const express = require("express");
 
 const artworkRoutes = require("./routes/artworks");
 const eventRoutes = require("./routes/events");
+const { notFoundHandler, errorHandler } = require("./middleware/errorHandler");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +23,14 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 /* the JSON API the Gallery, Events, and Submit pages read from */
 app.use("/api/artworks", artworkRoutes);
 app.use("/api/events", eventRoutes);
+
+/* unmatched /api paths answer in JSON; everything else has already been
+   handled by express.static above */
+app.use("/api", notFoundHandler);
+
+/* must come last, after every route, or Express will not treat it as the
+   error handler */
+app.use(errorHandler);
 
 app.listen(PORT, function () {
   console.log("ArtConnect running at http://localhost:" + PORT);
