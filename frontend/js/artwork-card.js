@@ -45,6 +45,8 @@
     card.setAttribute("data-year", year);
     card.setAttribute("data-tag", artwork.category || "");
     card.setAttribute("data-price", artwork.price || "");
+    /* only submissions carry a medium; the detail modal appends it when set */
+    card.setAttribute("data-medium", artwork.medium || "");
     card.setAttribute("data-img", artwork.img || "");
     card.setAttribute("data-desc", artwork.description || "");
 
