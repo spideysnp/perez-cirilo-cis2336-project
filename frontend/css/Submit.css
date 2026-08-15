@@ -69,19 +69,52 @@ input::placeholder, textarea::placeholder { color: #82807a; }
   resize: vertical;
 }
 .field--error { border-color: #c25a4a; }
-.upload-box {
-  height: 50px;
-  border: 1px dashed rgba(232, 224, 206, .3);
-  border-radius: 2px;
+
+/* A file input ignores most of .field-input for its own button, so that button
+   is styled separately or it shows up as native OS chrome against the dark
+   form. The two pseudo-elements are written as separate rules on purpose: a
+   browser that does not recognise one would otherwise discard the whole
+   selector list and leave the button unstyled. */
+.field-input[type="file"] {
+  padding: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font: 400 13px 'Archivo', sans-serif;
-  color: #8e8b84;
   cursor: pointer;
 }
-.upload-box:hover { border-color: rgba(232, 224, 206, .5); color: #ECE9E2; }
+.field-input[type="file"]::file-selector-button {
+  height: 48px;
+  margin-right: 16px;
+  padding: 0 18px;
+  border: 0;
+  border-right: 1px solid rgba(232, 224, 206, .2);
+  background: #15161a;
+  font: 400 13px 'Archivo', sans-serif;
+  letter-spacing: .04em;
+  color: #ECE9E2;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+.field-input[type="file"]::file-selector-button:hover {
+  background: #1d1f24;
+  color: #F3F1EB;
+}
+.field-input[type="file"]::-webkit-file-upload-button {
+  height: 48px;
+  margin-right: 16px;
+  padding: 0 18px;
+  border: 0;
+  border-right: 1px solid rgba(232, 224, 206, .2);
+  background: #15161a;
+  font: 400 13px 'Archivo', sans-serif;
+  letter-spacing: .04em;
+  color: #ECE9E2;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease;
+}
+.field-input[type="file"]::-webkit-file-upload-button:hover {
+  background: #1d1f24;
+  color: #F3F1EB;
+}
 .form-error { font: 12px 'Space Mono', monospace; color: #c25a4a; text-align: center; }
 .form-actions { display: flex; justify-content: center; margin-top: 14px; }
 .btn-primary--submit { padding: 16px 48px; cursor: pointer; }

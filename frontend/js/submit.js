@@ -202,4 +202,8 @@
   confirmModal.addEventListener("click", function (e) {
     if (e.target === confirmModal || e.target.closest("[data-close]")) confirmModal.hidden = true;
   });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !confirmModal.hidden) confirmModal.hidden = true;
+  });
 })();
