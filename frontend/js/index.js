@@ -1,6 +1,10 @@
 /* ArtConnect — Homepage interactivity (vanilla JS)
-   Hero + artwork cards open the artwork modal, event rows open the
-   event modal, and the gallery section filters/sorts its grid. */
+   Hero + featured cards open the artwork modal, event rows open the event
+   modal, and the gallery screen further down the page fetches the collection
+   from /api/artworks and filters/sorts it.
+
+   The hero and the featured previews are hand-picked and stay in the HTML; only
+   the gallery screen's grid is built from the API. */
 (function () {
   "use strict";
 
@@ -13,14 +17,22 @@
   var aPrice = document.getElementById("artwork-modal-price");
 
   function openArtwork(el) {
+    /* the static hero and featured cards have no data-medium; grid cards
+       built from the API carry one when the artist supplied it */
+    var medium = el.getAttribute("data-medium");
     aImg.style.background = "url('" + el.getAttribute("data-img") + "') center/cover no-repeat";
     aTitle.textContent = el.getAttribute("data-title");
-    aSub.textContent = el.getAttribute("data-artist") + " · " + el.getAttribute("data-year") + " · " + el.getAttribute("data-tag");
+    aSub.textContent = el.getAttribute("data-artist") + " · " + el.getAttribute("data-year") + " · " +
+      el.getAttribute("data-tag") + (medium ? " · " + medium : "");
     aDesc.textContent = el.getAttribute("data-desc");
     aPrice.textContent = el.getAttribute("data-price");
     artOverlay.hidden = false;
   }
 
+  /* This sweep runs now, while the only [data-artwork] elements in the page are
+     the static hero and the three featured cards. The gallery grid's cards are
+     added later by the fetch below and get their own listener as they are
+     built, so nothing here can bind to them twice. */
   Array.prototype.forEach.call(document.querySelectorAll("[data-artwork]"), function (el) {
     el.addEventListener("click", function () { openArtwork(el); });
   });
@@ -54,14 +66,23 @@
     if (e.target === evOverlay || e.target.closest("[data-close]")) evOverlay.hidden = true;
   });
 
-  /* ---------- gallery section: filter + sort ---------- */
-  var grid = document.querySelector(".works-grid");
-  var cards = Array.prototype.slice.call(grid.querySelectorAll(".work-card"));
-  var pills = Array.prototype.slice.call(document.querySelectorAll(".filter-group .pill"));
-  var sortToggle = document.querySelector(".sort-toggle");
-  var sortMenu = document.querySelector(".sort-menu");
-  var sortOptions = Array.prototype.slice.call(sortMenu.querySelectorAll(".sort-option"));
+  /* one handler for both overlays on this page */
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    if (!artOverlay.hidden) artOverlay.hidden = true;
+    if (!evOverlay.hidden) evOverlay.hidden = true;
+  });
 
+  /* ---------- gallery screen ----------
+     Every query below is scoped to the gallery section rather than the whole
+     document, because this page also holds the featured strip and the homepage
+     screen above it. This section keeps its own state and does its own fetch;
+     it shares nothing with the standalone Gallery page. */
+  var gallerySection = document.querySelector('[data-screen-label="Gallery"]');
+  var grid = gallerySection.querySelector(".works-grid");
+  var pageMeta = gallerySection.querySelector(".page-meta");
+
+  var cards = [];
   var activeCat = "All";
   var sort = "recent";
 
@@ -81,25 +102,100 @@
     });
   }
 
-  pills.forEach(function (pill) {
-    pill.addEventListener("click", function () {
-      activeCat = pill.getAttribute("data-cat");
-      pills.forEach(function (p) { p.classList.toggle("pill--active", p === pill); });
-      applyFilterAndSort();
-    });
-  });
+  function wireControls() {
+    var pills = Array.prototype.slice.call(gallerySection.querySelectorAll(".filter-group .pill"));
+    var sortToggle = gallerySection.querySelector(".sort-toggle");
+    var sortMenu = gallerySection.querySelector(".sort-menu");
+    var sortOptions = Array.prototype.slice.call(sortMenu.querySelectorAll(".sort-option"));
 
-  sortToggle.addEventListener("click", function () {
-    sortMenu.hidden = !sortMenu.hidden;
-  });
-
-  sortOptions.forEach(function (opt) {
-    opt.addEventListener("click", function () {
-      sort = opt.getAttribute("data-sort");
-      sortToggle.textContent = "SORT: " + sort.toUpperCase() + " ▾";
-      sortOptions.forEach(function (o) { o.classList.toggle("sort-option--active", o === opt); });
-      sortMenu.hidden = true;
-      applyFilterAndSort();
+    pills.forEach(function (pill) {
+      pill.addEventListener("click", function () {
+        activeCat = pill.getAttribute("data-cat");
+        pills.forEach(function (p) { p.classList.toggle("pill--active", p === pill); });
+        applyFilterAndSort();
+      });
     });
-  });
+
+    sortToggle.addEventListener("click", function () {
+      sortMenu.hidden = !sortMenu.hidden;
+    });
+
+    sortOptions.forEach(function (opt) {
+      opt.addEventListener("click", function () {
+        sort = opt.getAttribute("data-sort");
+        sortToggle.textContent = "SORT: " + sort.toUpperCase() + " ▾";
+        sortOptions.forEach(function (o) { o.classList.toggle("sort-option--active", o === opt); });
+        sortMenu.hidden = true;
+        applyFilterAndSort();
+      });
+    });
+  }
+
+  function showMessage(text) {
+    grid.textContent = "";
+    var msg = document.createElement("div");
+    msg.className = "grid-status";
+    msg.style.gridColumn = "1 / -1";
+    msg.style.font = "12px 'Space Mono', monospace";
+    msg.style.letterSpacing = ".1em";
+    msg.style.color = "#82807a";
+    msg.textContent = text;
+    grid.appendChild(msg);
+  }
+
+  /* the featured strip's link advertises a total, which would otherwise still
+     read "9 works" the moment someone submits a tenth */
+  var viewAll = document.querySelector(".view-all");
+
+  function updateCounts(artworks) {
+    var artists = {};
+    artworks.forEach(function (a) {
+      if (a.artist) artists[a.artist] = true;
+    });
+    var works = artworks.length;
+    var names = Object.keys(artists).length;
+    pageMeta.textContent =
+      works + (works === 1 ? " WORK · " : " WORKS · ") +
+      names + (names === 1 ? " ARTIST" : " ARTISTS");
+    if (viewAll) {
+      viewAll.textContent = "View all " + works + (works === 1 ? " work" : " works") + "  →";
+    }
+  }
+
+  function render(artworks) {
+    grid.textContent = "";
+    cards = artworks.map(function (artwork) {
+      var card = window.buildWorkCardEl(artwork);
+      /* bound here, at build time, rather than by another [data-artwork] sweep,
+         which would re-bind the hero and featured cards as well */
+      card.addEventListener("click", function () { openArtwork(card); });
+      grid.appendChild(card);
+      return card;
+    });
+    updateCounts(artworks);
+    applyFilterAndSort();
+    wireControls();
+  }
+
+  pageMeta.textContent = "LOADING…";
+  showMessage("Loading the collection…");
+
+  fetch("/api/artworks")
+    .then(function (res) {
+      if (!res.ok) throw new Error("Request failed with status " + res.status);
+      return res.json();
+    })
+    .then(function (data) {
+      var artworks = (data && data.artworks) || [];
+      if (!artworks.length) {
+        pageMeta.textContent = "0 WORKS · 0 ARTISTS";
+        showMessage("There are no works in the collection yet.");
+        return;
+      }
+      render(artworks);
+    })
+    .catch(function () {
+      pageMeta.textContent = "UNAVAILABLE";
+      showMessage("The collection could not be loaded. Refresh the page to try again.");
+    });
 })();
