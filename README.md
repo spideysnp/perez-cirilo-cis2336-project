@@ -212,7 +212,7 @@ These are deliberate scope decisions for a course project, not oversights:
 ## Live Site
 
 - **Repository:** https://github.com/spideysnp/perez-cirilo-cis2336-project
-- **GitHub Pages:** https://spideysnp.github.io/perez-cirilo-cis2336-project/ *(publish via Settings → Pages once ready)*
+- **GitHub Pages:** https://spideysnp.github.io/perez-cirilo-cis2336-project/
 
 GitHub Pages serves static files only, so it hosts the site's design and its static pages — it cannot run the Express server. On Pages, the Gallery and Events pages have no API to fetch from and the Submit form has nowhere to upload to. The full experience runs locally via `npm start`.
 
