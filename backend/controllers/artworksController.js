@@ -3,6 +3,7 @@
    touches the underlying array. */
 
 const store = require("../data/artworks");
+const { formatPrice } = require("../middleware/validateSubmission");
 
 /* GET /api/artworks — the whole collection, or one category of it */
 function listArtworks(req, res) {
@@ -32,7 +33,8 @@ function createArtwork(req, res) {
     artist: body.artistName,
     category: body.category,
     medium: body.medium,
-    price: body.price || "Not for sale",
+    /* normalised so submitted prices read like the seeded ones */
+    price: formatPrice(body.price),
     description: body.description,
     /* already root-relative, and server.js serves this folder at /uploads */
     img: "/uploads/" + req.file.filename,

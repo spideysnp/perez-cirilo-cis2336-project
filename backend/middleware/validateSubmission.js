@@ -53,6 +53,22 @@ const rules = {
   }
 };
 
+/* Turn an accepted price into the form the seeded works use, so a submitted
+   piece does not sit in the grid showing "250" beside "$4,200". Both "250" and
+   "$250" become "$250"; "450.5" keeps its cents as "$450.50"; any spelling of
+   "not for sale" is normalised, and a blank price becomes "Not for sale". */
+function formatPrice(raw) {
+  const v = value(raw);
+  if (!v || /^not for sale$/i.test(v)) return "Not for sale";
+  if (!PRICE_RE.test(v)) return v; /* unreachable once validation has passed */
+  const amount = Number(v.replace(/^\$/, ""));
+  const decimals = /\.\d{1,2}$/.test(v) ? 2 : 0;
+  return "$" + amount.toLocaleString("en-US", {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals
+  });
+}
+
 function validateSubmission(req, res, next) {
   const errors = {};
 
@@ -91,3 +107,5 @@ function validateSubmission(req, res, next) {
 }
 
 module.exports = validateSubmission;
+module.exports.formatPrice = formatPrice;
+module.exports.CATEGORIES = CATEGORIES;
